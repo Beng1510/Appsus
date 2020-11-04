@@ -1,7 +1,7 @@
 import homePage from './pages/home-page.js'
 // import aboutUs from '../pages/about-us.js'
-import { mailApp ,unreadMail,newMail ,opneMail} from './apps/Mail/pages/mail-app.js'
-// import mailApp  from './apps/Mail/pages/mail-app.js'
+import { mailApp ,unreadMail,newMail } from './apps/Mail/pages/mail-app.js'
+import mailDeatail  from './apps/Mail/pages/mail-detail.js'
 import keepApp from './apps/Keep/pages/keep-app.js'
 
 
@@ -26,14 +26,17 @@ const myRoutes = [
                 path: '/mail/newmail',
                 component: newMail
             },
-            {
-                path: '/mail/:mail',
-                component: opneMail
-            },
+            // {
+            //     path: '/mail/:mail',
+            //     component: opneMail
+            // },
         ]
     },
-   
-    {
+    {  
+        path: '/mail/:mail',
+        component: mailDeatail
+    },
+     {
         path: '/keep',
         component: keepApp
     },

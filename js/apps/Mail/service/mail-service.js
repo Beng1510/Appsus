@@ -23,7 +23,8 @@ function saveMails() {
 
 function getMailById(id) {
     const mail = gMails.find(mail => mail.id === id)
-    return Promise.resolve(mail)
+    // return Promise.resolve(mail)
+    return mail
 }
 
 function _createMails() {
@@ -32,21 +33,21 @@ function _createMails() {
     // if (mails && mails.length) return mails;
 
     mails = [{
-        id: 123,
+        id: utilsService.makeId(),
         subject: 'sport',
         body: 'hello! my name is dor and i like to run1',
         isRead: false,
         sentAt: 1551133930594
     },
     {
-        id: 456,
+        id: utilsService.makeId(),
         subject: 'food',
         body: 'hello! my name is dor and i like to run2',
         isRead: false,
         sentAt: 1551133900000
     },
     {
-        id: 789,
+        id: utilsService.makeId(),
         subject: 'gym',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,

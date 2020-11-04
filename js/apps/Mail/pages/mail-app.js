@@ -7,9 +7,14 @@ export const mailApp = {
     <section class="Mail-app ">
        <h1>Mail Page</h1>
        <!-- @mailClick="selectmail" -->
+       
+       <nav>
+            <router-link to="/mail/unreadInbox">Unread Inbox</router-link> | 
+            <router-link to="/mail/newmail">New Mail +</router-link>
+            
+        </nav>
 
        <mail-list :mails="mails"  @mailClick="selectmail" />
-    
 
     </section>
 `, data() {
@@ -20,19 +25,23 @@ export const mailApp = {
 
     created() {
 
-        // mailService.query()
-        //     .then(mails => {console.log('this.mails:', this.mails),this.mails = mails})
+       
         this.mails = mailService.query()
 
     },
     components: {
         mailList,
-
     },
     methods: {
-        selectmail(mailID) {
+        selectmail(mailId) {
+
             
-            // this.$router.push(`/mail/${mailID}`)
+            this.mail = mailService.getMailById(mailId)
+            this.mail.isRead = true;
+            
+
+
+            this.$router.push(`/mail/${mailId}`)
         }
     }
 }
