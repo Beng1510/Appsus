@@ -9,8 +9,9 @@ export default {
         
             <h2>{{mail.subject}}</h2>
             <h4>{{mail.body}}</h4>
-          <!-- <button><img :src='asset/icons/delete.png'/></button> -->
-
+            <button>📧</button>
+            <button>❌</button>
+        
      </section>
     `,
     
