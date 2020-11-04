@@ -9,8 +9,8 @@ export default {
     <section class="keep-app">
        <h1>Keep Page</h1>
        <keep-add></keep-add>
+       <!-- <keep-list :notes="notesToShow"  @colorChange="chngeBkgColor"></keep-list> -->
        <keep-list :notes="notesToShow"></keep-list>
-       <!-- <keep-list :notes="notesToShow" @changeBgc="onChangeBGC"></keep-list> -->
        <!-- <keep-add :notes="notesToShow"></keep-add> -->
 
 
@@ -28,12 +28,14 @@ export default {
             console.log('this.notes',this.notes);
             return this.notes
         },
-        // onChangeBGC(newColor, id) {
-        //     keepService.changeBGC(color,id)
-        //     .then(res => {
-        //         this.notes = res;
-        //     });
-        // }
+        // chngeBkgColor(newColor, id) {
+        //     console.log('newColor',newColor);
+        //     keepService.changeBkgColor(newColor, id)
+        //         .then(res => {
+        //             this.notes = res;
+        //             console.log('this.notes',this.notes);
+        //         });
+        // },
     },
     components: {
         keepAdd,

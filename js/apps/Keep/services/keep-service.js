@@ -6,7 +6,7 @@ export const keepService = {
     addNote,
     getNotes,
     removeNote,
-    // changeBGC
+    //  changeBkgColor
 
 }
 
@@ -100,20 +100,21 @@ function removeNote(noteId) {
     const noteIdx = gNotes.findIndex((note) => {
         return noteId === note.id
     })
-
-    // console.log('gNotes',gNotes);
     gNotes.splice(noteIdx, 1)
-    // console.log('gNotes',gNotes);
     return Promise.resolve(gNotes)
 }
 
 
-// function changeBGC(color, id) {
+// function changeBkgColor(color, id) {
 //     let note = findNoteById(id);
+//     console.log('note',note);
+//     console.log('color',color);
 //     note.style.backgroundColor = color;
+//     console.log('note.style.backgroundColor',note.style.backgroundColor);
 //     utilsService.storeToStorage(NOTES_DB, gNotes)
 //     return Promise.resolve(notesDB);
 // }
 // function findNoteById(noteId) {
-//     return notesDB.find(note => note.id === noteId);
+//     return gNotes.find(note => note.id === noteId);
 // }
+
