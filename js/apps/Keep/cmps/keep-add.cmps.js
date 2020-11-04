@@ -2,7 +2,7 @@
 import { keepService } from '../services/keep-service.js'
 
 export default {
-
+    name: 'keep-add',
     template: `
        <section class="keep-add">
             <h2> add a note</h2>

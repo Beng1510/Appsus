@@ -75,20 +75,35 @@ function _createNote(noteDetailes) {
     }
 }
 
+// function removeNote(noteId) {
+//     return Promise.resolve(
+//         getNoteIdxById(noteId)
+//             .then(idx => {
+//                 console.log('idx',idx);
+//                 console.log('gNotes',gNotes);
+
+//                 gNotes[idx].splice(idx, 1);
+//                 utilsService.storeToStorage(BOOKS_DB, gBooks);
+//             })
+//             )
+// }
+
+// function getNoteIdxById(id) {
+//     return Promise.resolve(gNotes.findIndex(note => note.id === id))
+// }
+
+
 function removeNote(noteId) {
-    return Promise.resolve(
-        getnoteIdxById(noteId)
-            .then(idx => {
-                gNotes[idx].splice(idx, 1);
-                utilsService.storeToStorage(BOOKS_DB, gBooks);
-            })
-            )
-}
+  
+    const noteIdx = gNotes.findIndex((note) => {
+        return noteId === note.id
+    })
 
-function getnoteIdxById(id) {
-    return Promise.resolve(gNotes.findIndex(note => note.id === id))
+    // console.log('gNotes',gNotes);
+    gNotes.splice(noteIdx, 1)
+    // console.log('gNotes',gNotes);
+    return Promise.resolve(gNotes)
 }
-
 
 
 

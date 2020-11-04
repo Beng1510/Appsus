@@ -4,7 +4,7 @@ import keepAdd from '../cmps/keep-add.cmps.js'
 import keepList from '../cmps/keep-list.cmps.js'
 
 export default {
-
+    name: 'keep-app',
     template: `
     <section class="keep-app">
        <h1>Keep Page</h1>
@@ -37,6 +37,7 @@ export default {
         console.log('keep app created');
         keepService.getNotes()
             .then(notes => this.notes = notes)
+            
     },
 }
 
