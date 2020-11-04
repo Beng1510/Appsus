@@ -1,11 +1,13 @@
 import { utilsService } from './utils-service.js'
 
-const NOTES_DB = 'notedDb'
+const NOTES_DB = 'noteDb'
 
 export const keepService = {
     addNote,
     getNotes,
-    removeNote
+    removeNote,
+    // changeBGC
+
 }
 
 const defaultNotes = [
@@ -26,11 +28,11 @@ const defaultNotes = [
     {
         type: "noteImg",
         info: {
-            url: "http://some-img/me",
+            url: "http://coding-academy.org/books-photos/2.jpg",
             title: "Me playing Mi"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#006D77"
         }
     },
     {
@@ -94,7 +96,7 @@ function _createNote(noteDetailes) {
 
 
 function removeNote(noteId) {
-  
+
     const noteIdx = gNotes.findIndex((note) => {
         return noteId === note.id
     })
@@ -106,4 +108,12 @@ function removeNote(noteId) {
 }
 
 
-
+// function changeBGC(color, id) {
+//     let note = findNoteById(id);
+//     note.style.backgroundColor = color;
+//     utilsService.storeToStorage(NOTES_DB, gNotes)
+//     return Promise.resolve(notesDB);
+// }
+// function findNoteById(noteId) {
+//     return notesDB.find(note => note.id === noteId);
+// }

@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         updateNoteInfo() {
-            if (this.note.type === 'noteText') this.note.info = { text: this.info }
+            if (this.note.type === 'noteText') this.note.info = { txt: this.info }
 
             else if (this.note.type === 'noteImg') {
                 this.note.info = { url: this.info, title: this.title }
@@ -82,7 +82,7 @@ export default {
                 let todos = this.info.split(',');
 
                 var todosObj = todos.map(todo => {
-                    return { text: todo, doneAt: null }
+                    return { txt: todo, doneAt: null }
                 });
                 this.note.info = { todos: todosObj, label: this.todosLabel };
             }

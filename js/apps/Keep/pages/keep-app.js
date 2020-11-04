@@ -8,8 +8,9 @@ export default {
     template: `
     <section class="keep-app">
        <h1>Keep Page</h1>
-
+       <keep-add></keep-add>
        <keep-list :notes="notesToShow"></keep-list>
+       <!-- <keep-list :notes="notesToShow" @changeBgc="onChangeBGC"></keep-list> -->
        <!-- <keep-add :notes="notesToShow"></keep-add> -->
 
 
@@ -26,7 +27,13 @@ export default {
         notesToShow() {
             console.log('this.notes',this.notes);
             return this.notes
-        }
+        },
+        // onChangeBGC(newColor, id) {
+        //     keepService.changeBGC(color,id)
+        //     .then(res => {
+        //         this.notes = res;
+        //     });
+        // }
     },
     components: {
         keepAdd,
