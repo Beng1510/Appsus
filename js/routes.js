@@ -1,8 +1,8 @@
-import homePage from '../pages/home-page.js'
+import homePage from './pages/home-page.js'
 // import aboutUs from '../pages/about-us.js'
-import bookApp from '../pages/book-app.js'
-import mailApp from '../pages/mail-app.js'
-import keepApp from '../pages/keep-app.js'
+import bookApp from './apps/Books/book-app.js'
+import mailApp from './apps/Mail/mail-app.js'
+import keepApp from './apps/Keep/pages/keep-app.js'
 
 
 const myRoutes = [

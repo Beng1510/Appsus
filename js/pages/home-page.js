@@ -7,7 +7,6 @@ export default {
 
             <section class="home-page-container flex"> 
                 
-
                 <div class="home-page-text-container flex column">
                     <h2>WE WILL MAKE IT
                     </h2>
