@@ -1,4 +1,4 @@
-import { mailService } from '.../service/mail-service.js'
+import { mailService } from './service/mail-service.js'
 
 export default {
 
@@ -11,6 +11,9 @@ export default {
 
     </section>
 `,
+    components: {
+        mailService
+},
 
 }
 
