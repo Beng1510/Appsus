@@ -1,5 +1,5 @@
-import { mailService } from '../apps/mail/service/mail-service.js'
-import mailList from '../apps/mail//cmps/mail-list.cmps.js'
+import { mailService } from '../service/mail-service.js'
+import mailList from '../cmps/mail-list.cmps.js'
 
 export default {
     template: `
@@ -33,4 +33,3 @@ export default {
 
     }
 }
-
