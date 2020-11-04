@@ -1,20 +1,66 @@
 import { utilsService } from './utils-service.js'
 
+const NOTES_DB = 'notedDb'
+
 export const keepService = {
     addNote,
-
+    getNotes,
+    removeNote
 }
-var gNotes = []
-console.log('gNotes',gNotes);
 
+const defaultNotes = [
+    {
+        type: "noteText",
+        isPinned: true,
+        info: {
+            txt: "Fullstack Me Baby!"
+        }
+    },
+    {
+        type: "noteText",
+        isPinned: false,
+        info: {
+            txt: "Peace and Love!"
+        }
+    },
+    {
+        type: "noteImg",
+        info: {
+            url: "http://some-img/me",
+            title: "Me playing Mi"
+        },
+        style: {
+            backgroundColor: "#00d"
+        }
+    },
+    {
+        type: "noteTodos",
+        info: {
+            label: "How was it:",
+            todos: [
+                { txt: "Do that", doneAt: null },
+                { txt: "Do this", doneAt: 187111111 }
+            ]
+        }
+    }
+];
+
+var gNotes = utilsService.loadFromStorage(NOTES_DB) ? utilsService.loadFromStorage(NOTES_DB) : defaultNotes;
+
+console.log('gNotes', gNotes);
+
+function getNotes() {
+    utilsService.storeToStorage(NOTES_DB, gNotes)
+    return Promise.resolve(gNotes);
+}
 
 function addNote(note) {
     const newNote = _createNote(note);
-console.log('newNote',newNote);
+    console.log('newNote', newNote);
 
     gNotes.unshift(newNote);
-   console.log('gNotes',gNotes);
-
+    console.log('gNotes', gNotes);
+    utilsService.storeToStorage(NOTES_DB, gNotes)
     return Promise.resolve();
 }
 
@@ -29,80 +75,19 @@ function _createNote(noteDetailes) {
     }
 }
 
-var notes = [
-    {
-        type: "NoteText",
-        isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        }
-    },
-    {
-        type: "NoteImg",
-        info: {
-            url: "http://some-img/me",
-            title: "Me playing Mi"
-        },
-        style: {
-            backgroundColor: "#00d"
-        }
-    },
-    {
-        type: "NoteTodos",
-        info: {
-            label: "How was it:",
-            todos: [
-                { txt: "Do that", doneAt: null },
-                { txt: "Do this", doneAt: 187111111 }
-            ]
-        }
-    }
-];
-
-const NoteText = {
-    props: ['info'],
-    template: `
-        <div class="row">
-            <label>
-                {{info.txt}}
-                <input type="text" v-model="txt" @blur="reportVal" />
-            </label>
-        </div>
-    `,
-    data() {
-        return {
-            txt: '',
-        }
-    },
-    methods: {
-        reportVal() {
-            this.$emit('setVal', this.txt)
-        }
-    }
-}
-const NoteImg = {
-    props: ['info'],
-    template: `
-        <div class="row">
-            <label>
-                <input type="text" v-model="txt" @blur="reportVal" />
-            <img class="book-img-details" :src="imgUrl" />
-                {{info.title}}
-            </label>
-        </div>
-    `,
-    data() {
-        return {
-            imgUrl: '',
-        }
-    },
-    methods: {
-        reportVal() {
-            this.$emit('setVal', this.txt)
-        }
-    }
+function removeNote(noteId) {
+    return Promise.resolve(
+        getnoteIdxById(noteId)
+            .then(idx => {
+                gNotes[idx].splice(idx, 1);
+                utilsService.storeToStorage(BOOKS_DB, gBooks);
+            })
+            )
 }
 
+function getnoteIdxById(id) {
+    return Promise.resolve(gNotes.findIndex(note => note.id === id))
+}
 
 
 

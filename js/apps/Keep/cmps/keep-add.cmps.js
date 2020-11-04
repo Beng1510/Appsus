@@ -5,7 +5,7 @@ export default {
 
     template: `
        <section class="keep-add">
-            <h2> add and keep</h2>
+            <h2> add a note</h2>
             <input
         v-if="isTitle"
         v-model="title"
