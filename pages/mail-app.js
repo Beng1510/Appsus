@@ -1,4 +1,4 @@
-import { mailService } from '.../service/mail-service.js'
+import { mailService } from '../apps/mail/service/mail-service.js'
 
 export default {
 
@@ -7,7 +7,7 @@ export default {
        <h1>Mail Page</h1>
 
 
-
+    com
 
     </section>
 `,
