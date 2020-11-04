@@ -1,4 +1,4 @@
-
+import mailPreview from './mail-preview.cmps.js'
 
 
 export default {
@@ -6,11 +6,10 @@ export default {
     template: `
     <section class="mail-list">
         <ul>
-            <li v-for="mail in mails" :key="mail.id" >
+        <li v-for="mail in mails" :key="mail.id"  >
+                <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead }" />
 
-               <h2>{{mail.body}}</h2>
-               <!-- <mail-preview :mail="mail"/> -->
-            </li>
+        </li>
 
             
         </ul>
@@ -18,13 +17,14 @@ export default {
     `,
     methods: {
         emitMailClick(mailId){
+            
             console.log('mailId:', mailId)
-
             this.$emit('mailClick', mailId)
+            // return {read:}
         }
     },
     components:{
-        
+        mailPreview,
     }
 
  }

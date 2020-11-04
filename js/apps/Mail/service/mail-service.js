@@ -3,7 +3,7 @@ import { utilsService } from './utils-service.js'
 export const mailService = {
 
     query,
-    // getMailById,
+    getMailById,
     saveMails,
 
 }
@@ -21,10 +21,10 @@ function saveMails() {
     utilsService.storeToStorage('mails', gMails)
 }
 
-// function getMailById(id) {
-//     const mail = gMails.find(mail => mail.id === id)
-//     return Promise.resolve(mail)
-// }
+function getMailById(id) {
+    const mail = gMails.find(mail => mail.id === id)
+    return Promise.resolve(mail)
+}
 
 function _createMails() {
 
@@ -33,22 +33,22 @@ function _createMails() {
 
     mails = [{
         id: 123,
-        subject: 'how?',
+        subject: 'sport',
         body: 'hello! my name is dor and i like to run1',
         isRead: false,
         sentAt: 1551133930594
     },
     {
         id: 456,
-        subject: 'yow',
+        subject: 'food',
         body: 'hello! my name is dor and i like to run2',
         isRead: false,
         sentAt: 1551133900000
     },
     {
         id: 789,
-        subject: 'doing?',
-        body: 'hello!ssssssssssssss',
+        subject: 'gym',
+        body: 'hello! my name is dor and i like to run3',
         isRead: false,
         sentAt: 155113391000
     }

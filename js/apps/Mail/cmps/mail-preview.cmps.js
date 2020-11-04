@@ -1,19 +1,19 @@
-// import mailPreview from './mail-preview.cmps.js'
+import mailPreview from './mail-preview.cmps.js'
 
 
 
-// export default {
-//     props:['mail'],
-//     template: `
-//     <section class="mail-preview">
-//         <h3>{{mail.body}}</h3>
-//         <h5>{{mail.subject}}</h5>
+export default {
+    props:['mail'],
+    template: `
+    <section class="mail-preview" >
         
-//     </section>
-//     `,
+            <h2>{{mail.subject}}</h2>
+            <h4>{{mail.body}}</h4>
+          <!-- <button><img :src='asset/icons/delete.png'/></button> -->
+
+     </section>
+    `,
+    
 
 
-
-
-
-// }
+}

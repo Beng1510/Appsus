@@ -1,0 +1,22 @@
+
+
+
+/* Preview*/
+
+.mail-preview{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 10px;
+ 
+     margin-bottom: 2.5px;
+}
+
+.mailRead{
+    background-color: grey;
+}
+
+
+/* .mail-preview */
+
