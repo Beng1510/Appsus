@@ -6,7 +6,7 @@ export default {
         <section class="note-text-container">
 
             <div class="note-text-content">
-              <p class="note-text-txt">{{info.txt}}</p>
+              <p class="note-text-txt">{{info.title}}</p>
             </div>
 
             <div class="note-control-panel">

@@ -70,7 +70,7 @@ function editNote(noteId, newTxt) {
     const noteIdx = gNotes.findIndex((note) => {
         return noteId === note.id
     })
-    gNotes[noteIdx].info.txt = newTxt
+    gNotes[noteIdx].info.title = newTxt
     return Promise.resolve(gNotes)
 }
 
@@ -102,7 +102,7 @@ function createDefaultNotes() {
             type: "noteText",
             isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                title: "Fullstack Me Baby!"
             },
             style: {
                 backgroundColor: "#BCD4E6"
@@ -112,7 +112,7 @@ function createDefaultNotes() {
             type: "noteText",
             isPinned: false,
             info: {
-                txt: "Peace and Love!"
+                title: "Peace and Love!"
             },
             style: {
                 backgroundColor: "#BCD4E6"
@@ -131,7 +131,7 @@ function createDefaultNotes() {
         {
             type: "noteTodos",
             info: {
-                label: "How was it:",
+                title: "How was it:",
                 todos: [
                     { txt: "Do that", doneAt: null },
                     { txt: "Do this", doneAt: 187111111 }
@@ -169,7 +169,7 @@ function createDefaultNotes() {
     function updateNote(noteId, info, type) {
         const note = findNoteById(noteId);
         if (type === 'noteText') {
-            note.info.txt = info;
+            note.info.title = info;
         } else if (type === 'noteImg') {
             note.info.url = info;
     

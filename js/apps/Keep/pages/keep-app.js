@@ -35,9 +35,9 @@ export default {
             console.log('this.notes:', this.notes)
 
             return this.notes.filter(note => {
-                console.log('note',note.info.txt);
+                console.log('note',note.info.title);
 
-                return note.info.txt.toLowerCase().includes(txt) 
+                return note.info.title.toLowerCase().includes(txt) 
 
         })
     }

@@ -6,7 +6,7 @@ export default {
         <section class="note-todos">
             <div class="note-todos-content"> 
                 <div class="todos">
-                    <h3>{{info.label}}</h3>
+                    <h3>{{info.title}}</h3>
                          
                         <div class="todo" v-for="todos in info.todos">
                             <p>*{{todos.txt}}</p>
@@ -17,18 +17,18 @@ export default {
             <div class="note-control-panel">
                     <!-- <button @click="editNote">?</button> -->
                     <!-- <button @click="onRemoveNote()">xx</button> -->
-                    <span @click="editNote" class="fas fa-edit"></span>
+                    <!-- <span @click="editNote" class="fas fa-edit"></span>
                     <span @click="onRemoveNote" class="fas fa-trash-alt"></span>
-                    <span @click="colorEdit" class="fas fa-palette info colors dropdown"></span>
-                    <note-colors v-if="isColorEdit" @colorChange="changeBColor"></note-colors>
+                    <span @click="colorEdit" class="fas fa-palette info colors dropdown"></span> -->
+                    <!-- <note-colors v-if="isColorEdit" @colorChange="changeBColor"></note-colors> -->
                     
-                    <section v-if="isEdit" class="edit-note">
+                    <!-- <section v-if="isEdit" class="edit-note">
                         <input v-model="newText"  type="text"/>
                             <div> 
                                 <button @click="updateNote">Update</button>
                                 <button @click="editNote">Cancel</button>
                             </div>
-                    </section>
+                    </section> -->
                 </div>
 
         </section>

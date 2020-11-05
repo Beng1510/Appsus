@@ -87,7 +87,7 @@ export default {
     },
     methods: {
         updateNoteInfo() {
-            if (this.note.type === 'noteText') this.note.info = { txt: this.info }
+            if (this.note.type === 'noteText') this.note.info = { title: this.info }
 
             else if (this.note.type === 'noteImg') {
                 this.note.info = { url: this.info, title: this.title }
@@ -98,7 +98,7 @@ export default {
                 var todosObj = todos.map(todo => {
                     return { txt: todo, doneAt: null }
                 });
-                this.note.info = { todos: todosObj, label: this.todosLabel };
+                this.note.info = { todos: todosObj, title: this.todosLabel };
             }
             keepService.addNote(this.note)
                 .then(res => {
