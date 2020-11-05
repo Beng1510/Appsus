@@ -7,7 +7,7 @@ export default {
     <section class="mail-filter">
     <form @submit.prevent="emitFilter">
             <label>   
-                <input type="text" v-model="filterObj.filterByTxt" placeholder="Search Email by subject" @input="emitFilter">
+                <input type="search" v-model="filterObj.filterByTxt" placeholder="Search..." @input="emitFilter">
             </label>
             
             <select v-model="filterObj.filterByRead">

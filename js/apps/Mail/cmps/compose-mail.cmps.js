@@ -18,7 +18,8 @@ export const composeMail = {
                 <input type="text" v-model:value="mail.subject">
             </label>
             <textarea name="moreInfo" cols="50" rows="10" v-model:value="mail.body"></textarea>
-            <button >Send Mail</button> 
+            <button >Send Mail</button>
+             <!-- <button type="button" @click="cancelAdd">Cancel</button> -->
         </form>
             
         </section>
@@ -28,28 +29,29 @@ export const composeMail = {
     data() {
         return {
             mail: null,
+            addingMail: false
         }
     },
     methods: {
         addMail() {
-            // this.mail
-            
-            
-
+           // this.mail  
             mailService.addMail(this.mail)
 
-            // this.$emit('add', this.mail);
             // console.log('this.mail:', this.mail)
+            this.$emit('newmail', this.mail)
+            console.log('hiiiii');
+            // this.mail = null;
 
-        }
+        },
+
+       
     },
     mounted() {
         this.$refs.nameInput.focus();
     },
     created() {
-
         this.mail = mailService.getNewMail()
-
+        this.addingMail = true ;
 
     }
 }

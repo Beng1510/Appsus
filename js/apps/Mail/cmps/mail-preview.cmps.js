@@ -6,17 +6,23 @@ import mailPreview from './mail-preview.cmps.js'
 export default {
     props:['mail'],
     template: `
-    <section class="mail-preview" >
-        
-            <h2>{{mail.subject}}</h2>
+    <section class="mail-preview grid-container" >
+         
+
+         
+            <h2 class="itemsub">{{mail.subject}}</h2>
+            <p class="itemuser">{{mail.user}}</p>
             
             <p class="longTxt" >{{textForPreview}}</p>
-            <p>{{mail.sentAt}}</p> 
-            <button>📧</button>
-            <button  @click.stop="emitDelete(mail.id)" >
-                    <img src="/js/asset/icons/delete.png" >
-            </button>
-        
+            <p class="longdate">{{mail.sentAt}}</p> 
+            
+            <span  class="fas fa-trash-alt itemgar" @click.stop="emitDelete(mail.id)"> </span>
+
+            <!-- <button  @click.stop="emitDelete(mail.id)" class="itemgar"> -->
+                <!-- <img src="/js/asset/icons/delete.png" > -->
+
+            <!-- </button> -->
+            
      </section>
     `,
     dtat(){

@@ -14,7 +14,7 @@ export const mailApp = {
         </nav>
  <!-- //////////////////////////////////// -->
 
-       <router-view ></router-view> 
+       <router-view @canceled="cansleAdd"  ></router-view> 
        <!-- <button @click="addMail" >Send Mail</button>  -->
 
        <!-- ////////////////////// -->
@@ -24,8 +24,10 @@ export const mailApp = {
     </section>
 `, data() {
         return {
+            mails: mailService.query(),
             mail: null,
-            filterObj: null
+            filterObj: null,
+            // addingMail: false
         }
     },
     created() {
@@ -39,7 +41,7 @@ export const mailApp = {
         selectmail(mailId) {
             this.mail = mailService.getMailById(mailId)
             this.mail.isRead = true;
-            
+
             console.log('mailId:', mailId)
             this.$router.push(`/mail/${mailId}`)
         },
@@ -47,30 +49,31 @@ export const mailApp = {
             console.log('filterObj:', filterObj)
             this.filterObj = filterObj;
         },
-            
+        cansleAdd() {
+            this.addingMail = !this.addingMail
+        }
+
     },
-    computed:{
+    computed: {
         mailsToShow() {
-        
+            
             console.log('this.filterObj:', this.filterObj)
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
             console.log('txt:', txt)
 
-           
+
             return this.mails.filter(mail => {
-                return mail.subject.toLowerCase().includes(txt) 
-                
+                return mail.subject.toLowerCase().includes(txt)
+
             })
-            
-          
 
         },
     }
 }
 
-export const unreadMail = {
-    name: 'unread-mail',
+export const markMailBox = {
+    name: 'mark-mail-box',
     template: `
     <section>
         <h2>Our team is Awesome</h2>

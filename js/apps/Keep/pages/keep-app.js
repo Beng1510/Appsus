@@ -31,11 +31,9 @@ export default {
             console.log('txt:', txt)
             console.log('this.notes:', this.notes)
 
-            return this.notes.filter(note => {
-                
+            return this.notes.filter(note => { 
                 return note.info.toLowerCase().includes(txt) 
 
-    
         })
     }
 },

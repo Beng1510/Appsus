@@ -26,7 +26,6 @@ function getNewMail() {
 
     const today = new Date();
     const mail = {
-
         id: utilsService.makeId(),
         user: '',
         subject: '',
@@ -42,7 +41,8 @@ function addMail(mail) {
     
     gMails.push(mail)
     console.log('gMails:', gMails)
-
+    query();
+    return gMails
 }
 
 function deleteMail(mailId) {
@@ -51,6 +51,8 @@ function deleteMail(mailId) {
     gMails.splice(idx, 1)
     console.log('mails:', gMails)
     saveMails();
+    query();
+    return gMails
 }
 
 function saveMails() {
