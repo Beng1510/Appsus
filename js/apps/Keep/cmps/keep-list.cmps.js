@@ -14,35 +14,47 @@ export default {
                  <!-- <keep-add></keep-add> -->
 
             <ul >
-                <li class="note" v-for="note in notes" :key="note.id">
+                <li class="note" v-for="note in notes" :key="note.id" :style="bkg(note)" >
                   
                    <component
                         :is="note.type"
                         :info="note.info" 
                         :id="note.id" 
-                        @colorChange="change"
+                        @changeBGC="changeColor"
                         >                      
-                   </component>
+                    </component>
+                    <button @click="onRemoveNote(note.id)">x</button>
                    
-                   <button @click="onRemoveNote(note.id)">x</button>
                 </li>
             </ul>
         </section>
     `,
     methods: {
-       
+         bkg(note) {
+            //  console.log('note idddd',note.id);
+            //  console.log('note.style',note.style);
+            //  console.log('note.style.backgroundColor',note.style.backgroundColor);
+            return `background-color: ${note.style.backgroundColor}`;
+        },
         onRemoveNote(noteId) {
             // console.log('noteId',noteId);
+            console.log('noteId',noteId);
             keepService.removeNote(noteId)
                 .then(res => {
                     console.log('res', res);
                     // eventBus.$emit('show-msg', 'Review Deleted')
                 })
         },
-        change(color) {
-            console.log('checking');
+        // bkg(note) {
+        //     return `background-color: ${note.style.backgroundColor}`;
+        // },
+        changeColor(color, id) {
             console.log('checking color',color);
-            console.log('this.id',this.id);
+            console.log('checking id',id);
+            this.$emit('colorChange',color ,id)
+            // console.log('this.id',this.id);
+            // console.log('this.note',this.note);
+            // console.log('this.id',this.note.id);
         }
     },
     components: {

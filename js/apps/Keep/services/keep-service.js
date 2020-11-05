@@ -6,62 +6,40 @@ export const keepService = {
     addNote,
     getNotes,
     removeNote,
-    //  changeBkgColor
+    changeBkgColor
 
 }
 
-const defaultNotes = [
-    {
-        type: "noteText",
-        isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        }
-    },
-    {
-        type: "noteText",
-        isPinned: false,
-        info: {
-            txt: "Peace and Love!"
-        }
-    },
-    {
-        type: "noteImg",
-        info: {
-            url: "http://coding-academy.org/books-photos/2.jpg",
-            title: "Me playing Mi"
-        },
-        style: {
-            backgroundColor: "#006D77"
-        }
-    },
-    {
-        type: "noteTodos",
-        info: {
-            label: "How was it:",
-            todos: [
-                { txt: "Do that", doneAt: null },
-                { txt: "Do this", doneAt: 187111111 }
-            ]
-        }
-    }
-];
+var gNotes;
 
-var gNotes = utilsService.loadFromStorage(NOTES_DB) ? utilsService.loadFromStorage(NOTES_DB) : defaultNotes;
+console.log('gNotes before', gNotes);
 
-console.log('gNotes', gNotes);
+// function getNotes() {
+
+//     utilsService.storeToStorage(NOTES_DB, gNotes)
+//     return Promise.resolve(gNotes);
+// }
+
 
 function getNotes() {
-    utilsService.storeToStorage(NOTES_DB, gNotes)
+    var notes = utilsService.loadFromStorage(NOTES_DB)
+    if (!notes || notes.length === 0) {
+        notes = createDefaultNotes()
+        // console.log('notes',notes);
+        utilsService.storeToStorage(NOTES_DB, notes)
+    }
+    gNotes = notes
+    console.log('gNotes after', gNotes);
     return Promise.resolve(gNotes);
 }
+
 
 function addNote(note) {
     const newNote = _createNote(note);
     console.log('newNote', newNote);
 
     gNotes.unshift(newNote);
-    console.log('gNotes', gNotes);
+    console.log('gNotes after add', gNotes);
     utilsService.storeToStorage(NOTES_DB, gNotes)
     return Promise.resolve();
 }
@@ -73,7 +51,7 @@ function _createNote(noteDetailes) {
         type: noteDetailes.type,
         isPinned: noteDetailes.isPinned || false,
         info: noteDetailes.info,
-        style: noteDetailes.style || { backgroundColor: '#80ED99' }
+        style: noteDetailes.style || { backgroundColor: '#E29578' }
     }
 }
 
@@ -105,16 +83,81 @@ function removeNote(noteId) {
 }
 
 
-// function changeBkgColor(color, id) {
-//     let note = findNoteById(id);
-//     console.log('note',note);
-//     console.log('color',color);
-//     note.style.backgroundColor = color;
-//     console.log('note.style.backgroundColor',note.style.backgroundColor);
-//     utilsService.storeToStorage(NOTES_DB, gNotes)
-//     return Promise.resolve(notesDB);
-// }
-// function findNoteById(noteId) {
-//     return gNotes.find(note => note.id === noteId);
-// }
+function changeBkgColor(color, id) {
+    let note = findNoteById(id);
 
+    console.log('note', note);
+    console.log('color', color);
+
+    note.style.backgroundColor = color;
+
+    console.log('note.style.backgroundColor', note.style.backgroundColor);
+
+    utilsService.storeToStorage(NOTES_DB, gNotes)
+    return Promise.resolve(gNotes);
+}
+function findNoteById(noteId) {
+    return gNotes.find(note => note.id === noteId);
+}
+
+
+
+function createDefaultNotes() {
+
+    let defaultNotes = [
+        {
+            type: "noteText",
+            isPinned: true,
+            info: {
+                txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#006D77"
+            }
+        },
+        {
+            type: "noteText",
+            isPinned: false,
+            info: {
+                txt: "Peace and Love!"
+            },
+            style: {
+                backgroundColor: "#E29578"
+            }
+        },
+        {
+            type: "noteImg",
+            info: {
+                url: "http://coding-academy.org/books-photos/2.jpg",
+                title: "Me playing Mi"
+            },
+            style: {
+                backgroundColor: "#006D77"
+            }
+        },
+        {
+            type: "noteTodos",
+            info: {
+                label: "How was it:",
+                todos: [
+                    { txt: "Do that", doneAt: null },
+                    { txt: "Do this", doneAt: 187111111 }
+                ]
+            },
+            style: {
+                backgroundColor: "#006D77"
+            }
+        }
+    ].map(formatNotes);
+    return defaultNotes
+    }
+    // var gNotes = utilsService.loadFromStorage(NOTES_DB) ? utilsService.loadFromStorage(NOTES_DB) : defaultNotes;
+    function formatNotes(rawNotes) {
+    
+        return {
+            id: utilsService.makeId(),
+            type: rawNotes.type,
+            info: rawNotes.info,
+            style: rawNotes.style
+        }
+    }
