@@ -11,28 +11,33 @@ export default {
        <h1>Keep Page</h1>
        <keep-filter  @filtered="setFilter"></keep-filter>
        <keep-add></keep-add>
-       <keep-list :notes="notesToShow" @colorChange="changeColorBgC">></keep-list>
+       <keep-list :notes="notesToShow" @colorChange="changeColorBgC" @update="updateNote">>
+
+       </keep-list>
       
     </section>
 `,
     data() {
         return {
-            notes: [],
-            filterObj: null
+            notes: null,
+            filterByTxt: null
         }
     },
     computed: {
         notesToShow() {
             // return this.notes
-            console.log('this.filterObj:', this.filterObj)
+            console.log('this.filterByTxt:', this.filterByTxt)
             console.log('this.notes:', this.notes)
-            if (!this.filterObj) return this.notes;
-            const txt = this.filterObj.filterByTxt.toLowerCase();
+
+            if (!this.filterByTxt) return this.notes;
+            const txt = this.filterByTxt.toLowerCase();
             console.log('txt:', txt)
             console.log('this.notes:', this.notes)
 
-            return this.notes.filter(note => { 
-                return note.info.toLowerCase().includes(txt) 
+            return this.notes.filter(note => {
+                console.log('note',note.info.txt);
+
+                return note.info.txt.toLowerCase().includes(txt) 
 
         })
     }
@@ -46,10 +51,16 @@ export default {
             console.log('this.notes',this.notes);
             });
         },
-        setFilter(filterObj) {
-            console.log('filterObj:', filterObj)
-            this.filterObj = filterObj;
-        }
+        setFilter(filterByTxt) {
+            console.log('filterByTxt:', filterByTxt)
+
+            this.filterByTxt = filterByTxt;
+        },
+        updateNote(noteId, info, type) {
+            console.log('info',info);
+            console.log('type',type);
+           keepService.updateNote(noteId, info, type)
+        },
 
         // setFilterNotes(filterBy) {
         //     console.log('in hereeee');

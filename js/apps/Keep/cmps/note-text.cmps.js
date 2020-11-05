@@ -3,27 +3,39 @@ import noteColors from './note-colors.cmps.js'
 export default {
     props: ['info', 'id'],
     template: `
-        <section class="note-text">
+        <section class="note-text-container">
 
-            <h2>
-               text {{info.txt}}
-                id{{id}}
-            </h2>
+            <div class="note-text-content">
+              <p class="note-text-txt">{{info.txt}}</p>
+            </div>
 
-            <note-colors @colorChange="changeBColor"></note-colors>
-            <button>?</button>
-            <input type="text" placeholder="What\'s on your mind..."
-            @keyup.enter="updateNoteInfo(note)"  class="user-info"
-        />
-        <!-- <input type="text" placeholder="whats up?"> -->
+            <div class="note-control-panel">
+                    <!-- <button @click="editNote">?</button> -->
+                    <!-- <button @click="onRemoveNote()">xx</button> -->
+                    <span @click="editNote" class="fas fa-edit"></span>
+                    <span @click="onRemoveNote" class="fas fa-trash-alt"></span>
+                    <span @click="colorEdit" class="fas fa-palette info colors dropdown"></span>
+                    <note-colors v-if="isColorEdit" @colorChange="changeBColor"></note-colors>
+                    
+                    <section v-if="isEdit" class="edit-note">
+                        <input v-model="newText"  type="text"/>
+                            <div> 
+                                <button @click="updateNote">Update</button>
+                                <button @click="editNote">Cancel</button>
+                            </div>
+                    </section>
+            </div>
 
         </section>
 `,
     data() {
         return {
-
+            isEdit: false,
+            isColorEdit: false,
+            newText: this.info.txt,
+            
             // placeholder: 'What\'s on your mind...',
-            activeEdit: null
+            
 
         }
     },
@@ -34,6 +46,19 @@ export default {
         },
         updateNoteInfo(note) {
             console.log(note);
+        },
+        editNote() {
+            this.isEdit = !this.isEdit;
+        },
+        updateNote() {
+            this.$emit('update', this.id, this.newText, 'noteText')
+            this.isEdit = !this.isEdit;
+        },
+        onRemoveNote(){
+            this.$emit('delete', this.id)
+        },
+        colorEdit() {
+            this.isColorEdit = !this.isColorEdit;
         }
     },
     components: {

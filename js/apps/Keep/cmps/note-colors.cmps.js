@@ -6,11 +6,11 @@ export default {
     
                       
                      
-                          <span class="color" style="background-color: #006D77" @click="$emit('colorChange','#006D77')"></span>
-                          <span class="color" style="background-color: #83C5BE" @click="$emit('colorChange','#83C5BE')"></span>
-                          <span class="color" style="background-color: #EDF6F9" @click="$emit('colorChange','#EDF6F9')"></span>
-                          <span class="color" style="background-color: #FFDDD2" @click="$emit('colorChange','#FFDDD2')"></span>
-                          <span class="color" style="background-color: #E29578" @click="$emit('colorChange','#E29578')"></span>  
+                          <span class="color" style="background-color: #99C1DE" @click="$emit('colorChange','#99C1DE')"></span>
+                          <span class="color" style="background-color: #BCD4E6" @click="$emit('colorChange','#BCD4E6')"></span>
+                          <span class="color" style="background-color: #C5DEDD" @click="$emit('colorChange','#C5DEDD')"></span>
+                          <span class="color" style="background-color: #FAD2E1" @click="$emit('colorChange','#FAD2E1')"></span>
+                          <span class="color" style="background-color: #EDDCD2" @click="$emit('colorChange','#EDDCD2')"></span>  
                       
             
             <!-- <span class="color" style="background-color: #C49E85" @click="colorChange('#C49E85')"></span> -->

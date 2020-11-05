@@ -7,7 +7,8 @@ export const keepService = {
     getNotes,
     removeNote,
     changeBgColor,
-    editNote
+    editNote,
+    updateNote
 
 }
 
@@ -52,7 +53,7 @@ function _createNote(noteDetailes) {
         type: noteDetailes.type,
         isPinned: noteDetailes.isPinned || false,
         info: noteDetailes.info,
-        style: noteDetailes.style || { backgroundColor: '#E29578' }
+        style: noteDetailes.style || { backgroundColor: '#BCD4E6' }
     }
 }
 
@@ -104,7 +105,7 @@ function createDefaultNotes() {
                 txt: "Fullstack Me Baby!"
             },
             style: {
-                backgroundColor: "#006D77"
+                backgroundColor: "#BCD4E6"
             }
         },
         {
@@ -114,7 +115,7 @@ function createDefaultNotes() {
                 txt: "Peace and Love!"
             },
             style: {
-                backgroundColor: "#E29578"
+                backgroundColor: "#BCD4E6"
             }
         },
         {
@@ -124,7 +125,7 @@ function createDefaultNotes() {
                 title: "Me playing Mi"
             },
             style: {
-                backgroundColor: "#006D77"
+                backgroundColor: "#BCD4E6"
             }
         },
         {
@@ -137,9 +138,19 @@ function createDefaultNotes() {
                 ]
             },
             style: {
-                backgroundColor: "#006D77"
+                backgroundColor: "#BCD4E6"
             }
-        }
+        },
+        {
+            type: "noteImg",
+            info: {
+                url: "http://coding-academy.org/books-photos/3.jpg",
+                title: "Finding Nemo"
+            },
+            style: {
+                backgroundColor: "#BCD4E6"
+            }
+        },
     ].map(formatNotes);
     return defaultNotes
     }
@@ -152,4 +163,18 @@ function createDefaultNotes() {
             info: rawNotes.info,
             style: rawNotes.style
         }
+    }
+
+
+    function updateNote(noteId, info, type) {
+        const note = findNoteById(noteId);
+        if (type === 'noteText') {
+            note.info.txt = info;
+        } else if (type === 'noteImg') {
+            note.info.url = info;
+    
+        } else if (type === 'noteTodos') {
+            note.info.todos = info
+        }
+        utilsService.storeToStorage(NOTES_DB, gNotes)
     }

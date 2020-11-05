@@ -1,0 +1,14 @@
+.note-text-container {
+
+}
+
+.note-text-content {
+    min-height: 150px;
+    margin: 0 auto;
+    /* display: inline; */
+
+}
+
+.note-text-txt {
+    font-size: 20px;
+}
