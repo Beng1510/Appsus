@@ -44,10 +44,10 @@ const myRoutes = [
         path: '/mail/:mail',
         component: mailDeatail
     },
-    // {
-    //     path: '/keep',
-    //     component: keepApp
-    // },
+    {
+        path: '/keep',
+        component: keepApp
+    },
 
 
 ]

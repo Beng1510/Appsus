@@ -1,4 +1,9 @@
 
-img {
+.note-img-content {
+    min-height: 150px;
+    margin: 0 auto;
+}
+
+.note-img img {
     width: 80px;
 }

@@ -6,7 +6,7 @@ export default {
         <section class="note-text-container">
 
             <div class="note-text-content">
-              <p class="note-text-txt">{{info.title}}</p>
+              <p class="note-text-title">{{info.title}}</p>
             </div>
 
             <div class="note-control-panel">
@@ -18,7 +18,7 @@ export default {
                     <note-colors v-if="isColorEdit" @colorChange="changeBColor"></note-colors>
                     
                     <section v-if="isEdit" class="edit-note">
-                        <input v-model="newText"  type="text"/>
+                        <input v-model="newText"  type="text" placeholder="Edit Title"/>
                             <div> 
                                 <button @click="updateNote">Update</button>
                                 <button @click="editNote">Cancel</button>
