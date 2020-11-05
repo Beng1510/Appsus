@@ -10,7 +10,6 @@
 
 li{
 list-style: none;
-
 }
 
 
@@ -26,41 +25,19 @@ list-style: none;
     transition: 0.2s;
     
 }
-/* 
-.grid-container {
-    display: grid;
-    
-    /* text-align: center; */
-    /* width: 700px;
-    height: 70px;
-    grid-template-columns: repeat(10, 70px);
-    grid-template-rows: repeat(1, 70px);
-    grid-gap: 5px;
-} */
+
 
 .itemsub{
-    grid-column: 1/2;
-    grid-row: 1/2;
     padding-left: 10px;
 }
 .itemuser{
-    grid-column: 2/3;
-    grid-row: 1/2;
-    
+  
 }
-.itemgar{
-    grid-column: 10/11;
-    grid-row: 1/2;
-    
+.fas .fa-trash-alt{
+    padding-left: 20px;
 }
 .longTxt{
-    grid-column: 4/7;
-    grid-row: 1/2;
     width: 300px;
-}
-.longdate{
-    grid-column:7/9;
-    grid-row: 1/2; 
 }
 
 

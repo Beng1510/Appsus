@@ -6,11 +6,12 @@ export default {
     <section class="mail-detail">
        <h1>New Mail</h1>
           
-        <div>
+        <div class="main-container">
 
             <header class="head-mail">
             <h2>Mail send by: {{mail.user}}</h2>
-            <h3>subject: {{mail.subject}},</h3>
+            <h3>subject: {{mail.subject}} </h3>
+            <h4 class="date">{{mail.sentAt}}</h4>
             </header>
 
             <main class="main-mail">

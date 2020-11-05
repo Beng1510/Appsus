@@ -1,15 +1,45 @@
+/*mail page*/
 
-
-
-.mail-detail{
-
-   
-
+.main-container {
+    width: 900px;
+    height: 600px;
+    border: 2px solid rgb(49, 48, 48);
+    border-radius: 5px;
 }
 
+.head-mail {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    border-bottom: 2px solid rgb(49, 48, 48);
+}
 
-.footer-mail img{
+.date {
+    padding-right: 15px;
+}
 
+.main-mail{
+    padding: 20px;
+    width: 800px;
+    height: 400px;
+}
+
+.footer-mail{
+    padding-bottom: 10px;
+}
+
+.footer-mail img {
     width: 30px;
     height: 30px;
+}
+
+/*filter*/
+
+.mail-filter form input {
+    background-color: white;
+    background-position: 10px 10px;
+    height: 30px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    font-size: 20px;
 }
