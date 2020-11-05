@@ -2,6 +2,7 @@
 @import './mail-list.css';
 @import './mail-detail.css';
 @import './user-msg.css';
+@import './add-mail.css';
 
 * {
     box-sizing: border-box;

@@ -33,6 +33,10 @@ const myRoutes = [
                 path: 'newmail',
                 component: composeMail
             },
+            // {
+            //     path: ':mail',
+            //     component: mailDeatail
+            // },
 
         ]
     },
@@ -40,10 +44,10 @@ const myRoutes = [
         path: '/mail/:mail',
         component: mailDeatail
     },
-    {
-        path: '/keep',
-        component: keepApp
-    },
+    // {
+    //     path: '/keep',
+    //     component: keepApp
+    // },
 
 
 ]

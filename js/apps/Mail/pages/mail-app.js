@@ -14,13 +14,13 @@ export const mailApp = {
         </nav>
  <!-- //////////////////////////////////// -->
 
-       <router-view @canceled="cansleAdd"  ></router-view> 
-       <!-- <button @click="addMail" >Send Mail</button>  -->
-
-       <!-- ////////////////////// -->
-
-        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
-        <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
+ <!-- <button @click="addMail" >Send Mail</button>  -->
+ 
+ <!-- ////////////////////// -->
+ 
+ <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
+ <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
+ <router-view @canceled="cansleAdd"  ></router-view> 
     </section>
 `, data() {
         return {

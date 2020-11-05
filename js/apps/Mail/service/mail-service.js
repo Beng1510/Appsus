@@ -39,7 +39,7 @@ function getNewMail() {
 function addMail(mail) {
     // console.log('mail:', mail)
     
-    gMails.push(mail)
+    gMails.unshift(mail)
     console.log('gMails:', gMails)
     query();
     return gMails
@@ -76,7 +76,7 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run1',
         isRead: false,
-        sentAt: 22/11/2019
+        sentAt: '22/11/2019'
     },
     {
         id: utilsService.makeId(),
@@ -84,7 +84,7 @@ function _createMails() {
         subject: 'food',
         body: 'hello! my name is dor and i like to run2',
         isRead: false,
-        sentAt: 12/1/2019
+        sentAt: '12/4/2019'
     },
     {
         id: utilsService.makeId(),
@@ -92,7 +92,7 @@ function _createMails() {
         subject: 'gym',
         body: 'hello! my name is',
         isRead: false,
-        sentAt: 22/3/2019
+        sentAt: '22/3/2019'
     },
     {
         id: utilsService.makeId(),
@@ -100,7 +100,7 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: 23/1/2019
+        sentAt: '23/1/2018'
     },
     {
         id: utilsService.makeId(),
@@ -108,7 +108,31 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: 22/11/2019
+        sentAt: '22/11/2017'
+    },
+    {
+        id: utilsService.makeId(),
+        user: 'ben@hotmail.com',
+        subject: 'sport',
+        body: 'hello! my name is dor and i like to run3',
+        isRead: false,
+        sentAt: '22/11/2017'
+    },
+    {
+        id: utilsService.makeId(),
+        user: 'ben@hotmail.com',
+        subject: 'sport',
+        body: 'hello! my name is dor and i like to run3',
+        isRead: false,
+        sentAt: '22/11/2017'
+    },
+    {
+        id: utilsService.makeId(),
+        user: 'ben@hotmail.com',
+        subject: 'sport',
+        body: 'hello! my name is dor and i like to run3',
+        isRead: false,
+        sentAt: '22/11/2017'
     }
     ]
     return mails

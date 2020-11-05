@@ -6,8 +6,8 @@ export default {
     template: `
     <section class="mail-filter">
     <form @submit.prevent="emitFilter">
-            <label>   
-                <input type="search" v-model="filterObj.filterByTxt" placeholder="Search..." @input="emitFilter">
+            <label>   <i class="fas fa-search"></i>
+                <input type="text" v-model="filterObj.filterByTxt" placeholder="Search..." @input="emitFilter"  class="fas fa-search">
             </label>
             
             <select v-model="filterObj.filterByRead">
