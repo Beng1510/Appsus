@@ -5,6 +5,7 @@ export const mailService = {
     query,
     getMailById,
     saveMails,
+    deleteMail,
 
 }
 
@@ -16,6 +17,18 @@ function query() {
     // return Promise.resolve(gMails);
 }
 
+function deleteMail(mailId){
+console.log('mailIdssssssss:', mailId)
+
+    const idx = gMails.findIndex(mail => mail.id === mailId)
+
+    console.log('mails:', gMails)
+    gMails.splice(idx,1)
+    console.log('mails:', gMails)
+    // eventBus.$emit('show-msg', {txt:'Review has been deleted', type:'Success'})
+    saveMails();
+    
+}
 
 function saveMails() {
     utilsService.storeToStorage('mails', gMails)
@@ -34,6 +47,7 @@ function _createMails() {
 
     mails = [{
         id: utilsService.makeId(),
+        user: 'dor@walla.com',
         subject: 'sport',
         body: 'hello! my name is dor and i like to run1',
         isRead: false,
@@ -41,6 +55,7 @@ function _createMails() {
     },
     {
         id: utilsService.makeId(),
+        user: 'zoe@gmail.com',
         subject: 'food',
         body: 'hello! my name is dor and i like to run2',
         isRead: false,
@@ -48,7 +63,16 @@ function _createMails() {
     },
     {
         id: utilsService.makeId(),
+        user: 'ben@hotmail.com',
         subject: 'gym',
+        body: 'hello! my name is dor and i like to run3',
+        isRead: false,
+        sentAt: 155113391000
+    },
+    {
+        id: utilsService.makeId(),
+        user: 'ben@hotmail.com',
+        subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
         sentAt: 155113391000

@@ -26,10 +26,7 @@ const myRoutes = [
                 path: '/mail/newmail',
                 component: newMail
             },
-            // {
-            //     path: '/mail/:mail',
-            //     component: opneMail
-            // },
+           
         ]
     },
     {  

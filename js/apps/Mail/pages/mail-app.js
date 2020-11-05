@@ -1,4 +1,5 @@
 import { mailService } from '../service/mail-service.js'
+import mailFilter from '../cmps/mail-filter.cmps.js'
 import mailList from '../cmps/mail-list.cmps.js'
 
 export const mailApp = {
@@ -6,43 +7,59 @@ export const mailApp = {
     template: `
     <section class="Mail-app ">
        <h1>Mail Page</h1>
-       <!-- @mailClick="selectmail" -->
-       
+      
        <nav>
-            <router-link to="/mail/unreadInbox">Unread Inbox</router-link> | 
-            <router-link to="/mail/newmail">New Mail +</router-link>
-            
+           <router-link to="/mail/unreadInbox">Unread Inbox</router-link> | 
+           <router-link to="/mail/newmail">New Mail +</router-link>
         </nav>
 
-       <mail-list :mails="mails"  @mailClick="selectmail" />
-
+       
+        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
+        <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
     </section>
 `, data() {
         return {
-            mails: null,
+            mail: null,
+            filterObj: null
         }
     },
-
     created() {
-
-       
         this.mails = mailService.query()
-
     },
     components: {
         mailList,
+        mailFilter,
     },
     methods: {
         selectmail(mailId) {
-
-            
             this.mail = mailService.getMailById(mailId)
             this.mail.isRead = true;
             
-
-
+            console.log('mailId:', mailId)
             this.$router.push(`/mail/${mailId}`)
+        },
+        setFilter(filterObj) {
+            console.log('filterObj:', filterObj)
+            this.filterObj = filterObj;
         }
+        
+    },
+    computed:{
+        mailsToShow() {
+        
+            console.log('this.filterObj:', this.filterObj)
+            if (!this.filterObj) return this.mails;
+            const txt = this.filterObj.filterByTxt.toLowerCase();
+            console.log('txt:', txt)
+
+            return this.mails.filter(mail => {
+                return mail.subject.toLowerCase().includes(txt) 
+                
+            })
+            
+          
+
+        },
     }
 }
 
@@ -79,3 +96,4 @@ export const opneMail = {
     </section>
     `
 }
+

@@ -9,14 +9,33 @@
     width: 50%;
     border: 2px solid black;
     border-radius: 10px;
- 
-     margin-bottom: 2.5px;
+    margin-bottom: 2.5px;
+    transition: 0.2s;
+    
 }
 
 .mailRead{
     background-color: rgb(177, 174, 174);
 }
 
+.mailUnRead{
+    background-color: honeydew;
+}
 
-/* .mail-preview */
+
+.mail-preview:hover{
+    filter: grayscale(50%);
+    transform: scale(1.05);
+}
+
+.mail-preview img{
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+}
+.mail-preview button{
+    z-index: 3;
+    
+}
+
 

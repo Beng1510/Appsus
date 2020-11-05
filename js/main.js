@@ -2,7 +2,7 @@
 import { myRouter } from './routes.js'
 import {keepService} from '../js/apps/Keep/services/keep-service.js'
 import mainHeader from './pages/main-header.js'
-
+import userMsg from './apps/Mail/cmps/user-msg.cmps.js'
 
 const options = {
     el: '#app',
@@ -26,11 +26,13 @@ const options = {
                 <main>
                     <router-view></router-view>
                 </main>
+                <user-msg />
         
         </section>
     `,
     components: {
-        mainHeader
+        mainHeader,
+        userMsg
     },
 }
 
