@@ -10,7 +10,7 @@ export default {
         v-if="isTitle"
         v-model="title"
         type="text"
-        autocomplete=off
+        
         placeholder="Add title"
         class="add-title"
         />
@@ -19,7 +19,7 @@ export default {
         v-if="isTodos"
         v-model="todosLabel"
         type="text"
-        autocomplete=off
+        
         placeholder="Add label"
         class="add-lable"
         />
@@ -29,7 +29,7 @@ export default {
         @keyup.enter="updateNoteInfo"
         type="text"
         ref="info"
-        autocomplete=off
+        
         :placeholder="[[placeholder]]"
         class="user-info"
         />
@@ -45,15 +45,12 @@ export default {
                 <span class="far fa-image fa-lg"></span>
             </label>
 
-           
-
             <label>
                 <input type="radio" v-model="note.type" value="noteTodos" /> 
                 <span class="fas fa-list fa-lg"></span>
             </label>
         </div>
-   
-           
+       
         </section>
     `,
     data() {
@@ -67,9 +64,26 @@ export default {
             title: ''
         }
     },
-    computed: {
+    watch: {
+        'note.type' () {
+            this.isTodos = false;
+            this.isTitle = false;
+            this.title = '',
+                this.todosLabel = ''
 
-
+            if (this.note.type === 'noteText') {
+                this.placeholder = 'What\'s on your mind...'
+            } else if (this.note.type === 'noteImg') {
+                this.isTitle = true;
+                this.placeholder = 'Enter image URL...'
+            } else if (this.note.type === 'noteVideo') {
+                this.isTitle = true;
+                this.placeholder = 'Enter video URL...'
+            } else {
+                this.isTodos = true;
+                this.placeholder = 'Enter comma separated list...'
+            }
+        }
     },
     methods: {
         updateNoteInfo() {
