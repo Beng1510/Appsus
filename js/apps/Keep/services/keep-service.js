@@ -6,7 +6,8 @@ export const keepService = {
     addNote,
     getNotes,
     removeNote,
-    changeBkgColor
+    changeBgColor,
+    editNote
 
 }
 
@@ -15,13 +16,13 @@ var gNotes;
 console.log('gNotes before', gNotes);
 
 // function getNotes() {
-
-//     utilsService.storeToStorage(NOTES_DB, gNotes)
-//     return Promise.resolve(gNotes);
-// }
-
-
-function getNotes() {
+    
+    //     utilsService.storeToStorage(NOTES_DB, gNotes)
+    //     return Promise.resolve(gNotes);
+    // }
+    
+    
+    function getNotes() {
     var notes = utilsService.loadFromStorage(NOTES_DB)
     if (!notes || notes.length === 0) {
         notes = createDefaultNotes()
@@ -55,24 +56,6 @@ function _createNote(noteDetailes) {
     }
 }
 
-// function removeNote(noteId) {
-//     return Promise.resolve(
-//         getNoteIdxById(noteId)
-//             .then(idx => {
-//                 console.log('idx',idx);
-//                 console.log('gNotes',gNotes);
-
-//                 gNotes[idx].splice(idx, 1);
-//                 utilsService.storeToStorage(BOOKS_DB, gBooks);
-//             })
-//             )
-// }
-
-// function getNoteIdxById(id) {
-//     return Promise.resolve(gNotes.findIndex(note => note.id === id))
-// }
-
-
 function removeNote(noteId) {
 
     const noteIdx = gNotes.findIndex((note) => {
@@ -82,8 +65,16 @@ function removeNote(noteId) {
     return Promise.resolve(gNotes)
 }
 
+function editNote(noteId, newTxt) {
+    const noteIdx = gNotes.findIndex((note) => {
+        return noteId === note.id
+    })
+    gNotes[noteIdx].info.txt = newTxt
+    return Promise.resolve(gNotes)
+}
 
-function changeBkgColor(color, id) {
+
+function changeBgColor(color, id) {
     let note = findNoteById(id);
 
     console.log('note', note);
@@ -96,6 +87,7 @@ function changeBkgColor(color, id) {
     utilsService.storeToStorage(NOTES_DB, gNotes)
     return Promise.resolve(gNotes);
 }
+
 function findNoteById(noteId) {
     return gNotes.find(note => note.id === noteId);
 }

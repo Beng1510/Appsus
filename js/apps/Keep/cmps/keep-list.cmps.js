@@ -14,7 +14,7 @@ export default {
                  <!-- <keep-add></keep-add> -->
 
             <ul >
-                <li class="note" v-for="note in notes" :key="note.id" :style="bkg(note)" >
+                <li class="note" v-for="note in notes" :key="note.id" :style="bgc(note)" >
                   
                    <component
                         :is="note.type"
@@ -24,34 +24,34 @@ export default {
                         >                      
                     </component>
                     <button @click="onRemoveNote(note.id)">x</button>
-                   
+                    <!-- <button @click="onEditNote(note.id)">?</button>
+                    <input type="text" v-model="note.text" @blur="doneEdit(note)" v-show="note === activeEdit"> -->
                 </li>
             </ul>
         </section>
     `,
     methods: {
-         bkg(note) {
-            //  console.log('note idddd',note.id);
-            //  console.log('note.style',note.style);
-            //  console.log('note.style.backgroundColor',note.style.backgroundColor);
+        bgc(note) {
+
             return `background-color: ${note.style.backgroundColor}`;
         },
         onRemoveNote(noteId) {
             // console.log('noteId',noteId);
-            console.log('noteId',noteId);
+            console.log('noteId', noteId);
             keepService.removeNote(noteId)
                 .then(res => {
                     console.log('res', res);
                     // eventBus.$emit('show-msg', 'Review Deleted')
                 })
         },
-        // bkg(note) {
-        //     return `background-color: ${note.style.backgroundColor}`;
-        // },
+        onEditNote(noteId) {
+            keepService.editNote(noteId)
+        },
+
         changeColor(color, id) {
-            console.log('checking color',color);
-            console.log('checking id',id);
-            this.$emit('colorChange',color ,id)
+            console.log('checking color', color);
+            console.log('checking id', id);
+            this.$emit('colorChange', color, id)
             // console.log('this.id',this.id);
             // console.log('this.note',this.note);
             // console.log('this.id',this.note.id);

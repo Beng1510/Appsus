@@ -6,10 +6,10 @@ export default {
     template: `
     <section class="mail-filter">
     <form @submit.prevent="emitFilter">
-            <label>
-                
+            <label>   
                 <input type="text" v-model="filterObj.filterByTxt" placeholder="Search Email by subject" @input="emitFilter">
             </label>
+            
             <select v-model="filterObj.filterByRead">
                     <option value="all">All</option>
                     <option value="read">Read</option>
