@@ -21,9 +21,11 @@ export default {
                         :info="note.info" 
                         :id="note.id" 
                         @changeBGC="changeColor"
+                        @update="updateNote"
+                        @delete="onRemoveNote"
                         >                      
                     </component>
-                    <button @click="onRemoveNote(note.id)">x</button>
+                    <!-- <button @click="onRemoveNote(note.id)">x</button> -->
                     <!-- <button @click="onEditNote(note.id)">?</button>
                     <input type="text" v-model="note.text" @blur="doneEdit(note)" v-show="note === activeEdit"> -->
                 </li>
@@ -46,6 +48,11 @@ export default {
         },
         onEditNote(noteId) {
             keepService.editNote(noteId)
+        },
+        updateNote(noteId, info, type) {
+            // console.log('info',info);
+            // console.log('type',type);
+            this.$emit('update', noteId, info, type);
         },
 
         changeColor(color, id) {
