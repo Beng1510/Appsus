@@ -6,28 +6,51 @@ export const mailService = {
     getMailById,
     saveMails,
     deleteMail,
-
+    addMail,
+    getNewMail
 }
 
 var gMails = _createMails()
 
+// function countReadMail(){
+//  console.log(gMails);
+// }
+
+
 function query() {
     saveMails();
     return gMails
-    // return Promise.resolve(gMails);
 }
 
-function deleteMail(mailId){
-console.log('mailIdssssssss:', mailId)
+function getNewMail() {
+
+    const today = new Date();
+    const mail = {
+
+        id: utilsService.makeId(),
+        user: '',
+        subject: '',
+        body: '',
+        isRead: false,
+        sentAt: today.toISOString().substr(0, 10)
+    }
+    return mail
+}
+
+function addMail(mail) {
+    // console.log('mail:', mail)
+    
+    gMails.push(mail)
+    console.log('gMails:', gMails)
+
+}
+
+function deleteMail(mailId) {
 
     const idx = gMails.findIndex(mail => mail.id === mailId)
-
+    gMails.splice(idx, 1)
     console.log('mails:', gMails)
-    gMails.splice(idx,1)
-    console.log('mails:', gMails)
-    // eventBus.$emit('show-msg', {txt:'Review has been deleted', type:'Success'})
     saveMails();
-    
 }
 
 function saveMails() {
@@ -51,7 +74,7 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run1',
         isRead: false,
-        sentAt: 1551133930594
+        sentAt: 22/11/2019
     },
     {
         id: utilsService.makeId(),
@@ -59,15 +82,23 @@ function _createMails() {
         subject: 'food',
         body: 'hello! my name is dor and i like to run2',
         isRead: false,
-        sentAt: 1551133900000
+        sentAt: 12/1/2019
     },
     {
         id: utilsService.makeId(),
         user: 'ben@hotmail.com',
         subject: 'gym',
-        body: 'hello! my name is dor and i like to run3',
+        body: 'hello! my name is',
         isRead: false,
-        sentAt: 155113391000
+        sentAt: 22/3/2019
+    },
+    {
+        id: utilsService.makeId(),
+        user: 'ben@hotmail.com',
+        subject: 'sport',
+        body: 'hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3',
+        isRead: false,
+        sentAt: 23/1/2019
     },
     {
         id: utilsService.makeId(),
@@ -75,7 +106,7 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: 155113391000
+        sentAt: 22/11/2019
     }
     ]
     return mails

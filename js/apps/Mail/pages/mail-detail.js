@@ -1,5 +1,5 @@
 import { mailService } from '../service/mail-service.js'
-
+import { eventBus } from "../service/event-bus.js"
 
 export default {
     template: `
@@ -37,14 +37,12 @@ export default {
             console.log('id:', id)
             this.$emit('delete', id)
             mailService.deleteMail(id)
-    
+            eventBus.$emit('show-msg', { txt: 'Mail has been deleted', type: 'Success' })
         }
     },
     created() {
         const  mailId = this.$route.params.mail;
-    
         this.mail = mailService.getMailById(mailId)
-        
 
     },
    

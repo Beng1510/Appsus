@@ -12,8 +12,13 @@ export const mailApp = {
            <router-link to="/mail/unreadInbox">Unread Inbox</router-link> | 
            <router-link to="/mail/newmail">New Mail +</router-link>
         </nav>
+ <!-- //////////////////////////////////// -->
 
-       
+       <router-view ></router-view> 
+       <!-- <button @click="addMail" >Send Mail</button>  -->
+
+       <!-- ////////////////////// -->
+
         <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
         <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
     </section>
@@ -41,8 +46,8 @@ export const mailApp = {
         setFilter(filterObj) {
             console.log('filterObj:', filterObj)
             this.filterObj = filterObj;
-        }
-        
+        },
+            
     },
     computed:{
         mailsToShow() {
@@ -52,6 +57,7 @@ export const mailApp = {
             const txt = this.filterObj.filterByTxt.toLowerCase();
             console.log('txt:', txt)
 
+           
             return this.mails.filter(mail => {
                 return mail.subject.toLowerCase().includes(txt) 
                 
@@ -74,17 +80,8 @@ export const unreadMail = {
     </section>
     `
 }
-export const newMail = {
-    name: 'new-mail',
-    template: `
-    <section>
-        <h2>New Mail</h2>
-        <p>
-            Our endi, impedit ct officiis suscipit.            
-        </p>
-    </section>
-    `
-}
+
+
 export const opneMail = {
     name: 'open-mail',
     template: `
