@@ -3,14 +3,14 @@ import noteColors from './note-colors.cmps.js'
 export default {
     props: ['info', 'id'],
     template: `
-        <section class="note-img">
+        <section class="note-video">
 
-            <div class="note-img-content"> 
-                <h3 class="note-img-title">{{info.title}}</h3>
-                <img class="note-img-img" :src="info.url" :title="info.title">
+            <div class="note-video-content"> 
+                <h3 class="note-video-title">{{info.title}}</h3>
+                <iframe :src="info.url" width="180" height="120"></iframe>
             </div>
 
-            <span @click="toggleControls" class="far fa-image fa-lg image-controls"></span>
+            <span @click="toggleControls" class="fab fa-youtube fa-lg video-controls"></span>
            <div v-if="isControlsShown" class="note-control-panel"> 
                     <!-- <button @click="editNote">?</button>
                     <button @click="onRemoveNote()">xx</button> -->

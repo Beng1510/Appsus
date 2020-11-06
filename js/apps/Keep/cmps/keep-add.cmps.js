@@ -22,6 +22,10 @@ export default {
                 <input type="radio" v-model="note.type" value="noteTodos" /> 
                 <span class="fas fa-list fa-lg"></span>
             </label>
+            <label>
+                <input type="radio" v-model="note.type" value="noteVideo" /> 
+                <span class="fab fa-youtube fa-lg"></span>
+            </label>
         </div>
             
             <div class="keep-add-inputs">
@@ -96,7 +100,10 @@ export default {
             else if (this.note.type === 'noteImg') {
                 this.note.info = { url: this.info, title: this.title }
 
-            } else if (this.note.type === 'noteTodos') {
+            } else if (this.note.type === 'noteVideo') {
+                this.note.info = { url:keepService.convertYouTube(this.info), title: this.title }
+            }
+            else if (this.note.type === 'noteTodos') {
                 let todos = this.info.split(',');
 
                 var todosObj = todos.map(todo => {

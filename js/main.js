@@ -1,8 +1,11 @@
 
 import { myRouter } from './routes.js'
-import {keepService} from '../js/apps/Keep/services/keep-service.js'
+import { keepService } from '../js/apps/Keep/services/keep-service.js'
 import mainHeader from './pages/main-header.js'
-import userMsg from './apps/Mail/cmps/user-msg.cmps.js'
+// import userMsg from './apps/Mail/cmps/user-msg.cmps.js'
+// import userNoteMsg from './apps/Keep/cmps/user-note-msg.cmps.js'
+import userMsg from './services/user-msg.cmps.js'
+import { eventBus } from './services/event-bus.js'
 
 const options = {
     el: '#app',
@@ -26,14 +29,18 @@ const options = {
                 <main>
                     <router-view></router-view>
                 </main>
-                
+
                 <user-msg />
+                <!-- <user-note-msg /> -->
         
         </section>
     `,
     components: {
         mainHeader,
-        userMsg
+        userMsg,
+        // userNoteMsg,
+        eventBus
+
     },
 }
 

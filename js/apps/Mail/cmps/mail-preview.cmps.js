@@ -15,9 +15,12 @@ export default {
             
             <p class="longTxt" >{{textForPreview}}</p>
             <p class="longdate">{{mail.sentAt}}</p> 
-            <span class="far fa-star " @click.stop="emitActiv(mail.id)">
-            </span>
 
+            <div class="star-icon">
+                <span class="far fa-star " @click.stop="emitActiv(mail.id)"></span>
+            </div>
+
+            
                 <!-- <input class="longcheck" type="checkbox"  @click.stop="emitActiv(mail.id)" />  -->
             <span  class="fas fa-trash-alt" @click.stop="emitDelete(mail.id)"> </span>
 

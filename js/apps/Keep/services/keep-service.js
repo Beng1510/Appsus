@@ -7,22 +7,13 @@ export const keepService = {
     getNotes,
     removeNote,
     changeBgColor,
-    editNote,
     updateNote,
-    pinNote
+    pinNote,
+    convertYouTube
 
 }
 
 var gNotes;
-
-console.log('gNotes before', gNotes);
-
-// function getNotes() {
-
-//     utilsService.storeToStorage(NOTES_DB, gNotes)
-//     return Promise.resolve(gNotes);
-// }
-
 
 function getNotes() {
     var notes = utilsService.loadFromStorage(NOTES_DB)
@@ -38,7 +29,7 @@ function getNotes() {
 
 
 function addNote(note) {
-    const newNote = _createNote(note);
+    const newNote = formatNotes(note);
     console.log('newNote', newNote);
 
     gNotes.unshift(newNote);
@@ -48,15 +39,6 @@ function addNote(note) {
 }
 
 
-function _createNote(noteDetailes) {
-    return {
-        id: utilsService.makeId(),
-        type: noteDetailes.type,
-        isPinned: noteDetailes.isPinned || false,
-        info: noteDetailes.info,
-        style: noteDetailes.style || { backgroundColor: '#BCD4E6' }
-    }
-}
 
 function removeNote(noteId) {
 
@@ -64,31 +46,21 @@ function removeNote(noteId) {
         return noteId === note.id
     })
     gNotes.splice(noteIdx, 1)
+    utilsService.storeToStorage(NOTES_DB, gNotes)
     return Promise.resolve(gNotes)
 }
 
-function editNote(noteId, newTxt) {
-    const noteIdx = gNotes.findIndex((note) => {
-        return noteId === note.id
-    })
-    gNotes[noteIdx].info.title = newTxt
-    return Promise.resolve(gNotes)
-}
+
 
 
 function changeBgColor(color, id) {
+
     let note = findNoteById(id);
-
-    console.log('note', note);
-    console.log('color', color);
-
     note.style.backgroundColor = color;
-
-    console.log('note.style.backgroundColor', note.style.backgroundColor);
-
     utilsService.storeToStorage(NOTES_DB, gNotes)
     return Promise.resolve(gNotes);
 }
+
 
 function findNoteById(noteId) {
     return gNotes.find(note => note.id === noteId);
@@ -103,28 +75,28 @@ function createDefaultNotes() {
             type: "noteText",
             isPinned: true,
             info: {
-                title: "Fullstack Me Baby!"
+                title: '\"Toto, I\'ve a feeling we\'re not in Kansas anymore\"'
             },
             style: {
-                backgroundColor: "#BCD4E6"
+                backgroundColor: "#EDDCD2"
             }
         },
         {
             type: "noteText",
             isPinned: false,
             info: {
-                title: "Peace and Love!"
+                title: '\"No matter what anybody tells you, words and ideas can change the world\"'
             },
             style: {
-                backgroundColor: "#BCD4E6"
+                backgroundColor: "#EDDCD2"
             }
         },
         {
             type: "noteImg",
             isPinned: false,
             info: {
-                url: "http://coding-academy.org/books-photos/2.jpg",
-                title: "Me playing Mi"
+                url: "https://picsum.photos/180/120?random=2",
+                title: "Photography is not Dead"
             },
             style: {
                 backgroundColor: "#BCD4E6"
@@ -132,24 +104,36 @@ function createDefaultNotes() {
         },
         {
             type: "noteTodos",
-            isPinned: true,
+            isPinned: false,
             info: {
-                title: "How was it:",
+                title: "What to Do:",
                 todos: [
-                    { txt: "Do that", doneAt: null },
-                    { txt: "Do this", doneAt: 187111111 }
+                    { id: utilsService.makeId(3), txt: "Code", doneAt: null },
+                    { id: utilsService.makeId(3), txt: "Code Some More", doneAt: 187111111 },
+                    { id: utilsService.makeId(3), txt: "And a Bit More", doneAt: 187111111 }
                 ]
             },
             style: {
-                backgroundColor: "#BCD4E6"
+                backgroundColor: "#FAD2E1"
             }
         },
         {
             type: "noteImg",
             isPinned: false,
             info: {
-                url: "http://coding-academy.org/books-photos/3.jpg",
-                title: "Finding Nemo"
+                url: "https://picsum.photos/180/120?random=1",
+                title: "Through the Looking Glass"
+            },
+            style: {
+                backgroundColor: "#BCD4E6"
+            }
+        },
+        {
+            type: "noteVideo",
+            isPinned: false,
+            info: {
+                url: "https://www.youtube.com/embed/ggFKLxAQBbc",
+                title: "Enter the Matrix"
             },
             style: {
                 backgroundColor: "#BCD4E6"
@@ -159,14 +143,24 @@ function createDefaultNotes() {
     return defaultNotes
 }
 // var gNotes = utilsService.loadFromStorage(NOTES_DB) ? utilsService.loadFromStorage(NOTES_DB) : defaultNotes;
-function formatNotes(rawNotes) {
+// function formatNotes(rawNotes) {
 
+//     return {
+//         id: utilsService.makeId(),
+//         type: rawNotes.type,
+//         info: rawNotes.info,
+//         style: rawNotes.style,
+//         isPinned: rawNotes.isPinned,
+//     }
+// }
+
+function formatNotes(rawNotes) {
     return {
         id: utilsService.makeId(),
         type: rawNotes.type,
+        isPinned: rawNotes.isPinned || false,
         info: rawNotes.info,
-        style: rawNotes.style,
-        isPinned: rawNotes.isPinned,
+        style: rawNotes.style || { backgroundColor: '#BCD4E6' }
     }
 }
 
@@ -177,16 +171,48 @@ function updateNote(noteId, info, type) {
         note.info.title = info;
     } else if (type === 'noteImg') {
         note.info.url = info;
-
+    } else if (type === 'noteVideo') {
+        note.info.url = info;
     } else if (type === 'noteTodos') {
         note.info.todos = info
     }
     utilsService.storeToStorage(NOTES_DB, gNotes)
 }
+function strikingToDo(date, id) {
+const note = findNoteById(noteId)
+const toDo = findToDoById()
+}
+
+function findToDoById(noteId) {
+    return gNotes.find(note => note.id === noteId);
+}
+
 
 function pinNote(noteId, pinInfo) {
     const note = findNoteById(noteId);
     note.isPinned = pinInfo
-    console.log('note.isPinned',note.isPinned);
+    console.log('note.isPinned', note.isPinned);
     utilsService.storeToStorage(NOTES_DB, gNotes)
+}
+
+
+function convertYouTube(url) {
+
+    const videoId = getVideoId(url);
+    console.log('Video ID:', videoId)
+
+    const iframeMarkup = 'https://www.youtube.com/embed/' + videoId;
+    return iframeMarkup
+
+}
+
+function getVideoId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
 }

@@ -8,8 +8,8 @@ export default {
                 <div class="todos">
                     <h3>{{info.title}}</h3>
                          
-                        <div class="todo" v-for="todos in info.todos">
-                            <p>*{{todos.txt}}</p>
+                        <div class="todo" v-for="(todos,idx) in info.todos">
+                            <p ref="theTodo" :class="strikeClass" @click="toggleCompleted(todos, idx)" >*{{todos.txt}}</p>
                         </div>
                 </div>
             </div>
@@ -17,6 +17,7 @@ export default {
             <span @click="toggleControls" class="fas fa-list fa-lg todos-controls"></span>
            <div v-if="isControlsShown" class="note-control-panel"> 
                     
+                    <span @click="emitPinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span> 
                     <span @click="onRemoveNote" class="fas fa-trash-alt"></span>
                     <span @click="colorEdit" class="fas fa-palette info colors dropdown"></span> 
@@ -38,14 +39,22 @@ data() {
         isEdit: false,
         isColorEdit: false,
         newText: this.info.txt,
-        isControlsShown: false
+        isControlsShown: false,
+        isComplete: false
         
-        // placeholder: 'What\'s on your mind...',
+        
         
 
     }
 },
 methods: {
+    todo() {
+        console.log(this.$refs, 'ze2');
+    },
+    emitPinNote() {
+        this.isPinned = !this.isPinned;
+        this.$emit('pinned', this.id, this.isPinned)
+    },
     changeBColor(color) {
         console.log('color:', color, 'this.id', this.id);
         this.$emit('changeBGC', color, this.id)
@@ -68,9 +77,23 @@ methods: {
     },
     colorEdit() {
         this.isColorEdit = !this.isColorEdit;
+    },
+    toggleCompleted(note, idx) {
+        this.isComplete = !this.isComplete
+        console.log('idx',idx);
+        console.log('note',note);
+        // this.$emit('strike', Date.now(), this.id)  
+    }
+},
+computed: {
+    strikeClass() {
+        return {striked: this.isComplete}
     }
 },
 components: {
     noteColors
+},
+mounted() {
+    console.log(this.$refs.theTodo, 'IN MOUNTED');
 },
 }
