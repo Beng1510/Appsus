@@ -1,0 +1,48 @@
+/* input {
+    width: 500px;
+    height: 50px;
+} */
+.keep-add {
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.keep-add-title {
+    font-family: Kaushan;
+    font-size: 20px;
+    display: inline;
+    margin-bottom: 20px;
+}
+.keep-add-inputs {
+width: 1000px;
+background-color: white;
+border-radius: 10px;
+margin-top: 20px;
+
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input.user-info,
+input.add-title,
+input.add-lable {
+    width: 350px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    display: inline;
+    font-family: Kaushan;
+    outline: none;
+}
+
+.keep-icons {
+    margin-top: 10px;
+    display: inline;
+    margin: 0 10px 0 30px;
+}
+.keep-icons span {
+    margin: 0 10px 0 10px;
+}
+

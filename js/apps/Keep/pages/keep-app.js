@@ -8,12 +8,13 @@ export default {
     name: 'keep-app',
     template: `
     <section class="keep-app">
-       <h1>Keep Page</h1>
-       <keep-filter  @filtered="setFilter"></keep-filter>
-       <keep-add></keep-add>
-       <keep-list :notes="notesToShow" @colorChange="changeColorBgC" @update="updateNote">>
+       <h1 class="keep-app-title">MissKeep</h1>
+            <keep-filter  @filtered="setFilter"></keep-filter>
 
-       </keep-list>
+            <keep-add></keep-add>
+            <keep-list :notes="notesToShow" @colorChange="changeColorBgC" @update="updateNote" @pinned="updatePinNote">
+
+            </keep-list>
       
     </section>
 `,
@@ -35,9 +36,9 @@ export default {
             console.log('this.notes:', this.notes)
 
             return this.notes.filter(note => {
-                console.log('note',note.info.txt);
+                console.log('note',note.info.title);
 
-                return note.info.txt.toLowerCase().includes(txt) 
+                return note.info.title.toLowerCase().includes(txt) 
 
         })
     }
@@ -61,15 +62,11 @@ export default {
             console.log('type',type);
            keepService.updateNote(noteId, info, type)
         },
+        updatePinNote(noteId, pinInfo) {
+            keepService.pinNote(noteId, pinInfo)
+        }
 
-        // setFilterNotes(filterBy) {
-        //     console.log('in hereeee');
-        //     this.filterBy = filterBy;
-        //     // getNotes();
-        //     console.log('this.filterBy');
-        //     // this.getNotes();
-        // },
-        
+     
     },
 
     components: {

@@ -5,7 +5,26 @@ export default {
     name: 'keep-add',
     template: `
        <section class="keep-add">
-            <h2> add a note</h2>
+            <h2 class="keep-add-title"> Easy Not To Forget</h2>
+            
+            <div class="keep-icons">
+            <label>
+                <input type="radio" v-model="note.type" value="noteText" checked="true"/>  
+                <span class="fas fa-font fa-lg selected"></span>
+            </label>
+            
+            <label>
+                <input type="radio" v-model="note.type" value="noteImg" />  
+                <span class="far fa-image fa-lg"></span>
+            </label>
+
+            <label>
+                <input type="radio" v-model="note.type" value="noteTodos" /> 
+                <span class="fas fa-list fa-lg"></span>
+            </label>
+        </div>
+            
+            <div class="keep-add-inputs">
             <input
         v-if="isTitle"
         v-model="title"
@@ -33,23 +52,8 @@ export default {
         :placeholder="[[placeholder]]"
         class="user-info"
         />
-
-        <div class="icons flex">
-            <label>
-                <input type="radio" v-model="note.type" value="noteText" checked="true"/>  
-                <span class="fas fa-font fa-lg selected"></span>
-            </label>
-            
-            <label>
-                <input type="radio" v-model="note.type" value="noteImg" />  
-                <span class="far fa-image fa-lg"></span>
-            </label>
-
-            <label>
-                <input type="radio" v-model="note.type" value="noteTodos" /> 
-                <span class="fas fa-list fa-lg"></span>
-            </label>
-        </div>
+</div>
+        
        
         </section>
     `,
@@ -87,7 +91,7 @@ export default {
     },
     methods: {
         updateNoteInfo() {
-            if (this.note.type === 'noteText') this.note.info = { txt: this.info }
+            if (this.note.type === 'noteText') this.note.info = { title: this.info }
 
             else if (this.note.type === 'noteImg') {
                 this.note.info = { url: this.info, title: this.title }
@@ -98,7 +102,7 @@ export default {
                 var todosObj = todos.map(todo => {
                     return { txt: todo, doneAt: null }
                 });
-                this.note.info = { todos: todosObj, label: this.todosLabel };
+                this.note.info = { todos: todosObj, title: this.todosLabel };
             }
             keepService.addNote(this.note)
                 .then(res => {

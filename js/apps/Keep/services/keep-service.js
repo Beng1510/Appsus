@@ -8,7 +8,8 @@ export const keepService = {
     removeNote,
     changeBgColor,
     editNote,
-    updateNote
+    updateNote,
+    pinNote
 
 }
 
@@ -17,13 +18,13 @@ var gNotes;
 console.log('gNotes before', gNotes);
 
 // function getNotes() {
-    
-    //     utilsService.storeToStorage(NOTES_DB, gNotes)
-    //     return Promise.resolve(gNotes);
-    // }
-    
-    
-    function getNotes() {
+
+//     utilsService.storeToStorage(NOTES_DB, gNotes)
+//     return Promise.resolve(gNotes);
+// }
+
+
+function getNotes() {
     var notes = utilsService.loadFromStorage(NOTES_DB)
     if (!notes || notes.length === 0) {
         notes = createDefaultNotes()
@@ -70,7 +71,7 @@ function editNote(noteId, newTxt) {
     const noteIdx = gNotes.findIndex((note) => {
         return noteId === note.id
     })
-    gNotes[noteIdx].info.txt = newTxt
+    gNotes[noteIdx].info.title = newTxt
     return Promise.resolve(gNotes)
 }
 
@@ -102,7 +103,7 @@ function createDefaultNotes() {
             type: "noteText",
             isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                title: "Fullstack Me Baby!"
             },
             style: {
                 backgroundColor: "#BCD4E6"
@@ -112,7 +113,7 @@ function createDefaultNotes() {
             type: "noteText",
             isPinned: false,
             info: {
-                txt: "Peace and Love!"
+                title: "Peace and Love!"
             },
             style: {
                 backgroundColor: "#BCD4E6"
@@ -120,6 +121,7 @@ function createDefaultNotes() {
         },
         {
             type: "noteImg",
+            isPinned: false,
             info: {
                 url: "http://coding-academy.org/books-photos/2.jpg",
                 title: "Me playing Mi"
@@ -130,8 +132,9 @@ function createDefaultNotes() {
         },
         {
             type: "noteTodos",
+            isPinned: true,
             info: {
-                label: "How was it:",
+                title: "How was it:",
                 todos: [
                     { txt: "Do that", doneAt: null },
                     { txt: "Do this", doneAt: 187111111 }
@@ -143,6 +146,7 @@ function createDefaultNotes() {
         },
         {
             type: "noteImg",
+            isPinned: false,
             info: {
                 url: "http://coding-academy.org/books-photos/3.jpg",
                 title: "Finding Nemo"
@@ -153,28 +157,36 @@ function createDefaultNotes() {
         },
     ].map(formatNotes);
     return defaultNotes
+}
+// var gNotes = utilsService.loadFromStorage(NOTES_DB) ? utilsService.loadFromStorage(NOTES_DB) : defaultNotes;
+function formatNotes(rawNotes) {
+
+    return {
+        id: utilsService.makeId(),
+        type: rawNotes.type,
+        info: rawNotes.info,
+        style: rawNotes.style,
+        isPinned: rawNotes.isPinned,
     }
-    // var gNotes = utilsService.loadFromStorage(NOTES_DB) ? utilsService.loadFromStorage(NOTES_DB) : defaultNotes;
-    function formatNotes(rawNotes) {
-    
-        return {
-            id: utilsService.makeId(),
-            type: rawNotes.type,
-            info: rawNotes.info,
-            style: rawNotes.style
-        }
-    }
+}
 
 
-    function updateNote(noteId, info, type) {
-        const note = findNoteById(noteId);
-        if (type === 'noteText') {
-            note.info.txt = info;
-        } else if (type === 'noteImg') {
-            note.info.url = info;
-    
-        } else if (type === 'noteTodos') {
-            note.info.todos = info
-        }
-        utilsService.storeToStorage(NOTES_DB, gNotes)
+function updateNote(noteId, info, type) {
+    const note = findNoteById(noteId);
+    if (type === 'noteText') {
+        note.info.title = info;
+    } else if (type === 'noteImg') {
+        note.info.url = info;
+
+    } else if (type === 'noteTodos') {
+        note.info.todos = info
     }
+    utilsService.storeToStorage(NOTES_DB, gNotes)
+}
+
+function pinNote(noteId, pinInfo) {
+    const note = findNoteById(noteId);
+    note.isPinned = pinInfo
+    console.log('note.isPinned',note.isPinned);
+    utilsService.storeToStorage(NOTES_DB, gNotes)
+}

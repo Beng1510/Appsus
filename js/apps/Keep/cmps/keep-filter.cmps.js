@@ -6,12 +6,13 @@ export default {
     template: `
     <section class="keep-filter">
     <form @submit.prevent="emitFilter">
-            
-            <input type="text" v-model="filterByTxt" placeholder="Search here" @input="emitFilter" />
-    <!-- <input type="text" v-model="filterObj.filterByTxt" placeholder="Search Email by subject" @input="emitFilter"> -->
-           
-            <button>Apply Filter</button>
-            
+           <div class=keep-filter-search-container> 
+                <input class="keep-filter-input" type="text" v-model="filterByTxt" placeholder="Search here" @input="emitFilter" />
+            <!-- <input type="text" v-model="filterByTxt" placeholder="Search here" /> -->
+
+            <!-- <button class="">Search Your Notes</button> -->
+                <span class="fas fa-search keep-filter-search" @click="emitFilter"></span>
+            </div>
         </form>
     </section>
     `,

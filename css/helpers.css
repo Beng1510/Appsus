@@ -1,0 +1,16 @@
+
+body {
+    margin: 0 auto;
+    background-image: url('/js/asset/img/background2.jpeg');
+}
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}

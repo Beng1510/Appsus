@@ -1,0 +1,13 @@
+.keep-app {
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 1500px;
+}
+
+.keep-app-title {
+    font-family: Kaushan;
+    font-size: 40px;
+    display: inline;
+    margin-bottom: 20px;
+    padding: 15px;
+}
