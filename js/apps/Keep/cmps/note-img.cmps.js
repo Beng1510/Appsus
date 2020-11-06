@@ -6,12 +6,12 @@ export default {
         <section class="note-img">
 
             <div class="note-img-content"> 
-                <p class="note-img-title">{{info.title}}</p>
+                <h3 class="note-img-title">{{info.title}}</h3>
                 <img class="note-img-img" :src="info.url" :title="info.title">
             </div>
 
-
-           <div class="note-control-panel"> 
+            <span @click="toggleControls" class="far fa-image fa-lg image-controls"></span>
+           <div v-if="isControlsShown" class="note-control-panel"> 
                     <!-- <button @click="editNote">?</button>
                     <button @click="onRemoveNote()">xx</button> -->
 
@@ -27,6 +27,7 @@ export default {
                                 <button @click="editNote">Cancel</button>
                             </div>
                     </section>
+                   
                 </div> 
            
         </section>
@@ -36,10 +37,7 @@ data() {
         isEdit: false,
         isColorEdit: false,
         newText: this.info.txt,
-        
-        // placeholder: 'What\'s on your mind...',
-        
-
+        isControlsShown: false
     }
 },
 methods: {
@@ -49,6 +47,9 @@ methods: {
     },
     updateNoteInfo(note) {
         console.log(note);
+    },
+    toggleControls() {
+        this.isControlsShown = !this. isControlsShown;
     },
     editNote() {
         this.isEdit = !this.isEdit;

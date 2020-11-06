@@ -12,30 +12,70 @@ export default {
 
         <section class="keep-list">
                  <!-- <keep-add></keep-add> -->
-
-            <ul >
-                <li class="note" v-for="note in notes" :key="note.id" :style="bgc(note)" >
-                  
+<div class="keep-list-pinned-notes">
+          <h2>Pinned Notes</h2>  
+<ul class="keep-list-pinned" >
+                <li v-if=note.isPinned  class="note" v-for="note in notes" :key="note.id" :style="bgc(note)" >
+                <span class="fas fa-thumbtack" v-if="isPinned"></span> 
                    <component
                         :is="note.type"
                         :info="note.info" 
                         :id="note.id" 
+                       :isPinned="note.isPinned"
                         @changeBGC="changeColor"
                         @update="updateNote"
                         @delete="onRemoveNote"
+                        @pinned="pinNote"
                         >                      
                     </component>
                     <!-- <button @click="onRemoveNote(note.id)">x</button> -->
                     <!-- <button @click="onEditNote(note.id)">?</button>
                     <input type="text" v-model="note.text" @blur="doneEdit(note)" v-show="note === activeEdit"> -->
-                </li>
+                </li>  
             </ul>
+</div>
+<div class="keep-list-unpinned-notes">
+<hr>
+<ul class="keep-list-pinned" >
+                <li v-if=!note.isPinned class="note" v-for="note in notes" :key="note.id" :style="bgc(note)" >
+                
+                   <component
+                        :is="note.type"
+                        :info="note.info" 
+                        :id="note.id" 
+                       :isPinned="note.isPinned"
+                        @changeBGC="changeColor"
+                        @update="updateNote"
+                        @delete="onRemoveNote"
+                        @pinned="pinNote"
+                        >                      
+                    </component>
+                    <!-- <button @click="onRemoveNote(note.id)">x</button> -->
+                    <!-- <button @click="onEditNote(note.id)">?</button>
+                    <input type="text" v-model="note.text" @blur="doneEdit(note)" v-show="note === activeEdit"> -->
+                </li>  
+            </ul>
+</div>
+
         </section>
     `,
+    data() {
+        return {
+            isPinned: true
+        }
+    },
     methods: {
         bgc(note) {
 
             return `background-color: ${note.style.backgroundColor}`;
+        },
+        pinNote(id, pinInfo) {
+           console.log('pinning');
+        //    console.log('noteId',noteId);
+        //    console.log('note',`${note}`);
+           console.log('this.id',id);
+           this.$emit('pinned', id, pinInfo);
+
         },
         onRemoveNote(noteId) {
             // console.log('noteId',noteId);

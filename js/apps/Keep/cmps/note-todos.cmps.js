@@ -14,7 +14,8 @@ export default {
                 </div>
             </div>
            
-            <div class="note-control-panel">
+            <span @click="toggleControls" class="fas fa-list fa-lg todos-controls"></span>
+           <div v-if="isControlsShown" class="note-control-panel"> 
                     
                     <span @click="editNote" class="fas fa-edit"></span> 
                     <span @click="onRemoveNote" class="fas fa-trash-alt"></span>
@@ -37,6 +38,7 @@ data() {
         isEdit: false,
         isColorEdit: false,
         newText: this.info.txt,
+        isControlsShown: false
         
         // placeholder: 'What\'s on your mind...',
         
@@ -50,6 +52,9 @@ methods: {
     },
     updateNoteInfo(note) {
         console.log(note);
+    },
+    toggleControls() {
+        this.isControlsShown = !this. isControlsShown;
     },
     editNote() {
         this.isEdit = !this.isEdit;
