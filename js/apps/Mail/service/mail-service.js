@@ -31,6 +31,7 @@ function getNewMail() {
         subject: '',
         body: '',
         isRead: false,
+        isActiv: false,
         sentAt: today.toISOString().substr(0, 10)
     }
     return mail
@@ -40,8 +41,9 @@ function addMail(mail) {
     // console.log('mail:', mail)
     
     gMails.unshift(mail)
-    console.log('gMails:', gMails)
+    
     query();
+    saveMails()
     return gMails
 }
 
@@ -55,12 +57,14 @@ function deleteMail(mailId) {
     return gMails
 }
 
+
 function saveMails() {
     utilsService.storeToStorage('mails', gMails)
 }
 
 function getMailById(id) {
     const mail = gMails.find(mail => mail.id === id)
+
     // return Promise.resolve(mail)
     return mail
 }
@@ -68,7 +72,8 @@ function getMailById(id) {
 function _createMails() {
 
     var mails = utilsService.loadFromStorage('mails');
-    // if (mails && mails.length) return mails;
+
+    if (mails && mails.length) return mails;
 
     mails = [{
         id: utilsService.makeId(),
@@ -76,7 +81,8 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run1',
         isRead: false,
-        sentAt: '22/11/2019'
+        isActiv: false,
+        sentAt: '22-11-2019'
     },
     {
         id: utilsService.makeId(),
@@ -84,7 +90,8 @@ function _createMails() {
         subject: 'food',
         body: 'hello! my name is dor and i like to run2',
         isRead: false,
-        sentAt: '12/4/2019'
+        isActiv: false,
+        sentAt: '12-4-2019'
     },
     {
         id: utilsService.makeId(),
@@ -92,7 +99,8 @@ function _createMails() {
         subject: 'gym',
         body: 'hello! my name is',
         isRead: false,
-        sentAt: '22/3/2019'
+        isActiv: false,
+        sentAt: '22-3-2019'
     },
     {
         id: utilsService.makeId(),
@@ -100,7 +108,8 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: '23/1/2018'
+        isActiv: false,
+        sentAt: '23-1-2018'
     },
     {
         id: utilsService.makeId(),
@@ -108,7 +117,8 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: '22/11/2017'
+        isActiv: false,
+        sentAt: '22-11-2017'
     },
     {
         id: utilsService.makeId(),
@@ -116,7 +126,8 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: '22/11/2017'
+        isActiv: false,
+        sentAt: '22-11-2017'
     },
     {
         id: utilsService.makeId(),
@@ -124,7 +135,8 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: '22/11/2017'
+        isActiv: false,
+        sentAt: '22-11-2017'
     },
     {
         id: utilsService.makeId(),
@@ -132,7 +144,8 @@ function _createMails() {
         subject: 'sport',
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
-        sentAt: '22/11/2017'
+        isActiv: false,
+        sentAt: '22-11-2017'
     }
     ]
     return mails

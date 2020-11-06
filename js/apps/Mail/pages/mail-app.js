@@ -9,18 +9,16 @@ export const mailApp = {
        <h1>Mail Page</h1>
       
        <nav>
-           <router-link to="/mail/unreadInbox">Unread Inbox</router-link> | 
+           <router-link to="/mail/inbox">Mark Inbox</router-link> | 
            <router-link to="/mail/newmail">New Mail +</router-link>
         </nav>
- <!-- //////////////////////////////////// -->
+        
 
- <!-- <button @click="addMail" >Send Mail</button>  -->
+        
+        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
+        <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
  
- <!-- ////////////////////// -->
- 
- <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
- <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
- <router-view @canceled="cansleAdd"  ></router-view> 
+        <router-view @canceled="cansleAdd"  ></router-view> 
     </section>
 `, data() {
         return {
@@ -36,6 +34,7 @@ export const mailApp = {
     components: {
         mailList,
         mailFilter,
+        
     },
     methods: {
         selectmail(mailId) {
@@ -53,28 +52,49 @@ export const mailApp = {
             this.addingMail = !this.addingMail
         }
 
+
     },
     computed: {
         mailsToShow() {
-            
+
             console.log('this.filterObj:', this.filterObj)
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
-            console.log('txt:', txt)
-
+           
 
             return this.mails.filter(mail => {
-                return mail.subject.toLowerCase().includes(txt)
+                let currFilter = this.filterObj.filterByRead;
+                 console.log('currFilter:', currFilter)
+                 mail.subject.toLowerCase().includes(txt)
+                    if (currFilter === 'all') {
+                        currFilter = mail.isRead
+                    }
+                    else if (currFilter === 'read') {
+                        currFilter = true
+                    } else currFilter = false;
+                    return mail.subject.toLowerCase().includes(txt) ||
+                    mail.body.toLowerCase().includes(txt) &&
+                    mail.isRead === currFilter
+                })
 
-            })
+            // return this.mails.filter(mail => {
+                // return mail.subject.toLowerCase().includes(txt)
 
-        },
+            // let currFilter = this.filterObj.filterByRead;
+            // console.log('currFilter:', currFilter)
+            
+
+            },
     }
-}
+    }
 
-export const markMailBox = {
-    name: 'mark-mail-box',
-    template: `
+
+    
+
+
+export const inboxMail = {
+        name: 'inbox',
+        template: `
     <section>
         <h2>Our team is Awesome</h2>
         <p>
@@ -82,18 +102,18 @@ export const markMailBox = {
         </p>
     </section>
     `
-}
+    }
 
 
-export const opneMail = {
-    name: 'open-mail',
-    template: `
-    <section>
-        <h2>New Mail</h2>
-        <p>
-            Our endi, impedit ct officiis suscipit.            
-        </p>
-    </section>
-    `
-}
+// export const opneMail = {
+//         name: 'open-mail',
+//         template: `
+//     <section>
+//         <h2>New Mail</h2>
+//         <p>
+//             Our endi, impedit ct officiis suscipit.            
+//         </p>
+//     </section>
+//     `
+//     }
 

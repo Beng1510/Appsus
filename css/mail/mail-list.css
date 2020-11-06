@@ -8,9 +8,15 @@
     justify-content: center;
 }
 
-li{
+.mail-list li{
 list-style: none;
 }
+
+.mail-list span{
+    width: 30px;
+}
+
+
 
 
 /* Preview*/
@@ -26,13 +32,22 @@ list-style: none;
     
 }
 
+.mail-preview:hover{
+    transform: scale(1.02);
+}
 
 .itemsub{
     padding-left: 10px;
 }
-.itemuser{
-  
+.longcheck{
+    width: 30px;
+    height: 30px;
 }
+
+.checked{
+    color: orange;
+}
+
 .fas .fa-trash-alt{
     padding-left: 20px;
 }
@@ -44,16 +59,19 @@ list-style: none;
 .mailRead{
     background-color: rgb(177, 174, 174);
 }
+.mailActiv{
+    border: 5px solid rgb(3, 3, 0);
+    
+   
+    
+}
+
 
 .mailUnRead{
     background-color: honeydew;
 }
 
 
-.mail-preview:hover{
-    filter: grayscale(50%);
-    transform: scale(1.05);
-}
 
 .mail-preview img{
     z-index: 1;

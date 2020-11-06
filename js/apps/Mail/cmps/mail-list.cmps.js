@@ -9,7 +9,7 @@ export default {
     <section class="mail-list">
         <ul>
         <li v-for="mail in mails" :key="mail.id"  >
-            <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead ,mailUnRead: !mail.isRead}"  @delete="deleteMail"/>
+            <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead ,mailUnRead: !mail.isRead ,mailActiv: mail.isActiv }"  @delete="deleteMail" @activ="activMail"/>
         </li>
         
         <!-- <mail-status  :mail="mail"/> -->
@@ -24,7 +24,9 @@ export default {
     methods: {
         emitMailClick(mailId) {
 
+            
             this.mail = mailService.getMailById(mailId)
+            if(this.mail.isActiv) this.mail.isActiv = false ;
             this.mail.isRead = !this.mail.isRead
             this.$emit('mailClick', mailId)
 
@@ -32,14 +34,17 @@ export default {
         deleteMail(mailId) {
 
             mailService.deleteMail(mailId)
-
-            
             eventBus.$emit('show-msg', { txt: 'Mail has been deleted', type: 'Success' })
+      
+        },
+        activMail(mailId){
+            this.mail = mailService.getMailById(mailId)
 
-            // emailService.deleteEmail(emailId)
-            //     .then(() => eventBus.$emit('show-msg', 'Email was successfully Deleted'))
-            //     .catch(err => console.log('something went wrong', err))
+            console.log('this.mail.isActiv:', this.mail.isActiv)
+            this.mail.isActiv = !this.mail.isActiv ;
+            console.log('this.mail.isActiv:', this.mail.isActiv)
 
+            // mailService.activMail(mailId)
         }
     },
     components: {

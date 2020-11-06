@@ -15,7 +15,10 @@ export default {
             
             <p class="longTxt" >{{textForPreview}}</p>
             <p class="longdate">{{mail.sentAt}}</p> 
-            
+            <span class="far fa-star " @click.stop="emitActiv(mail.id)">
+            </span>
+
+                <!-- <input class="longcheck" type="checkbox"  @click.stop="emitActiv(mail.id)" />  -->
             <span  class="fas fa-trash-alt" @click.stop="emitDelete(mail.id)"> </span>
 
             <!-- <button  @click.stop="emitDelete(mail.id)" class="itemgar"> -->
@@ -34,6 +37,10 @@ export default {
         emitDelete(id){        
             console.log('iddddddd:', id)
             this.$emit('delete', id)
+        },
+        emitActiv(id){        
+            console.log('iddddddd:', id)
+            this.$emit('activ', id)
         }
     },
     computed:{
