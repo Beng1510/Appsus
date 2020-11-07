@@ -4,7 +4,7 @@ import { eventBus } from "../../../services/event-bus.js"
 export default {
     template: `
     <section class="mail-detail flex justify-center">
-       <h1>New Mail</h1>
+       
           
         <div class="main-container">
 
@@ -20,18 +20,12 @@ export default {
            
         
             <footer class="footer-mail flex" >
-
                 <div class="back-icon" >
                     <span  class="fas fa-arrow-left" @click="changeMail(-1)" > </span>
                 </div> 
-                
-                
                 <div class="inbox-icon" >
                     <span  class="fas fa-inbox"  @click="returnBack"> </span>
                 </div> 
-
-                
-             
                 <div class="del-icon" >
                     <span  class="fas fa-trash-alt" @click.stop="emitDelete(mail.id)"> </span>
                 </div> 
@@ -39,9 +33,6 @@ export default {
                 <div class="next-icon" >
                     <span  class="fas fa-arrow-right" @click="changeMail(-1)" ></span>
                 </div> 
-                
-                 
-
               </footer>
        
             
@@ -56,7 +47,7 @@ export default {
     },
     methods: {
         emitDelete(id) {
-            console.log('id:', id)
+            
             this.$emit('delete', id)
             mailService.deleteMail(id)
             eventBus.$emit('show-msg', { txt: 'Mail has been deleted', type: 'Success' })

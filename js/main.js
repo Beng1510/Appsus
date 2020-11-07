@@ -13,7 +13,6 @@ const options = {
     router: myRouter,
     template: `
         
-
         <section>
             <main-header></main-header>
 

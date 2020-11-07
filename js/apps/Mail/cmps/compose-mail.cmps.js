@@ -17,7 +17,7 @@ export const composeMail = {
                 <input type="text" v-model:value="mail.subject">
             </label>
             <textarea name="moreInfo" cols="50" rows="10" v-model:value="mail.body"></textarea>
-            <button  >Send Mail</button>
+            <a class="far fa-paper-plane"></a>
              <!-- <button type="button" @click="cancelAdd">Cancel</button> -->
         </form>
             

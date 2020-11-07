@@ -15,7 +15,7 @@ list-style: none;
 
 .mail-list span{
     width: 30px;
-    /* color: red; */
+    cursor: pointer;
 }
 
 

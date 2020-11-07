@@ -1,6 +1,8 @@
 import { mailService } from '../service/mail-service.js'
 import mailFilter from '../cmps/mail-filter.cmps.js'
 import mailList from '../cmps/mail-list.cmps.js'
+import mailNav from '../cmps/mail-nav.cmps.js'
+
 
 export const mailApp = {
     name: 'mail-app',
@@ -12,18 +14,21 @@ export const mailApp = {
 
         <div class="card ">
          <nav class=""> 
-            <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
-            <router-link to="/mail/mark" ><button class="">Mark mails</button></router-link>  
+             <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
+             
+             <mail-nav @mailInboxFilter="inboxMailsToShow" :mails="mailsToShow"></mail-nav>
+            <!-- <router-link to="/mail/mark" ><button class="">Mark mails</button><mail-mark   @mailClick="selectmail" :mails="mailsToShow" /></router-link>  
             <router-link to="/mail/sent" ><button class="">Mark Inbox</button></router-link>  
-            <router-link to="/mail/dele" ><button class="">Mark Inbox</button></router-link>  
+            <router-link to="/mail/dele" ><button class="">Mark Inbox</button></router-link>   -->
+
+            <mail-list   @mailClick="selectmail"  :mails="mailsToShow" />
+            
         </nav>
 
-        <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
-
     </div>
+    <router-view @canceled="cansleAdd" ></router-view> 
 
     
-    <router-view @canceled="cansleAdd"  ></router-view> 
         
     
     </section>
@@ -32,7 +37,7 @@ export const mailApp = {
             mails: mailService.query(),
             mail: null,
             filterObj: null,
-            // addingMail: false
+            inboxToShow:'inbox'
         }
     },
     created() {
@@ -41,7 +46,8 @@ export const mailApp = {
     components: {
         mailList,
         mailFilter,
-
+        mailNav
+       
     },
     methods: {
         selectmail(mailId) {
@@ -57,22 +63,40 @@ export const mailApp = {
         },
         cansleAdd() {
             this.addingMail = !this.addingMail
-        }
+        },
+        inboxMailsToShow(mailType){
+
+            // console.log('mailTyp:',mailType)
+            this.inboxToShow = mailType ;
+            // console.log('this.inboxToShow:', this.inboxToShow)
+        },
 
 
     },
     computed: {
         mailsToShow() {
+            // console.log('this.filterObj:', this.inboxToShow)
+            // console.log('this.filterObj:', this.filterObj)
 
-            console.log('this.filterObj:', this.filterObj)
+            let inboxMailsFilter = this.mails ;
+            // console.log('inboxMailsFilter:', inboxMailsFilter)
+            if(this.inboxToShow ==='inbox') {inboxMailsFilter = this.mails 
+                 return inboxMailsFilter};
+            if(this.inboxToShow ==='mark'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isActiv)
+                 return inboxMailsFilter}
+              
+            if(this.inboxToShow ==='sent'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isSent)
+                 return inboxMailsFilter}
+              
+
+            console.log('inboxMailsFilterasdasdfasdfasdfasdfas:', inboxMailsFilter)
+
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
-
 
             return this.mails.filter(mail => {
                 console.log('mail:', mail)
                 let currFilter = this.filterObj.filterByRead;
-
                 if (currFilter === 'all') {
                     currFilter = mail.isRead
                     console.log('currFilter:', currFilter)

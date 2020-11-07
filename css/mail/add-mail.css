@@ -34,7 +34,13 @@ margin: 15px;
    justify-content: center; 
 }
 
-.main-add button{
-    /* align-items: center; */
-    text-align: center;
+
+
+.main-add .fa-paper-plane{
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.main-add .fa-paper-plane:hover{
+    color: rgb(134, 174, 248);
 }

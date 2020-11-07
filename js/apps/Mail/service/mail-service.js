@@ -33,6 +33,7 @@ function getNewMail() {
         body: '',
         isRead: false,
         isActiv: false,
+        isSent: true,
         sentAt: today.toISOString().substr(0, 10)
     }
     return mail
@@ -40,6 +41,7 @@ function getNewMail() {
 
 function addMail(mail) {
     // console.log('mail:', mail)
+    
     
     gMails.unshift(mail)
     
@@ -84,18 +86,20 @@ function _createMails() {
         id: utilsService.makeId(),
         user: 'dor@walla.com',
         subject: 'sport',
-        body: 'hello! my name is dor and i like to run1',
+        body: 'Sport includes all forms of competitive physical activity or games which,1 through casual or organized participation, at least in part aim to use, maintain or improve physical ability and skills while providing enjoyment to participants, and in some cases, entertainment for spectators.[2] Sports can bring positive results to ones physical health. Hundreds of sports exist, from those between single contestants, through to those with hundreds of simultaneous participants, either in teams or competing as individuals. In certain sports such as racing, many contestants may compete, simultaneously or consecutively, with one winner; in others, the contest (a match) is between two sides, each attempting to exceed the other. Some sports allow a "tie" or "draw", in which there is no single winner; others provide tie-breaking methods to ensure one winner and one loser. A number of contests may be arranged in a tournament producing a champion. Many sports leagues make an annual champion by arranging games in a regular sports season, followed in some cases by playoffsSport is generally recognised as system of activities which are based in physical athleticism or physical dexterity, with the largest major competitions such as the Olympic Games admitting only sports meeting this definition,[3] and other organisations such as the Council of Europe using definitions precluding activities without a physical element from classification as sports.[2] However, a number of competitive, but non-physical, activities claim recognition as mind sports. The International Olympic Committee (through ARISF) recognises both chess and bridge as bona fide sports, and SportAccord, the international sports federation association, recognises five non-physical sports: bridge, chess, draughts (checkers), Go and xiangqi,[4][5] and limits the number of mind games which can be admitted as sports.[1]Sport is generally recognised as system of activities which are based in physical athleticism or physical dexterity, with the largest major competitions such as the Olympic Games admitting only sports meeting this definition,[3] and other organisations such as the Council of Europe using definitions precluding activities without a physical element from classification as sports.[2] However, a number of competitive, but non-physical, activities claim recognition as mind sports. The International Olympic Committee (through ARISF) recognises both chess and bridge as bona fide sports, and SportAccord, the international sports federation association, recognises five non-physical sports: bridge, chess, draughts (checkers), Go and xiangqi,[4][5] and limits the number of mind games which can be admitted as sports.[1]Sport is generally recognised as system of activities which are based in physical athleticism or physical dexterity, with the largest major competitions such as the Olympic Games admitting only sports meeting this definition,[3] and other organisations such as the Council of Europe using definitions precluding activities without a physical element from classification as sports.[2] However, a number of competitive, but non-physical, activities claim recognition as mind sports. The International Olympic Committee (through ARISF) recognises both chess and bridge as bona fide sports, and SportAccord, the international sports federation association, recognises five non-physical sports: bridge, chess, draughts (checkers), Go and xiangqi,[4][5] and limits the number of mind games which can be admitted as sports.[1]',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '22-11-2019'
     },
     {
         id: utilsService.makeId(),
         user: 'zoe@gmail.com',
-        subject: 'food',
-        body: 'hello! my name is dor and i like to run2',
+        subject: 'Suit',
+        body: 'In 1993, the Renuar Group was founded by businessmen Eli Berkowitz and Yossi Brosh. A year later, in 1994, Serge Deri joined them, and since then he has served as Group CEO.In 1993, the Renuar Group was founded by businessmen Eli Berkowitz and Yossi Brosh. A year later, in 1994, Serge Deri joined them, and since then he has served as Group CEO.In 1993, the Renuar Group was founded by businessmen Eli Berkowitz and Yossi Brosh. A year later, in 1994, Serge Deri joined them, and since then he has served as Group CEO.',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '12-4-2019'
     },
     {
@@ -105,6 +109,7 @@ function _createMails() {
         body: 'hello! my name is',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '22-3-2019'
     },
     {
@@ -114,6 +119,7 @@ function _createMails() {
         body: 'hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3hello! my name is dor and i like to run3',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '23-1-2018'
     },
     {
@@ -123,6 +129,7 @@ function _createMails() {
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '22-11-2017'
     },
     {
@@ -132,6 +139,7 @@ function _createMails() {
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '22-11-2017'
     },
     {
@@ -141,6 +149,7 @@ function _createMails() {
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '22-11-2017'
     },
     {
@@ -150,6 +159,7 @@ function _createMails() {
         body: 'hello! my name is dor and i like to run3',
         isRead: false,
         isActiv: false,
+        isSent: false,
         sentAt: '22-11-2017'
     }
     ]
