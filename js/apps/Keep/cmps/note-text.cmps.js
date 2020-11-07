@@ -19,6 +19,7 @@ export default {
                 <!-- <button @click="editNote">?</button> -->
                 <!-- <button @click="onRemoveNote()">xx</button> -->
                 
+                <span @click.stop="SendMail" class="fas fa-envelope"></span>
                 <span @click.stop="emitPinNote" class="fas fa-thumbtack"></span>
                 <span @click="editNote" class="fas fa-edit"></span>
                 <span @click="onRemoveNote" class="fas fa-trash-alt"></span>

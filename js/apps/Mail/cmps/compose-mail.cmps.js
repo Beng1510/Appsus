@@ -57,6 +57,7 @@ export const composeMail = {
         this.$refs.nameInput.focus();
     },
     created() {
+        
         this.mail = mailService.getNewMail()
         this.addingMail = true ;
 
