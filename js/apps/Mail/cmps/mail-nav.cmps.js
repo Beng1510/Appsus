@@ -4,11 +4,11 @@
 export default {
     template: `
     <section class="mail-nav ">
-    <div class="nav-icons">
-    <a  class="fas fa-inbox"  @click="setmailInboxFIlter('inbox')"><button> Inbox</button></a>
-     <a class="fas fa-star" @click="setmailInboxFIlter('mark')"><button>Mark</button></a>
-   <a class="far fa-paper-plane" @click="setmailInboxFIlter('sent')"><button>Sent</button></a>  
-    </div>
+         <div class="nav-icons flex column">
+            <a class="fas fa-inbox"  @click="setmailInboxFIlter('inbox')"> <span> Inbox </span></a>
+            <a class="fas fa-star" @click="setmailInboxFIlter('mark')"> <span>Mark</span></a>
+            <a class="far fa-paper-plane" @click="setmailInboxFIlter('sent')"> <span>Sent</span></a>  
+         </div>
     </section>
    `,
    data(){

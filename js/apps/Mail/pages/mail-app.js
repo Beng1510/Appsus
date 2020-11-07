@@ -13,20 +13,17 @@ export const mailApp = {
        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
 
         <div class="card ">
-         <nav class=""> 
-             <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
+         <nav class="flex"> 
+             <div class="side-bar flex column">
              
-             <mail-nav @mailInboxFilter="inboxMailsToShow" :mails="mailsToShow"></mail-nav>
-            <!-- <router-link to="/mail/mark" ><button class="">Mark mails</button><mail-mark   @mailClick="selectmail" :mails="mailsToShow" /></router-link>  
-            <router-link to="/mail/sent" ><button class="">Mark Inbox</button></router-link>  
-            <router-link to="/mail/dele" ><button class="">Mark Inbox</button></router-link>   -->
-
-            <mail-list   @mailClick="selectmail"  :mails="mailsToShow" />
+                 <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
+                 <router-view  ></router-view> 
+                 <mail-nav @mailInboxFilter="inboxMailsToShow" :mails="mailsToShow"></mail-nav>
+            </div>
+                 <mail-list   @mailClick="selectmail"  :mails="mailsToShow" />
             
         </nav>
-
-    </div>
-    <router-view @canceled="cansleAdd" ></router-view> 
+        </div>
 
     
         
@@ -37,7 +34,7 @@ export const mailApp = {
             mails: mailService.query(),
             mail: null,
             filterObj: null,
-            inboxToShow:'inbox'
+            inboxToShow:''
         }
     },
     created() {
@@ -65,8 +62,8 @@ export const mailApp = {
             this.addingMail = !this.addingMail
         },
         inboxMailsToShow(mailType){
-
-            // console.log('mailTyp:',mailType)
+            
+            
             this.inboxToShow = mailType ;
             // console.log('this.inboxToShow:', this.inboxToShow)
         },
@@ -78,22 +75,23 @@ export const mailApp = {
             // console.log('this.filterObj:', this.inboxToShow)
             // console.log('this.filterObj:', this.filterObj)
 
-            let inboxMailsFilter = this.mails ;
+            // let inboxMailsFilter = this.mails ;
             // console.log('inboxMailsFilter:', inboxMailsFilter)
-            if(this.inboxToShow ==='inbox') {inboxMailsFilter = this.mails 
-                 return inboxMailsFilter};
-            if(this.inboxToShow ==='mark'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isActiv)
-                 return inboxMailsFilter}
-              
-            if(this.inboxToShow ==='sent'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isSent)
-                 return inboxMailsFilter}
-              
 
-            console.log('inboxMailsFilterasdasdfasdfasdfasdfas:', inboxMailsFilter)
+            // if(this.inboxToShow ==='inbox') {inboxMailsFilter = this.mails 
+            //      return inboxMailsFilter
+            //     };
+            // if(this.inboxToShow ==='mark'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isActiv)
+            //      return inboxMailsFilter
+            //     }
+              
+            // if(this.inboxToShow ==='sent'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isSent)
+            //      return inboxMailsFilter
+            //     }
+              
 
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
-
             return this.mails.filter(mail => {
                 console.log('mail:', mail)
                 let currFilter = this.filterObj.filterByRead;
@@ -106,7 +104,7 @@ export const mailApp = {
                 } else currFilter = false;
                 return (mail.subject.toLowerCase().includes(txt) ||
                     mail.body.toLowerCase().includes(txt) ) &&
-                    mail.isRead === currFilter
+                    mail.isRead === currFilter 
             })
 
         },

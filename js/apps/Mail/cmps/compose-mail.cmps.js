@@ -6,7 +6,8 @@ export const composeMail = {
     name: 'compose-mail',
     template: `
     <section>
-        <form @submit="addMail" class="main-add">
+        <form  class="main-add">
+
             <h2 class="title-add"><button @click="cancelAdd">X</button>Compose Mail </h2>
             <label>
                 From:
@@ -17,7 +18,7 @@ export const composeMail = {
                 <input type="text" v-model:value="mail.subject">
             </label>
             <textarea name="moreInfo" cols="50" rows="10" v-model:value="mail.body"></textarea>
-            <a class="far fa-paper-plane"></a>
+            <a @click="addMail" class="far fa-paper-plane"></a>
              <!-- <button type="button" @click="cancelAdd">Cancel</button> -->
         </form>
             
@@ -34,6 +35,7 @@ export const composeMail = {
         addMail() {        
             mailService.addMail(this.mail)     
             // this.$emit('newmail', this.mail)
+           
             console.log('hiiiii');
             // this.mail = null;
         },

@@ -16,6 +16,24 @@ transition: 0.5s;
 .compose-btn { 
     border-radius: 50%;
     border: none;
+    cursor: pointer;
+}
+
+.nav-icons a {
+    margin-left: 10px;
+    width: 150px;
+    font-size: 35px;
+    padding: 10px;
+    border: 3px solid rgb(131, 129, 129);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+.nav-icons a:hover {
+    border: 3px solid yellow;
+}
+.nav-icons a span{
+    font-family: Caveat;
+   
 }
 
 

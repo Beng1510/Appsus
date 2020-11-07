@@ -6,7 +6,7 @@ export default {
     template: `
     <section class="mail-filter">
     <form @submit.prevent="emitFilter " >
-       <div class="flex column justify-center">
+       <div class="flex justify-center">
             <label>   <i class="fas fa-search"></i>
                 <input type="text" v-model="filterObj.filterByTxt" placeholder="Search..." @input="emitFilter"  class="fas fa-search">
             </label>
