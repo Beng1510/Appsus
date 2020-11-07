@@ -54,19 +54,13 @@ export const mailApp = {
         cansleAdd() {
             this.addingMail = !this.addingMail
         },
-<<<<<<< HEAD
         inboxMailsToShow(mailType){  
             this.inboxToShow = mailType ;
             
-=======
-        inboxMailsToShow(mailType) {
-            this.inboxToShow = mailType;
->>>>>>> 665ed082dc4ea23d652feb3e127572ff8b377086
         },
     },
     computed: {
         mailsToShow() {
-<<<<<<< HEAD
             // console.log('this.filterObj:', this.inboxToShow)
             // console.log('this.filterObj:', this.filterObj)
 
@@ -88,8 +82,6 @@ export const mailApp = {
                 }
               
 
-=======
->>>>>>> 665ed082dc4ea23d652feb3e127572ff8b377086
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
             return this.mails.filter(mail => {
