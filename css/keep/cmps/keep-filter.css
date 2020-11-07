@@ -1,6 +1,7 @@
 .keep-filter {
     margin: 0 auto;
-    padding: 0 15px 0 15px;
+    /* padding: 0 15px 0 15px; */
+display: inline;
 }
 
 .keep-filter-search-container {
@@ -8,7 +9,8 @@
     background-color: white;
     border-radius: 10px;
     margin-top: 20px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    
 }
 
 .keep-filter-input {

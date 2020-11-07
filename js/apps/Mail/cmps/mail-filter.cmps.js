@@ -10,11 +10,12 @@ export default {
             <label>   <i class="fas fa-search"></i>
                 <input type="text" v-model="filterObj.filterByTxt" placeholder="Search..." @input="emitFilter"  class="fas fa-search">
             </label>
-       
+            
             <div class="flex filter-read">
                 <label class="containerChack">All<input type="radio" v-model="filterObj.filterByRead" @change="emitFilter"  class="all" value="all"><span class="checkmark" checked="checked"></span></label>
                 <label class="containerChack" >Read<input type="radio" v-model="filterObj.filterByRead" @change="emitFilter"  class="read" value="read"><span class="checkmark"></span></label>
                 <label class="containerChack">Unread<input type="radio" v-model="filterObj.filterByRead" @change="emitFilter"  class="unread" value="unread"><span class="checkmark"></span></label>
+              
             </div>
         </div>
             <!-- <button >Apply Filter</button> -->

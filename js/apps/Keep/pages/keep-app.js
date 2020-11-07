@@ -9,12 +9,11 @@ export default {
     name: 'keep-app',
     template: `
     <section class="keep-app">
-       <h1 class="keep-app-title">MissKeep</h1>
-           
-            <keep-filter  @filtered="setFilter"></keep-filter>
-
+        <h1 class="keep-app-title">MissKeep</h1>
+        <section class="keep-add-filter">
             <keep-add></keep-add>
-
+            <keep-filter  @filtered="setFilter"></keep-filter>
+</section>
 
             <keep-list :notes="notesToShow" 
             @colorChange="changeColorBgC" 
