@@ -11,7 +11,7 @@ export default {
     template: `
     <section class='book-app'>
     
-        <!-- <img class="main-img flex" src="../assets/books.png"/> -->
+       
         <book-filter @filtered="setFilter"></book-filter>
         <h2 class="book-main-title">Miss Books</h2>
         <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook"></book-list>

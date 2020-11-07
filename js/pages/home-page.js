@@ -14,6 +14,7 @@ export default {
                        <h2 class="home-page-title">Miss Books</h2>
                             <router-link to="/book" exact>
                                 <img src="./js/asset/img/book-1.jpeg"/>
+                                
                             </router-link> 
                     </div>
                    

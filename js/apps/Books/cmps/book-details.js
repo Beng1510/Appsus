@@ -3,10 +3,10 @@ import { bookService } from '../services/book-service.js'
 // import reviewAdd from './review-add.js'
 
 export default {
-    // props: ['book'],
+    
     template: `
       
-        <!-- <section class="book-details" v-bind:class="PriceClass"> -->
+      
         <section v-if="book" class="book-details flex">
           
                 <div class="details-main flex">
@@ -19,7 +19,7 @@ export default {
                 <div class="book-details-container flex column">
                     <button class="back-btn" @click="emitBack()">BACK</button>
 
-                    <!-- <p><span class="title-style">Id:</span> {{book.id}}</p> -->
+                  
                     <h2>"{{book.title}}"</h2>
                     <p><span class="title-style"></span>{{book.subtitle}}</p>
                     <p><span class="title-style">Author:</span> {{...book.authors}}</p>
@@ -30,8 +30,7 @@ export default {
                     <p>{{textVolume}}</p>
                     <p>{{publishedAt}}</p>
                     <h3> {{bookOnSale}}</h3>
-                    <!-- <img class="sale-img" :src="saleImgUrl"/> -->
-                         <!-- <long-text :txt="book.description"></long-text> -->
+                   
 <div class="book-btn-container">
     <button class="prev-btn" @click="changeBook(-1)">PREV</button>
                     <button class="next-btn" @click="changeBook(+1)">NEXT</button>
@@ -39,7 +38,7 @@ export default {
                 </div>  
             </div>
 
-            <!-- <review-add :book="book"></review-add> -->
+          
         </section>
     `,
     data() {
