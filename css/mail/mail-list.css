@@ -110,6 +110,12 @@
     }
 }
 
+@media(max-width: 670px){
+ 
+    .list ul{
+        padding-left: 0;
+    }
+}
 @media(max-width: 610px){
     .mail-preview {
         width: 550px;
