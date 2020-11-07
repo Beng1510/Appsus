@@ -48,6 +48,9 @@
     padding-left: 20px;
     font-size: 22px;
 }
+.itemuser{
+    font-size: 14px;
+}
 
 .longTxt {
     width: 300px;
@@ -108,6 +111,9 @@
         height: 60PX;
         width: 550px;
     }
+    .longTxt {
+        font-size: 13px;
+    }
 }
 
 @media(max-width: 670px){
@@ -123,12 +129,27 @@
     .list ul{
         padding-left: 0;
     }
+    .itemsub{
+        padding-left: 0;
+        font-size: 20px;
+    }
+    .delIcon{
+     padding: 0;
+     margin-right: 0;
+    }
 }
 
 @media(max-width: 550px){
     .mail-preview {
         width: 465px;
         
+    }
+    
+}
+
+@media(max-width: 450px){
+    .mail-preview {
+        width: 370px;
     }
     
 }
