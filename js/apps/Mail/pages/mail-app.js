@@ -54,8 +54,9 @@ export const mailApp = {
         cansleAdd() {
             this.addingMail = !this.addingMail
         },
-        inboxMailsToShow(mailType) {
-            this.inboxToShow = mailType;
+        inboxMailsToShow(mailType){  
+            this.inboxToShow = mailType ;
+            
         },
     },
     computed: {
