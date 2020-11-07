@@ -1,5 +1,6 @@
 @import './keep/keep-main.css';
 @import './mail/mail-main.css';
+@import './books/books-main.css';
 @import '/css/main-header.css';
 @import '/css/home-page.css';
 @import '/css/helpers.css';
@@ -7,7 +8,7 @@
 @import '/css/user-msg.css';
 @import '/css/long-text.css';
 @import '/css/main-footer.css';
-@import './books/books-main.css'
+@import './about-us.css';
 
 
 

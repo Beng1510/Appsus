@@ -11,16 +11,16 @@ export default {
             <input type="number" v-model.number="filterBy.fromPrice" placeholder="Enter from price"  />
             <input type="number" v-model.number="filterBy.toPrice" placeholder="Enter to price" /> -->
             <input type="text" v-model="filterBy.byName" placeholder="Search By " @input="emitFilter" />
-            <input type="number" v-model.number="filterBy.fromPrice" placeholder="Enter from price" @input="emitFilter" />
-            <input type="number" v-model.number="filterBy.toPrice" placeholder="Enter to price" @input="emitFilter" />
+            <input type="number" v-model.number="filterBy.fromPrice" placeholder="From Price" @input="emitFilter" />
+            <input type="number" v-model.number="filterBy.toPrice" placeholder="To Price" @input="emitFilter" />
 </form>
-            <hr />
+           
           
         </section>
     `,
     data() {
         return {
-            filterBy: { byName: '', fromPrice: 0, toPrice: Infinity }
+            filterBy: { byName: '', fromPrice: 0, toPrice: 2000 }
         }
     },
     methods: {

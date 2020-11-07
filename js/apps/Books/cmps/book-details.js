@@ -93,23 +93,14 @@ export default {
             this.hideText = true;
         }
     },
-    components: {
-        // reviewAdd
-    },
     watch: {
         '$route.params.bookId'() {
             bookService.getBookById(this.$route.params.bookId)
                 .then(book => this.book = book)
         }
     },
-    mounted() {
-        console.log('IN MOUNTED');
-    },
     created() {
-        console.log('book details created');
         const id = this.$route.params.bookId
-        console.log('id', id);
-
         bookService.getBookById(id)
             .then(book => this.book = book)
     }

@@ -1,5 +1,5 @@
 import homePage from './pages/home-page.js'
-// import aboutUs from '../pages/about-us.js'
+import aboutUs from './pages/about-us.js'
 import { mailApp , inboxMail} from './apps/Mail/pages/mail-app.js'
 import { composeMail } from './apps/Mail/cmps/compose-mail.cmps.js'
 import mailDeatail from './apps/Mail/pages/mail-detail.js'
@@ -17,10 +17,10 @@ const myRoutes = [
         path: '/',
         component: homePage
     },
-    // {
-    //     path: '/about',
-    //     component: aboutUs
-    // },
+    {
+        path: '/about',
+        component: aboutUs
+    },
     
    
     {
