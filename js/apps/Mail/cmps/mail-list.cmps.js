@@ -7,14 +7,17 @@ export default {
     props: ['mails'],
     template: `
     <section class="mail-list">
-        <ul>
-        <li v-for="mail in mails" :key="mail.id"  >
-            <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead ,mailUnRead: !mail.isRead ,mailActiv: mail.isActiv }"  @delete="deleteMail" @activ="activMail"/>
-        </li>
-        
-        <!-- <mail-status  :mail="mail"/> -->
-        </ul>
-    </section>
+
+        <div class="list">
+            <ul>
+                <li v-for="mail in mails" :key="mail.id"  >
+                    <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead ,mailUnRead: !mail.isRead ,mailActiv: mail.isActiv }"  @delete="deleteMail" @activ="activMail"/>
+                </li>
+                
+            </ul>
+        </div>
+              
+        </section>
     `,
     data() {
         return {

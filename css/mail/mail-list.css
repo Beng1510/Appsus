@@ -2,6 +2,7 @@
 
 
 
+
 /*list*/
 
 .mail-list{
@@ -19,6 +20,8 @@ list-style: none;
 
 
 
+
+
 /* Preview*/
 
 .mail-preview{
@@ -26,16 +29,16 @@ list-style: none;
     align-items: center;
     justify-content: space-between;
     width: 750px;
-    border: 2px solid rgb(224, 220, 220);
+    border: 3px solid rgb(155, 146, 146);
     margin-bottom: 2.5px;
     transition: 0.2s;
+    
     
 }
 
 .mail-preview:hover{
     transform: scale(1.02);
 }
-
 .itemsub{
     padding-left: 10px;
 }
@@ -44,12 +47,14 @@ list-style: none;
     height: 30px;
 }
 
-.checked{
-    color: orange;
+.starActiv{
+    color: rgb(216, 203, 20);
+    font-size: 22px;
 }
 
-.fas .fa-trash-alt{
+.delIcon{
     padding-left: 20px;
+    font-size: 22px;
 }
 .longTxt{
     width: 300px;
@@ -57,7 +62,7 @@ list-style: none;
 
 
 .mailRead{
-    background-color: rgb(177, 174, 174);
+    background-color: rgb(233, 230, 230);
 }
 .mailActiv{
     border: 5px solid rgb(3, 3, 0);
@@ -68,7 +73,7 @@ list-style: none;
 
 
 .mailUnRead{
-    background-color: honeydew;
+    background-color: rgba(rgb(241, 204, 204), rgb(242, 250, 171), rgb(143, 143, 229), 0.01);
 }
 
 

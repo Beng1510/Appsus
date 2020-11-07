@@ -8,29 +8,36 @@ export default {
     template: `
     <section class="mail-preview " >
          
-
-         
-            <h2 class="itemsub">{{mail.subject}}</h2>
-            <p class="itemuser">{{mail.user}}</p>
-            
-            <p class="longTxt" >{{textForPreview}}</p>
-            <p class="longdate">{{mail.sentAt}}</p> 
-            <span class="far fa-star " @click.stop="emitActiv(mail.id)">
-            </span>
-
-                <!-- <input class="longcheck" type="checkbox"  @click.stop="emitActiv(mail.id)" />  -->
+   
+        
+        <h2 class="itemsub">{{mail.subject}}</h2>
+        <p class="itemuser">{{mail.user}}</p>
+        
+        <p class="longTxt" >{{textForPreview}}</p>
+        <p class="longdate">{{mail.sentAt}}</p> 
+        
+        
+        
+        <!-- <input class="longcheck" type="checkbox"  @click.stop="emitActiv(mail.id)" />  -->
+        <div class="starActiv" >
+            <span class="far fa-star " @click.stop="emitActiv(mail.id)">  </span>
+        </div>   
+        
+        <div class="delIcon" >
             <span  class="fas fa-trash-alt" @click.stop="emitDelete(mail.id)"> </span>
-
-            <!-- <button  @click.stop="emitDelete(mail.id)" class="itemgar"> -->
-                <!-- <img src="/js/asset/icons/delete.png" > -->
-
+        </div> 
+        <!-- <button  @click.stop="emitDelete(mail.id)" class="itemgar"> -->
+            <!-- <img src="/js/asset/icons/delete.png" > -->
+            
             <!-- </button> -->
             
+        
      </section>
     `,
     dtat(){
         return{
             hideText: true,
+            
         }
     },
     methods:{

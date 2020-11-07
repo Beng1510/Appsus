@@ -8,16 +8,19 @@ export const mailApp = {
     <section class="Mail-app ">
        <h1>Mail Page</h1>
       
-       <nav>
-           <router-link to="/mail/inbox">Mark Inbox</router-link> | 
-           <router-link to="/mail/newmail">New Mail +</router-link>
-        </nav>
-        
+       <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
 
-        
-        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
+        <div class="card ">
+         <nav class="flex "> 
+            <router-link to="/mail/newmail" tag="button" class="compose-btn"></router-link>
+            <router-link to="/mail/sent" tag="button">Mark Inbox</router-link>  
+            <router-link to="/mail/dele" tag="button">Mark Inbox</router-link>  
+            <router-link to="/mail/active" tag="button">Mark Inbox</router-link>  
+        </nav>
         <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
- 
+    </div>
+        
+    
         <router-view @canceled="cansleAdd"  ></router-view> 
     </section>
 `, data() {
@@ -34,7 +37,7 @@ export const mailApp = {
     components: {
         mailList,
         mailFilter,
-        
+
     },
     methods: {
         selectmail(mailId) {
@@ -60,41 +63,35 @@ export const mailApp = {
             console.log('this.filterObj:', this.filterObj)
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
-           
+
 
             return this.mails.filter(mail => {
+                console.log('mail:', mail)
                 let currFilter = this.filterObj.filterByRead;
-                 console.log('currFilter:', currFilter)
-                 mail.subject.toLowerCase().includes(txt)
-                    if (currFilter === 'all') {
-                        currFilter = mail.isRead
-                    }
-                    else if (currFilter === 'read') {
-                        currFilter = true
-                    } else currFilter = false;
-                    return mail.subject.toLowerCase().includes(txt) ||
-                    mail.body.toLowerCase().includes(txt) &&
+
+                if (currFilter === 'all') {
+                    currFilter = mail.isRead
+                    console.log('currFilter:', currFilter)
+                }
+                else if (currFilter === 'read') {
+                    currFilter = true
+                } else currFilter = false;
+                return (mail.subject.toLowerCase().includes(txt) ||
+                    mail.body.toLowerCase().includes(txt) ) &&
                     mail.isRead === currFilter
-                })
+            })
 
-            // return this.mails.filter(mail => {
-                // return mail.subject.toLowerCase().includes(txt)
-
-            // let currFilter = this.filterObj.filterByRead;
-            // console.log('currFilter:', currFilter)
-            
-
-            },
+        },
     }
-    }
+}
 
 
-    
+
 
 
 export const inboxMail = {
-        name: 'inbox',
-        template: `
+    name: 'inbox',
+    template: `
     <section>
         <h2>Our team is Awesome</h2>
         <p>
@@ -102,7 +99,7 @@ export const inboxMail = {
         </p>
     </section>
     `
-    }
+}
 
 
 // export const opneMail = {

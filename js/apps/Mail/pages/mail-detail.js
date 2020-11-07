@@ -11,7 +11,7 @@ export default {
             <header class="head-mail">
             <h2>Send by: {{mail.user}}</h2>
             <h3>subject: {{mail.subject}} </h3>
-            <h4 class="date">At:  {{mail.sentAt}}</h4>
+            <h4 class="date">At:{{mail.sentAt}}</h4>
             </header>
 
             <main class="main-mail">
@@ -23,7 +23,7 @@ export default {
                     <img src="/js/asset/icons/delete.png" >
                 </button>
                 <button @click="returnBack">
-                    Return
+                    Back
                 </button>
             </footer>
 

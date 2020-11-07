@@ -3,6 +3,7 @@
 @import './mail-detail.css';
 @import './user-msg.css';
 @import './add-mail.css';
+@import './nav-mail.css';
 
 * {
     box-sizing: border-box;
@@ -18,4 +19,9 @@ html {
 body {
     /* margin: 0; */
     /* background-color: rgb(192, 223, 250); */
+}
+
+
+.card{
+    display: flex;
 }
