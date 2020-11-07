@@ -64,8 +64,8 @@ export default {
             console.log(this.notes);
             keepService.pinNote(noteId, pinInfo)
         },
-        strikeToDo(todoId, idx) {
-            keepService.strikingToDo(todoId, idx)
+        strikeToDo(noteId, idx) {
+            keepService.strikingToDo(noteId, idx)
         },
         emitMsg() {
             eventBus.$emit('show-msg', { txt: 'Deleted', type: 'Success' })

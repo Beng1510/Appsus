@@ -9,7 +9,12 @@ export default {
                     <h3>{{info.title}}</h3>
                          
                         <div class="todo" v-for="(todos,idx) in info.todos">
-                            <p ref="theTodo" :class="strikeClass" @click="toggleCompleted(todos, idx)" >*{{todos.txt}}</p>
+                            <!-- <p ref="theTodo" :class="strikeClass" @click="toggleCompleted(todos, idx)" > -->
+                            <p ref="theTodo"  @click="toggleCompleted(todos, idx)" >
+                                <span v-if="todos.isDone" class="fas fa-check-circle done-todo"></span>
+                                <span v-if="!todos.isDone" class="far fa-circle undone-todo"></span>
+                                {{todos.txt}}
+                            </p>
                         </div>
                 </div>
             </div>
@@ -78,11 +83,14 @@ methods: {
     colorEdit() {
         this.isColorEdit = !this.isColorEdit;
     },
-    toggleCompleted(note, idx) {
+    toggleCompleted(todos, idx) {
         this.isComplete = !this.isComplete
         console.log('idx',idx);
-        console.log('note',note);
-        // this.$emit('strike', Date.now(), this.id)  
+        // console.log('note',note);
+        console.log('todos',todos);
+        // console.log('note id',note.id);
+        console.log('this id',this.id);
+        this.$emit('toDoDone', this.id, idx)  
     }
 },
 computed: {

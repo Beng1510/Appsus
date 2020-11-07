@@ -9,7 +9,8 @@ export const keepService = {
     changeBgColor,
     updateNote,
     pinNote,
-    convertYouTube
+    convertYouTube,
+    strikingToDo
 
 }
 
@@ -63,7 +64,8 @@ function changeBgColor(color, id) {
 
 
 function findNoteById(noteId) {
-    return gNotes.find(note => note.id === noteId);
+    const note = gNotes.find(note => note.id === noteId);
+        return Promise.resolve(note)
 }
 
 
@@ -78,7 +80,7 @@ function createDefaultNotes() {
                 title: '\"Toto, I\'ve a feeling we\'re not in Kansas anymore\"'
             },
             style: {
-                backgroundColor: "#EDDCD2"
+                backgroundColor: "#0077B6"
             }
         },
         {
@@ -88,7 +90,7 @@ function createDefaultNotes() {
                 title: '\"No matter what anybody tells you, words and ideas can change the world\"'
             },
             style: {
-                backgroundColor: "#EDDCD2"
+                backgroundColor: "#0077B6"
             }
         },
         {
@@ -99,7 +101,7 @@ function createDefaultNotes() {
                 title: "Photography is not Dead"
             },
             style: {
-                backgroundColor: "#BCD4E6"
+                backgroundColor: "#00B4D8"
             }
         },
         {
@@ -108,24 +110,24 @@ function createDefaultNotes() {
             info: {
                 title: "What to Do:",
                 todos: [
-                    { id: utilsService.makeId(3), txt: "Code", doneAt: null },
-                    { id: utilsService.makeId(3), txt: "Code Some More", doneAt: 187111111 },
-                    { id: utilsService.makeId(3), txt: "And a Bit More", doneAt: 187111111 }
+                    { id: utilsService.makeId(5), txt: "Code", isDone: false },
+                    { id: utilsService.makeId(5), txt: "Code Some More", isDone: false },
+                    { id: utilsService.makeId(5), txt: "And a Bit More",isDone: false }
                 ]
             },
             style: {
-                backgroundColor: "#FAD2E1"
+                backgroundColor: "#90E0EF"
             }
         },
         {
             type: "noteImg",
-            isPinned: false,
+            isPinned: true,
             info: {
                 url: "https://picsum.photos/180/120?random=1",
                 title: "Through the Looking Glass"
             },
             style: {
-                backgroundColor: "#BCD4E6"
+                backgroundColor: "#00B4D8"
             }
         },
         {
@@ -136,7 +138,7 @@ function createDefaultNotes() {
                 title: "Enter the Matrix"
             },
             style: {
-                backgroundColor: "#BCD4E6"
+                backgroundColor: "#CAF0F8"
             }
         },
     ].map(formatNotes);
@@ -166,31 +168,43 @@ function formatNotes(rawNotes) {
 
 
 function updateNote(noteId, info, type) {
-    const note = findNoteById(noteId);
-    if (type === 'noteText') {
-        note.info.title = info;
-    } else if (type === 'noteImg') {
-        note.info.url = info;
-    } else if (type === 'noteVideo') {
-        note.info.url = info;
-    } else if (type === 'noteTodos') {
-        note.info.todos = info
-    }
+    // const note = findNoteById(noteId);
+    findNoteById(noteId)
+    .then(note => {
+
+        if (type === 'noteText') {
+            note.info.title = info;
+        } else if (type === 'noteImg') {
+            note.info.url = info;
+        } else if (type === 'noteVideo') {
+            note.info.url = info;
+        } else if (type === 'noteTodos') {
+            note.info.todos = info
+        }
+    })
     utilsService.storeToStorage(NOTES_DB, gNotes)
 }
-function strikingToDo(date, id) {
-const note = findNoteById(noteId)
-const toDo = findToDoById()
+
+function strikingToDo(noteId, idx) {
+    const note = findNoteById(noteId)
+    .then(note => {
+        note.info.todos[idx].isDone = !note.info.todos[idx].isDone
+    })
+    // note.info.todos[idx].style.text-decoration'line-through'
+
 }
 
-function findToDoById(noteId) {
-    return gNotes.find(note => note.id === noteId);
-}
+// function findToDoById(noteId) {
+//     const note = gNotes.find(note => note.id === noteId);
+//     return Promise.resolve(note)
+// }
 
 
 function pinNote(noteId, pinInfo) {
-    const note = findNoteById(noteId);
-    note.isPinned = pinInfo
+    const note = findNoteById(noteId)
+    .then(note => {
+        note.isPinned = pinInfo
+    })
     console.log('note.isPinned', note.isPinned);
     utilsService.storeToStorage(NOTES_DB, gNotes)
 }

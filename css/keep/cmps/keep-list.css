@@ -8,14 +8,18 @@
     padding: 10px 15px;
     display: flex;
     flex-wrap: wrap;
-    column-count: 4;
+    /* column-count: 4; */
+}
+.keep-list ul.keep-list-pinned {
+margin-bottom: 20px;   
+padding-top: 0;
 }
 
 .keep-list ul li {
     display: inline-block;
     /* background-color: #89B0AE; */
     padding: 10px;
-    margin: 10px 10px 10px 0;
+    margin: 10px auto;
     /* width: 200px; */
     /* height: 230px; */
     border-radius: 15px;
@@ -25,6 +29,7 @@
     width: 250px;
     min-height: 200px;
     font-family: Schoolbell;
+    font-size: 18px;
 }
 
 .pinned-notes-title {
@@ -48,4 +53,15 @@ span .paperclip-title {
     cursor: pointer;
     border-radius: 50%;
     border: 1px solid #eee;
+}
+
+
+@media (max-width: 360px) {
+
+    .keep-list ul li{
+        /* margin: 0 auto; */
+
+    }
+
+
 }

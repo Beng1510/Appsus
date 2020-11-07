@@ -1,4 +1,5 @@
 import noteColors from './note-colors.cmps.js'
+import longText from '../../../cmps/long-text.cmps.js'
 
 export default {
     props: ['info', 'id', 'isPinned'],
@@ -7,7 +8,8 @@ export default {
            
 <div>
             <div class="note-text-content">
-                <p class="note-text-title">{{info.title}}</p>
+            <long-text :txt="info.title" />
+                <!-- <p class="note-text-title">{{info.title}}</p> -->
                 <!-- <p class="note-text-title">{{isPinned}}</p> -->
             </div>
             <span @click="toggleControls" class="fas fa-font fa-lg text-controls"></span>
@@ -78,7 +80,8 @@ export default {
         }
     },
     components: {
-        noteColors
+        noteColors,
+        longText
     },
 
 

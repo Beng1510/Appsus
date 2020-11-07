@@ -85,9 +85,9 @@ export default {
         changeColor(color, id) {
             this.$emit('colorChange', color, id)
         },
-        strikeToDo(todoId, idx) {
-            console.log('date',date,'id',id);
-            this.$emit('strike', todoId, idx)
+        strikeToDo(noteId, idx) {
+            console.log('noteId',noteId,'idx',idx);
+            this.$emit('strike', noteId, idx)
         }
     },
     components: {
