@@ -13,9 +13,9 @@ export const mailApp = {
         <div class="card ">
          <nav class=""> 
             <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
-            <router-link to="/mail/mark" ><button class="">Mark mails</button></router-link>  
-            <router-link to="/mail/sent" ><button class="">Mark Inbox</button></router-link>  
-            <router-link to="/mail/dele" ><button class="">Mark Inbox</button></router-link>  
+            <router-link to="/mail/mark" ><button class="">Marked</button></router-link>  
+            <router-link to="/mail/sent" ><button class="">Sent</button></router-link>  
+            <router-link to="/mail/dele" ><button class="">Deleted</button></router-link>  
         </nav>
 
         <mail-list   @mailClick="selectmail" :mails="mailsToShow" />

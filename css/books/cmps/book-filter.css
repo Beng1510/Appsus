@@ -1,0 +1,15 @@
+.book-filter {
+    background-color: #89B0AE;
+    width: 700px;
+    margin: 0 auto;
+    border-radius: 15px;
+    
+    /* text-align: center; */
+}
+.book-filter-title {
+    text-align: center;
+}
+
+.book-filter-form {
+    text-align: center;
+}

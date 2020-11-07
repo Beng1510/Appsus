@@ -1,0 +1,63 @@
+.book-details {
+    background-image: url('/js/asset/img/background2.jpeg');
+    background-position: center;
+   border: 2px solid white;
+    /* width: 900px; */
+    /* text-align: center; */
+    height: 400px;
+    margin: 0 auto;
+    font-size: 18px;
+    /* font-weight: bold; */
+    margin: 0 auto;
+    font-family: Caveat;
+    font-weight: lighter;
+}
+
+.book-details-container {
+    margin-left: 10px;
+}
+
+.book-details-container >* {
+    margin: 0;
+    height: 400px;
+}
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.back-btn {
+    width: 100px;
+    border-radius: 15px;
+}
+
+.title-style {
+    font-weight: bold;
+}
+.sale-img {
+    width: 200px;
+    height: 130px;
+    position: absolute;
+    right: 20px;
+    bottom: 350px;
+}
+button.back-btn {
+    border: none;
+    font-family: Caveat;
+    width: 50px;
+}
+button.next-btn {
+    border: none;
+    font-family: Caveat;
+    width: 100px;
+    border-radius: 15px;
+}
+button.prev-btn {
+    border: none;
+    font-family: Caveat;
+    width: 100px;
+    border-radius: 15px;
+}
