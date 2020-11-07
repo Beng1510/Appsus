@@ -9,7 +9,7 @@ export default {
             <section class="about-page-container flex"> 
                 
             <div class="about-page-img-container flex column">        
-                    <img class="about-page-img" src="./js/asset/img/appsus.jpeg">
+                    <img class="about-page-img" src="js/asset/img/appsus.jpeg">
                 </div>
 
                 <div class="about-page-text-container flex column">
