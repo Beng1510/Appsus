@@ -1,9 +1,11 @@
-// import { eventBus } from "../service/event-bus.js"
+// import { eventBus } from '../services/event-bus.js'
+
+
 
 // export default {
 //     template: `
-//         <section class="user-msg" v-if="msg" :class="msgClass">
-//             <h2>{{msg.type}} <button @click="msg=null">❌</button></h2>
+//         <section class="user-note-msg" v-if="msg" :class="msgClass">
+//             <h2>{{msg.type}} <span class="fas fa-window-close" @click="msg=null" ></span></h2>
 //             <p>{{msg.txt}}</p>
 
 //         </section>
@@ -19,7 +21,7 @@
 //         }
 //     },
 //     created() {
-//         eventBus.$on('show-msg', msg => {
+//         eventBus.$on('show-note-msg', msg => {
 //             this.msg = msg
 //             setTimeout(() => {
 //                 this.msg = null;

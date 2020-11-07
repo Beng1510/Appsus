@@ -1,0 +1,20 @@
+
+export default {
+    template: `
+    <section class="main-footer">
+        <footer class=footer-container>
+                <p class="footer-text"> All Rights Reserved 2020 - Dor Grossman & Ben Graham </p>
+        </footer>
+   
+
+    </section>
+    `,
+    methods: {
+
+    },
+
+    created() {
+        console.log('footer created');
+    },
+
+}

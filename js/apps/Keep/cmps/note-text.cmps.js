@@ -1,35 +1,38 @@
 import noteColors from './note-colors.cmps.js'
+import longText from '../../../cmps/long-text.cmps.js'
 
 export default {
-    props: ['info', 'id'],
+    props: ['info', 'id', 'isPinned'],
     template: `
         <section  class="note-text-container">
            
-
+<div>
             <div class="note-text-content">
-                <p class="note-text-title">{{info.title}}</p>
+            <long-text :txt="info.title" />
+                <!-- <p class="note-text-title">{{info.title}}</p> -->
+                <!-- <p class="note-text-title">{{isPinned}}</p> -->
             </div>
             <span @click="toggleControls" class="fas fa-font fa-lg text-controls"></span>
 
             <div v-if="isControlsShown" class="note-control-panel"> 
 
-            
-                    <!-- <button @click="editNote">?</button> -->
-                    <!-- <button @click="onRemoveNote()">xx</button> -->
-                    
-                    <span @click="emitPinNote" class="fas fa-thumbtack"></span>
-                    <span @click="editNote" class="fas fa-edit"></span>
-                    <span @click="onRemoveNote" class="fas fa-trash-alt"></span>
-                    <span @click="colorEdit" class="fas fa-palette info colors dropdown"></span>
-                    <note-colors v-if="isColorEdit" @colorChange="changeBColor"></note-colors>
-                    
-                    <section v-if="isEdit" class="edit-note">
-                        <input v-model="newText"  type="text" placeholder="Edit Title"/>
-                            <div> 
-                                <button @click="updateNote">Update</button>
-                                <button @click="editNote">Cancel</button>
-                            </div>
-                    </section>
+                <!-- <button @click="editNote">?</button> -->
+                <!-- <button @click="onRemoveNote()">xx</button> -->
+                
+                <span @click.stop="emitPinNote" class="fas fa-thumbtack"></span>
+                <span @click="editNote" class="fas fa-edit"></span>
+                <span @click="onRemoveNote" class="fas fa-trash-alt"></span>
+                <span @click="colorEdit" class="fas fa-palette info colors dropdown"></span>
+                <note-colors v-if="isColorEdit" @colorChange="changeBColor"></note-colors>
+                
+                <section v-if="isEdit" class="edit-note">
+                    <input v-model="newText"  type="text" placeholder="Edit Title"/>
+                    <div> 
+                        <button @click="updateNote">Update</button>
+                        <button @click="editNote">Cancel</button>
+                    </div>
+                </section>
+            </div>       
             </div>
 
         </section>
@@ -40,19 +43,20 @@ export default {
             isColorEdit: false,
             newText: this.info.txt,
             isControlsShown: false,
+            pinned: this.isPinned
            
             
-            // placeholder: 'What\'s on your mind...',
+        
             
 
         }
     },
     methods: {
         emitPinNote() {
-            console.log('noteid pinned',this.id);
-            
-            this.isPinned = !this.isPinned;
-            this.$emit('pinned', this.id, this.isPinned)
+            console.log('this.isPinned before',this.isPinned);
+            console.log('this.isPinned after',this.isPinned);
+            this.pinned = !this.pinned;
+            this.$emit('pinned', this.id, this.pinned)
         },
         changeBColor(color) {
             console.log('color:', color, 'this.id', this.id);
@@ -76,7 +80,8 @@ export default {
         }
     },
     components: {
-        noteColors
+        noteColors,
+        longText
     },
 
 

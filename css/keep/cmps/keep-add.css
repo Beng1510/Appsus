@@ -2,6 +2,7 @@
     width: 500px;
     height: 50px;
 } */
+
 .keep-add {
     margin: 0 auto;
     padding: 15px;
@@ -13,21 +14,19 @@
     display: inline;
     margin-bottom: 20px;
 }
-.keep-add-inputs {
-width: 1000px;
-background-color: white;
-border-radius: 10px;
-margin-top: 20px;
 
+.keep-add-inputs {
+    width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 input[type="radio"] {
     display: none;
 }
 
-input.user-info,
-input.add-title,
-input.add-lable {
+input.user-info, input.add-title, input.add-lable {
     width: 350px;
     height: 50px;
     border: none;
@@ -38,11 +37,54 @@ input.add-lable {
 }
 
 .keep-icons {
-    margin-top: 10px;
     display: inline;
     margin: 0 10px 0 30px;
 }
+
 .keep-icons span {
     margin: 0 10px 0 10px;
 }
 
+@media (max-width: 1050px) {
+    .keep-add-inputs {
+        width: 600px;
+    }
+    input.user-info, input.add-title, input.add-lable {
+        width: 150px;
+    }
+}
+
+@media (max-width: 700px) {
+    .keep-add-inputs {
+        width: 400px;
+    }
+    input.user-info, input.add-title, input.add-lable {
+        width: 100px;
+    }
+}
+
+@media (max-width: 450px) {
+    .keep-add {
+        padding: 0;
+    }
+    .keep-add-inputs {
+        width: 280px;
+        padding: 0;
+        margin: 15px auto;
+    }
+    input.user-info, input.add-title, input.add-lable {
+        width: 80px;
+    }
+    .keep-add-title {
+        text-align: center;
+        display: block
+    }
+    .keep-icons {
+        text-align: center;
+        display: block;
+        margin: 10px 0 0 0;
+    }
+    .keep-icons span {
+        margin: 10px 10px 0 0px;
+    }
+}

@@ -19,3 +19,18 @@
     display: inline;
     font-family: Kaushan;
 }
+
+@media (max-width: 450px) {
+   
+    .keep-filter-search-container {
+        width: 280px;
+        margin: 10px auto 10px auto;
+    }
+    .keep-filter-input {
+        width: 250px;
+    }
+    .keep-filter {
+        margin: 0 auto;
+        padding: 0;
+    }
+}

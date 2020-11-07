@@ -5,10 +5,18 @@
 }
 
 .note-img img {
-    width: 100px;
+    /* width: 100px; */
 }
 
 .image-controls {
     display: flex;
     align-items: start;
 }
+
+.image-controls {
+    margin-bottom: 15px;
+}
+
+.note-colors {
+    margin-top: 10px;
+} 

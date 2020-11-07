@@ -15,6 +15,7 @@ list-style: none;
 
 .mail-list span{
     width: 30px;
+    /* color: red; */
 }
 
 
@@ -90,4 +91,7 @@ list-style: none;
 }
 
 
-
+/* .star-icon {
+    color: red;
+    font-size: 24px;
+} */
