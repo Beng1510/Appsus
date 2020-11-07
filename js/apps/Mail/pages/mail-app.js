@@ -11,17 +11,21 @@ export const mailApp = {
        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
 
         <div class="card ">
-         <nav class="flex "> 
-            <router-link to="/mail/newmail" tag="button" class="compose-btn"></router-link>
-            <router-link to="/mail/sent" tag="button">Mark Inbox</router-link>  
-            <router-link to="/mail/dele" tag="button">Mark Inbox</router-link>  
-            <router-link to="/mail/active" tag="button">Mark Inbox</router-link>  
+         <nav class=""> 
+            <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
+            <router-link to="/mail/mark" ><button class="">Mark mails</button></router-link>  
+            <router-link to="/mail/sent" ><button class="">Mark Inbox</button></router-link>  
+            <router-link to="/mail/dele" ><button class="">Mark Inbox</button></router-link>  
         </nav>
+
         <mail-list   @mailClick="selectmail" :mails="mailsToShow" />
+
     </div>
+
+    
+    <router-view @canceled="cansleAdd"  ></router-view> 
         
     
-        <router-view @canceled="cansleAdd"  ></router-view> 
     </section>
 `, data() {
         return {

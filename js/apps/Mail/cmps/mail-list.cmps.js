@@ -13,11 +13,10 @@ export default {
                 <li v-for="mail in mails" :key="mail.id"  >
                     <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead ,mailUnRead: !mail.isRead ,mailActiv: mail.isActiv }"  @delete="deleteMail" @activ="activMail"/>
                 </li>
-                
             </ul>
         </div>
               
-        </section>
+    </section>
     `,
     data() {
         return {

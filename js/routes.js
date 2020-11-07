@@ -4,6 +4,10 @@ import { mailApp , inboxMail} from './apps/Mail/pages/mail-app.js'
 import { composeMail } from './apps/Mail/cmps/compose-mail.cmps.js'
 import mailDeatail from './apps/Mail/pages/mail-detail.js'
 import keepApp from './apps/Keep/pages/keep-app.js'
+import {mailMark} from './apps/Mail/cmps/mail-mark.cmps.js'
+
+
+
 
 
 const myRoutes = [
@@ -15,32 +19,26 @@ const myRoutes = [
     //     path: '/about',
     //     component: aboutUs
     // },
-    // {
-    //     path: '/newmail',
-    //     component: composeMail
-    // },
-    // { 
-    //     path: '/mail/:mail',
-    //     component: mailDeatail
-    // },
+    
+   
     {
         path: '/mail',
         component: mailApp,
         children: [
 
-            {
-                path: 'inbox',
-                component: inboxMail
-            },
+            // {
+            //     path: 'mark',
+            //     component: mailMark
+            // },
 
             // {
             //     path: 'STARRED',
             //     component: markMailBox
             // },
-            // {
-            //     path: ':mail',
-            //     component: mailDeatail
-            // },
+            {
+                path: 'mark',
+                component: mailMark
+            },
             {
                 path: 'newmail',
                 component: composeMail
@@ -52,6 +50,10 @@ const myRoutes = [
         path: '/mail/:mail',
         component: mailDeatail
     },
+    // {
+    //     path: '/mail/mark',
+    //     component: mailMark
+    // },
     {
         path: '/keep',
         component: keepApp

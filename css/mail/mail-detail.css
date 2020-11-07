@@ -111,3 +111,34 @@
     border-radius: 50%;
     background: white;
   }
+
+  .footer-mail{
+   justify-content: space-around 
+  }
+
+  .footer-mail .returnbtn{
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .footer-mail .inbox-icon{
+    height: 40px;
+    font-size: 38px;
+  }
+
+  .footer-mail .del-icon{
+    height: 40px;
+    font-size: 38px;
+    
+  }
+  .footer-mail .next-icon{
+    height: 40px;
+    font-size: 38px;
+    
+  }
+  .footer-mail .back-icon{
+    height: 40px;
+    font-size: 38px;
+    
+  }
+  

@@ -7,7 +7,6 @@ export const composeMail = {
     template: `
     <section>
         <form @submit="addMail" class="main-add">
-
             <h2 class="title-add"><button @click="cancelAdd">X</button>Compose Mail </h2>
             <label>
                 From:
@@ -25,7 +24,6 @@ export const composeMail = {
         </section>
         `,
 
-    
     data() {
         return {
             mail: null,
@@ -45,14 +43,7 @@ export const composeMail = {
             // this.mail = null;
             // this.$router.go(-1);
         }
-       
-
-       
-    }, 
-    components:{
-    //  composeMail,
-    },
-    
+    },  
     mounted() {
         this.$refs.nameInput.focus();
     },
