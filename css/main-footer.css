@@ -3,7 +3,7 @@
 .footer-container {
    
     background-color: #99C1DE;
-    background-image: url('./js/asset/img/background2.jpeg');
+    background-image: url('../js/asset/img/background2.jpeg');
     background-position: center;
     color: #ffffff;
     position: fixed;
