@@ -22,22 +22,17 @@ export const mailMark = {
 `,  
     data() {
         return {
-            // mails:null ,
+            
             mail: null,
         }
     },
-    methods: {
-      
-   
+    methods: { 
     },
    
     created(){
         console.log('marking');
         console.log('this.mails',this.mails);
         this.mails = mailService.markMails()
-        
-        
-
     }
 
 }

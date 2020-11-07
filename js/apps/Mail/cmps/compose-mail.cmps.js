@@ -19,7 +19,7 @@ export const composeMail = {
             </label>
             <textarea name="moreInfo" cols="50" rows="10" v-model:value="mail.body"></textarea>
             <a @click="addMail" class="far fa-paper-plane"></a>
-             <!-- <button type="button" @click="cancelAdd">Cancel</button> -->
+
         </form>
             
         </section>
@@ -34,16 +34,11 @@ export const composeMail = {
     methods: {
         addMail() {        
             mailService.addMail(this.mail)     
-            // this.$emit('newmail', this.mail)
-           
+            this.$router.push('/mail')
             console.log('hiiiii');
-            // this.mail = null;
         },
         cancelAdd(){
             this.$router.push('/mail')
-            // this.$emit('canceled')
-            // this.mail = null;
-            // this.$router.go(-1);
         }
     },  
     mounted() {

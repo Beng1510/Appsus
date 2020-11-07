@@ -46,9 +46,9 @@ export default {
             this.$emit('delete', id)
         },
         emitActiv(id){        
-            
             this.$emit('activ', id)
-        }
+        },
+      
     },
     computed:{
         textForPreview() {

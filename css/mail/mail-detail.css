@@ -1,7 +1,7 @@
 /*mail page*/
 
 .main-container {
-    width: 900px;
+    width: 800px;
     height: 600px;
     border: 2px solid rgb(49, 48, 48);
     border-radius: 5px;
@@ -29,10 +29,6 @@
     padding-bottom: 10px;
 }
 
-.footer-mail img {
-    width: 30px;
-    height: 30px;
-}
 
 .footer-mail{
   justify-content: space-around 
@@ -140,3 +136,46 @@
     border-radius: 50%;
     background: white;
   }
+
+  @media(max-width: 1100px){
+    .main-mail{
+      width:550px;
+      height: 350px;
+    }
+    .main-container{
+      width: 600px;
+      height: 500px;
+    }
+  }
+  @media(max-width: 750px){
+    .main-mail{
+      font-size: 16px;
+      width:350px;
+      height: 280px;
+      padding-bottom: 0;
+    }
+    
+    .main-container{
+      width: 400px;
+      height: 400px;
+    }
+    .head-mail{
+      font-size: 14px;
+    }
+    .head-mail h2{
+      font-size: 18px;
+    }
+    .mail-filter{
+      flex-direction: column;
+      /* justify-content: center; */
+    }
+    .mail-filter label{
+     padding: 20px;
+     height: 60px;
+    }
+    .mail-filter input{
+      height: 30px;
+    }
+  }
+
+ 

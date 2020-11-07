@@ -13,9 +13,8 @@ export const mailApp = {
        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
 
         <div class="card ">
-         <nav class="flex"> 
+         <nav class="flex "> 
              <div class="side-bar flex column">
-             
                  <router-link to="/mail/newmail"  ><button class="compose-btn"></button></router-link>
                  <router-view  ></router-view> 
                  <mail-nav @mailInboxFilter="inboxMailsToShow" :mails="mailsToShow"></mail-nav>
@@ -25,9 +24,6 @@ export const mailApp = {
         </nav>
         </div>
 
-    
-        
-    
     </section>
 `, data() {
         return {
@@ -61,11 +57,9 @@ export const mailApp = {
         cansleAdd() {
             this.addingMail = !this.addingMail
         },
-        inboxMailsToShow(mailType){
-            
-            
+        inboxMailsToShow(mailType){  
             this.inboxToShow = mailType ;
-            // console.log('this.inboxToShow:', this.inboxToShow)
+            
         },
 
 
@@ -75,19 +69,22 @@ export const mailApp = {
             // console.log('this.filterObj:', this.inboxToShow)
             // console.log('this.filterObj:', this.filterObj)
 
-            // let inboxMailsFilter = this.mails ;
-            // console.log('inboxMailsFilter:', inboxMailsFilter)
+            
+            let inboxMailsFilter = this.mails ;
+            console.log('inboxMailsFilter:', inboxMailsFilter)
 
-            // if(this.inboxToShow ==='inbox') {inboxMailsFilter = this.mails 
-            //      return inboxMailsFilter
-            //     };
-            // if(this.inboxToShow ==='mark'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isActiv)
-            //      return inboxMailsFilter
-            //     }
+            if(this.inboxToShow ==='inbox') {inboxMailsFilter = this.mails 
+                
+                 return inboxMailsFilter
+                };
+            if(this.inboxToShow ==='mark'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isActiv)
+               
+                 return inboxMailsFilter
+                }
               
-            // if(this.inboxToShow ==='sent'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isSent)
-            //      return inboxMailsFilter
-            //     }
+            if(this.inboxToShow ==='sent'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isSent)
+                 return inboxMailsFilter
+                }
               
 
             if (!this.filterObj) return this.mails;
@@ -110,33 +107,3 @@ export const mailApp = {
         },
     }
 }
-
-
-
-
-
-export const inboxMail = {
-    name: 'inbox',
-    template: `
-    <section>
-        <h2>Our team is Awesome</h2>
-        <p>
-            Team is everyting Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ex nesciunt soluta molestiae odio deserunt harum quibusdam quam temporibus ratione eligendi, impedit consequatur. Voluptate quas dicta, praesentium et officiis suscipit.            
-        </p>
-    </section>
-    `
-}
-
-
-// export const opneMail = {
-//         name: 'open-mail',
-//         template: `
-//     <section>
-//         <h2>New Mail</h2>
-//         <p>
-//             Our endi, impedit ct officiis suscipit.            
-//         </p>
-//     </section>
-//     `
-//     }
-

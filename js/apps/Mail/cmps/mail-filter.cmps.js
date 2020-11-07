@@ -4,9 +4,9 @@ import { mailService } from '../service/mail-service.js'
 export default {
     props: ['mails'],
     template: `
-    <section class="mail-filter">
+    <section >
     <form @submit.prevent="emitFilter " >
-       <div class="flex justify-center">
+       <div class="mail-filter flex justify-center">
             <label>   <i class="fas fa-search"></i>
                 <input type="text" v-model="filterObj.filterByTxt" placeholder="Search..." @input="emitFilter"  class="fas fa-search">
             </label>
@@ -18,7 +18,7 @@ export default {
               
             </div>
         </div>
-            <!-- <button >Apply Filter</button> -->
+         
             
         </form>
     </section>
@@ -38,10 +38,10 @@ export default {
         },
     },
     components: {
-        // mailPreview,
+       
     },
     created(){
-        // this.emitFilter()
+        
     }
 
 }
