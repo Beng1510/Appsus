@@ -21,19 +21,13 @@ export default {
     },
     computed: {
         subTxt() {
-            console.log('this.txt.length',this.txt.length);
             if (this.txt.length > 150) {
                 this.largeTxt = true
-                console.log('this.largeTxt',this.largeTxt);
             }
             if (this.isShowMore) {
                 return this.txt;
             }
-
             return this.txt.substring(0, 100);
         }
     },
-//     creared() {
-//         if (this.txt)
-//     }
 }

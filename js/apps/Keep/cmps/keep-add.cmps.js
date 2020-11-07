@@ -113,19 +113,12 @@ export default {
             }
             keepService.addNote(this.note)
                 .then(res => {
-                    console.log('res',res);
-                    console.log('this.info',this.info);
-                    console.log('this.todosLabel',this.todosLabel);
                     this.info = '';
                     this.title = '';
                     this.todosLabel = '';
-                    console.log('this.info',this.info);
-                    console.log('this.todosLabel',this.todosLabel);
                 })
         },
     },
     created() {
-        console.log('keep add created');
-
     }
 }

@@ -54,13 +54,10 @@ export default {
     },
     methods: {
         emitPinNote() {
-            console.log('this.isPinned before',this.isPinned);
-            console.log('this.isPinned after',this.isPinned);
             this.pinned = !this.pinned;
             this.$emit('pinned', this.id, this.pinned)
         },
         changeBColor(color) {
-            console.log('color:', color, 'this.id', this.id);
             this.$emit('changeBGC', color, this.id)
         },
         toggleControls() {

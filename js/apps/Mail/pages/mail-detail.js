@@ -57,7 +57,6 @@ export default {
         },
         changeMail(diff) {
             const nextId = mailService.getMailById(this.mail.id, diff);
-            console.log('nextId:', nextId)
             this.$router.push(`/mail/:${nextId}`);
             
         }

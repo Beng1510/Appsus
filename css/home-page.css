@@ -1,13 +1,9 @@
-
-
 .home-page-container {
-    margin: 0 auto;
-
+    margin: 60px auto;
 }
 
 .home-page-img-container {
     margin: 0 auto;
-    
     display: flex;
 }
 
@@ -17,20 +13,39 @@
     margin: 0 20px;
     border-radius: 15px;
     transition: 0.2s;
-
-
 }
 
 .home-page-img-container img:hover {
     filter: grayscale(50%);
     transform: scale(1.05);
-
 }
 
 h2.home-page-title {
     text-align: center;
-    font-family:Kaushan ;
+    font-family: Kaushan;
     font-size: 37px;
     margin-bottom: 10px;
     font-weight: lighter;
+}
+
+@media (max-width: 1020px) {
+
+    .image-container-home img {
+        width: 150px;
+        height: 200px;
+        margin: 0 5px;
+        border-radius: 15px;
+        transition: 0.2s;
+    }
+    h2.home-page-title {
+       
+        font-size: 20px;
+       
+    }
+}
+@media (max-width: 500px) {
+
+    .home-page-img-container {
+       flex-direction: column;
+    }
 }

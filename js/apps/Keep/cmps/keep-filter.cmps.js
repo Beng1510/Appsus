@@ -20,18 +20,12 @@ export default {
         return {
         
              filterByTxt: ''
-            
+          
         }
     },
     methods: {
         emitFilter() {
-            console.log('emitting');
-            // this.$emit('filtered', this.filterByText)
             this.$emit('filtered', this.filterByTxt)
         },
     },
-    components: {
-        // mailPreview,
-    }
-
 }

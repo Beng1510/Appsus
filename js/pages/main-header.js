@@ -6,7 +6,7 @@ export default {
           
             <nav class="header-container flex space-between align-center">
                 <div class="logo flex"><router-link to="/" exact>Appsus</router-link></div>  
-            <!-- <h2 class="header-title">Appsus</h2> -->
+                
                 <div class="header-links flex" v-if="showHamburger" >
                     
                     <router-link to="/" exact>Home</router-link> 
@@ -17,10 +17,7 @@ export default {
                 </div>
 
                 <span @click="toggleMenu" class="fas fa-th hamburger"></span>
-                <!-- <div class="container hamburger"  @click="toggleMenu">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div> -->
+               
             </div>
             </nav>
      
@@ -35,10 +32,6 @@ export default {
     methods: {
         toggleMenu() {
             this.showHamburger = !this.showHamburger
-            console.log('toggling');
         }
     },
-    components: {
-
-    }
 }

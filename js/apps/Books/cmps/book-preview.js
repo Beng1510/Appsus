@@ -21,12 +21,7 @@ export default {
         </section>
     `,
     computed: {
-        // imgUrl() {
-        //     return `img/car/${this.car.vendor}.png`
-        // },
-        // previewClass() {
-        //     return {active: this.car.isActive}
-        // },
+        
         getCurrency() {
             var price = this.book.listPrice.amount 
             if (this.book.listPrice.currencyCode === 'ILS') return '₪' + price;

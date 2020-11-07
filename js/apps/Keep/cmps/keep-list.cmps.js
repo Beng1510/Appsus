@@ -86,7 +86,6 @@ export default {
             this.$emit('colorChange', color, id)
         },
         strikeToDo(noteId, idx) {
-            console.log('noteId',noteId,'idx',idx);
             this.$emit('strike', noteId, idx)
         }
     },

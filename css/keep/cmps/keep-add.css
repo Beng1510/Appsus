@@ -17,7 +17,7 @@
 }
 
 .keep-add-inputs {
-    width: 1000px;
+    width: 680px;
     background-color: white;
     border-radius: 10px;
     margin-top: 20px;
@@ -47,9 +47,10 @@ input.user-info, input.add-title, input.add-lable {
     margin: 0 10px 0 10px;
 }
 
-@media (max-width: 1050px) {
+
+@media (max-width: 1150px) {
     .keep-add-inputs {
-        width: 600px;
+        width: 500px;
     }
     input.user-info, input.add-title, input.add-lable {
         width: 150px;
@@ -57,8 +58,11 @@ input.user-info, input.add-title, input.add-lable {
 }
 
 @media (max-width: 700px) {
+    .keep-add {
+        margin-bottom: 15px;
+    }
     .keep-add-inputs {
-        width: 400px;
+        width: 380px;
     }
     input.user-info, input.add-title, input.add-lable {
         width: 100px;

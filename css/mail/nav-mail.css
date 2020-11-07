@@ -7,7 +7,7 @@ width: 56px;
 border-radius: 50%;
 color: black;
 display: inline-flex;
-background-image: url("/js/asset/img/plus.png");
+background-image: url("../js/asset/img/plus.png");
 background-size:cover ;
 box-shadow:  0 1px 2px 0 rgba(60, 64, 67,0.302) 0px 1px 3px 1px(60, 64, 67,0.150 );
 transition: 0.5s;

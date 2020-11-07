@@ -47,11 +47,7 @@ methods: {
         this.$emit('pinned', this.id, this.isPinned)
     },
     changeBColor(color) {
-        console.log('color:', color, 'this.id', this.id);
         this.$emit('changeBGC', color, this.id)
-    },
-    updateNoteInfo(note) {
-        console.log(note);
     },
     toggleControls() {
         this.isControlsShown = !this. isControlsShown;

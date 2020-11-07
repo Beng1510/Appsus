@@ -26,9 +26,9 @@ export default {
     methods: {
         emitMailClick(mailId) {
 
-            
+
             this.mail = mailService.getMailById(mailId)
-            if(this.mail.isActiv) this.mail.isActiv = false ;
+            if (this.mail.isActiv) this.mail.isActiv = false;
             this.mail.isRead = !this.mail.isRead
             this.$emit('mailClick', mailId)
 
@@ -37,16 +37,20 @@ export default {
 
             mailService.deleteMail(mailId)
             eventBus.$emit('show-msg', { txt: 'Mail has been deleted', type: 'Success' })
-      
+
         },
-        activMail(mailId){
+        activMail(mailId) {
             this.mail = mailService.getMailById(mailId)
+<<<<<<< HEAD
 
             console.log('this.mail.isActiv:', this.mail.isActiv)
             this.mail.isActiv = !this.mail.isActiv ;
             console.log('this.mail.isActiv:', this.mail.isActiv)
 
             
+=======
+            this.mail.isActiv = !this.mail.isActiv;
+>>>>>>> 665ed082dc4ea23d652feb3e127572ff8b377086
         }
     },
     components: {

@@ -22,6 +22,34 @@ display: inline;
     font-family: Kaushan;
 }
 
+@media (max-width: 1050px) {
+   
+    .keep-filter-search-container {
+        width: 300px;
+        margin: 0 auto;
+    }
+    .keep-filter-input {
+        width: 250px;
+    }
+    .keep-filter {
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+@media (max-width: 900px) {
+   
+    .keep-filter-search-container {
+        width: 180px;
+        margin: 0 auto;
+    }
+    .keep-filter-input {
+        width: 130px;
+    }
+    .keep-filter {
+        margin: 0 auto;
+        padding: 0;
+    }
+}
 @media (max-width: 450px) {
    
     .keep-filter-search-container {
