@@ -94,5 +94,8 @@ export const mailApp = {
                     mail.isRead === currFilter
             })
         },
+    },
+    created(){
+        this.inboxToShow = ''
     }
 }

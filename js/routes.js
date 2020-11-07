@@ -31,7 +31,7 @@ const myRoutes = [
 
             {
                 path: '',
-                component: navMail
+                // component: navMail
             },
           
             {
