@@ -7,6 +7,7 @@ export const mailService = {
     saveMails,
     deleteMail,
     addMail,
+    markMails,
     getNewMail
 }
 
@@ -54,6 +55,10 @@ function deleteMail(mailId) {
     console.log('mails:', gMails)
     saveMails();
     query();
+    return gMails
+}
+
+function markMails(){
     return gMails
 }
 

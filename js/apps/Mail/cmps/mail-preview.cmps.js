@@ -42,11 +42,11 @@ export default {
     },
     methods:{
         emitDelete(id){        
-            console.log('iddddddd:', id)
+            
             this.$emit('delete', id)
         },
         emitActiv(id){        
-            console.log('iddddddd:', id)
+            
             this.$emit('activ', id)
         }
     },
