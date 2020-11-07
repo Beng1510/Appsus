@@ -4,7 +4,7 @@
    border: 2px solid white;
     /* width: 900px; */
     /* text-align: center; */
-    height: 400px;
+    height: 600px;
     margin: 0 auto;
     font-size: 18px;
     /* font-weight: bold; */
@@ -60,4 +60,19 @@ button.prev-btn {
     font-family: Caveat;
     width: 100px;
     border-radius: 15px;
+}
+
+@media (max-width: 550px) {
+
+   
+.book-details-img-container img{
+    height: 200px;
+    width: 160px;
+}
+h2.book-main-title {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
 }

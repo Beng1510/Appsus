@@ -19,10 +19,11 @@
     display: inline-block;
     background-color:#90E0EF;
     padding: 10px;
-    margin: 8px;
+    margin: 8px auto;
     width: 200px;
     height: 230px;
     border-radius: 15px;
+    border: 1px solid white;
     text-align: center;
     /* background-image: url('/img/book-cover.jpg');
         background-position: center;
@@ -32,4 +33,11 @@
 
 .book-list ul li a {
     text-align: center;
+}
+
+@media (max-width: 360px) {
+
+    
+
+
 }
