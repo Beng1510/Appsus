@@ -3,13 +3,11 @@ import mailFilter from '../cmps/mail-filter.cmps.js'
 import mailList from '../cmps/mail-list.cmps.js'
 import mailNav from '../cmps/mail-nav.cmps.js'
 
-
 export const mailApp = {
     name: 'mail-app',
     template: `
     <section class="Mail-app ">
        <h1>Mail Page</h1>
-      
        <mail-filter :mails="mails"  @filtered="setFilter"></mail-filter>
 
         <div class="card ">
@@ -20,9 +18,8 @@ export const mailApp = {
                  <mail-nav @mailInboxFilter="inboxMailsToShow" :mails="mailsToShow"></mail-nav>
             </div>
                  <mail-list   @mailClick="selectmail"  :mails="mailsToShow" />
-            
         </nav>
-        </div>
+    </div>
 
     </section>
 `, data() {

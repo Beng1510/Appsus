@@ -1,26 +1,27 @@
-
-
-.compose-btn{
- height: 56px;
-width: 56px;
-
-border-radius: 50%;
-color: black;
-display: inline-flex;
-background-image: url("../js/asset/img/plus.png");
-background-size:cover ;
-box-shadow:  0 1px 2px 0 rgba(60, 64, 67,0.302) 0px 1px 3px 1px(60, 64, 67,0.150 );
-transition: 0.5s;
-
+.compose-btn {
+    height: 56px;
+    width: 56px;
+    font-size: 40px;
+    border-radius: 50%;
+    color: black;
+    font-family: Caveat;
+    text-align: center;
+    background-image: url("../../js/asset/img/plus.png");
+    background-size:cover ;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302) 0px 1px 3px 1px(60, 64, 67, 0.150);
+    transition: 0.5s;
 }
 
-
-
-.compose-btn { 
+/* .compose-btn {
+    height: 56px;
+    width: 56px;
     border-radius: 50%;
+    background-image: url("../js/asset/img/plus.png");
+    background-size: cover;
     border: none;
     cursor: pointer;
-}
+    transition: 0.5s;
+} */
 
 .nav-icons a {
     margin-left: 10px;
@@ -31,22 +32,18 @@ transition: 0.5s;
     border-radius: 15px;
     margin-bottom: 10px;
 }
+
 .nav-icons a:hover {
     border: 3px solid yellow;
 }
-.nav-icons a span{
+
+.nav-icons a span {
     font-family: Caveat;
-   
 }
 
-
-@media(max-width: 950px){
-    .nav-icons a{
-         width: 100px;
-         font-size: 20px;
+@media(max-width: 950px) {
+    .nav-icons a {
+        width: 100px;
+        font-size: 20px;
     }
-
 }
-
-
-
