@@ -5,7 +5,6 @@ export default {
     template: `
     <section>
     <h1 class="about-page-title">About APPSUS</h1>
-<!-- <img src="../img/lady-book-3.png"/> -->
             <section class="about-page-container flex"> 
                 
             <div class="about-page-img-container flex column">        

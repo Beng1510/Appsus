@@ -2,7 +2,7 @@
     border: 4px solid white;
     border-radius: 15px;
     /* background-color: #BEE3DB; */
-    background-image: url('/js/asset/img/background2.jpeg');
+    background-image: url('./js/asset/img/background2.jpeg');
     padding: 10px 20px;
     /* margin-top: 10px; */
 }

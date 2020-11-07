@@ -4,7 +4,7 @@
 
 body {
     margin: 0 auto;
-    background-image: url('/js/asset/img/background2.jpeg');
+    background-image: url('./js/asset/img/background2.jpeg');
     color: #2b2b2b;
     font-family: Caveat;
 }
