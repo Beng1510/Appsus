@@ -439,7 +439,7 @@ function getGoogleBooks() {
         return axios.get('https://www.googleapis.com/books/v1/volumes?printType=books&q=effective%20javascript')
             .then(res => res.data)
             .then(data => {
-                console.log('data', data);
+            
                 const books = formatGoogleBooks(data)
                 utilService.storeToStorage(GOOGLE_BOOKS_DB, books)
                 return books
@@ -449,12 +449,8 @@ function getGoogleBooks() {
 }
 
 function formatGoogleBooks(rawBooksData) {
-    console.log('rawBooksData', rawBooksData);
-    // console.log('rawBooksData', rawBooksData.items[0].id);
 
     return rawBooksData.items.map(item => {
-        console.log('id', item.id);
-        console.log('id', item.volumeInfo.title);
 
         return {
             id: item.id,
@@ -477,15 +473,11 @@ function formatGoogleBooks(rawBooksData) {
 }
 
 function searchBook(searchTerm) {
-    console.log('searchTerm:', searchTerm);
     return axios.get(`https://www.googleapis.com/books/v1/volumes?printType=books&q=${searchTerm}`)
         .then(res => {
-            console.log('res', res)
-
             return Promise.resolve(formatGoogleBooks(res.data))
             // return res.data.items
         })
-
 }
 
 function addGoogleBook(book) {

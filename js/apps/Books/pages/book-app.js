@@ -47,7 +47,6 @@ export default {
         },
     },
     created() {
-        console.log('book app created');
         bookService.getBooks()
         .then(books => this.books = books)
     },

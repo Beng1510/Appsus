@@ -30,12 +30,4 @@ export default {
 
     </section>
     `,
-    methods: {
-      
-    },
-  
-    created() {
-        console.log('about created');
-    },
-
 }

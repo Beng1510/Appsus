@@ -39,69 +39,54 @@ export default {
 
         </section>
 `,
-data() {
-    return {
-        isEdit: false,
-        isColorEdit: false,
-        newText: this.info.txt,
-        isControlsShown: false,
-        isComplete: false
-        
-        
-        
+    data() {
+        return {
+            isEdit: false,
+            isColorEdit: false,
+            newText: this.info.txt,
+            isControlsShown: false,
+            isComplete: false
 
-    }
-},
-methods: {
-    todo() {
-        console.log(this.$refs, 'ze2');
+
+
+
+        }
     },
-    emitPinNote() {
-        this.isPinned = !this.isPinned;
-        this.$emit('pinned', this.id, this.isPinned)
+    methods: {
+        emitPinNote() {
+            this.isPinned = !this.isPinned;
+            this.$emit('pinned', this.id, this.isPinned)
+        },
+        changeBColor(color) {
+            this.$emit('changeBGC', color, this.id)
+        },
+        toggleControls() {
+            this.isControlsShown = !this.isControlsShown;
+        },
+        editNote() {
+            this.isEdit = !this.isEdit;
+        },
+        updateNote() {
+            this.$emit('update', this.id, this.newText, 'noteText')
+            this.isEdit = !this.isEdit;
+        },
+        onRemoveNote() {
+            this.$emit('delete', this.id)
+        },
+        colorEdit() {
+            this.isColorEdit = !this.isColorEdit;
+        },
+        toggleCompleted(todos, idx) {
+            this.isComplete = !this.isComplete
+            this.$emit('toDoDone', this.id, idx)
+        }
     },
-    changeBColor(color) {
-        console.log('color:', color, 'this.id', this.id);
-        this.$emit('changeBGC', color, this.id)
+    computed: {
+        strikeClass() {
+            return { striked: this.isComplete }
+        }
     },
-    updateNoteInfo(note) {
-        console.log(note);
+    components: {
+        noteColors
     },
-    toggleControls() {
-        this.isControlsShown = !this. isControlsShown;
-    },
-    editNote() {
-        this.isEdit = !this.isEdit;
-    },
-    updateNote() {
-        this.$emit('update', this.id, this.newText, 'noteText')
-        this.isEdit = !this.isEdit;
-    },
-    onRemoveNote(){
-        this.$emit('delete', this.id)
-    },
-    colorEdit() {
-        this.isColorEdit = !this.isColorEdit;
-    },
-    toggleCompleted(todos, idx) {
-        this.isComplete = !this.isComplete
-        console.log('idx',idx);
-        // console.log('note',note);
-        console.log('todos',todos);
-        // console.log('note id',note.id);
-        console.log('this id',this.id);
-        this.$emit('toDoDone', this.id, idx)  
-    }
-},
-computed: {
-    strikeClass() {
-        return {striked: this.isComplete}
-    }
-},
-components: {
-    noteColors
-},
-mounted() {
-    console.log(this.$refs.theTodo, 'IN MOUNTED');
-},
 }

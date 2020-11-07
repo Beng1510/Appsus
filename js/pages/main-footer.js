@@ -9,12 +9,4 @@ export default {
 
     </section>
     `,
-    methods: {
-
-    },
-
-    created() {
-        console.log('footer created');
-    },
-
 }

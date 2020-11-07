@@ -11,20 +11,16 @@ export default {
          </div>
     </section>
    `,
-   data(){
-       return{ 
-           boxShow:false
-       }
-   },
-   methods:{
-   setmailInboxFIlter(mailType){
-       console.log('mailType:', mailType)
+    data() {
+        return {
+            boxShow: false
+        }
+    },
+    methods: {
+        setmailInboxFIlter(mailType) {
+            this.$emit('mailInboxFilter', mailType)
+            this.$router.push('/mail')
+        }
+    }
 
-   this.$emit('mailInboxFilter',mailType)
-   this.$router.push('/mail')
-   }
-
-
-   }
-    
- }
+}

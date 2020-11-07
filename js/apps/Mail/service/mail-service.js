@@ -13,11 +13,6 @@ export const mailService = {
 
 var gMails = _createMails()
 
-// function countReadMail(){
-//  console.log(gMails);
-// }
-
-
 function query() {
     saveMails();
     return gMails
@@ -40,11 +35,8 @@ function getNewMail() {
 }
 
 function addMail(mail) {
-    // console.log('mail:', mail)
-    
-    
+
     gMails.unshift(mail)
-    
     query();
     saveMails()
     return gMails
@@ -54,16 +46,14 @@ function deleteMail(mailId) {
 
     const idx = gMails.findIndex(mail => mail.id === mailId)
     gMails.splice(idx, 1)
-    console.log('mails:', gMails)
     saveMails();
     query();
     return gMails
 }
 
-function markMails(){
+function markMails() {
     return gMails
 }
-
 
 function saveMails() {
     utilsService.storeToStorage('mails', gMails)
@@ -71,15 +61,12 @@ function saveMails() {
 
 function getMailById(id) {
     const mail = gMails.find(mail => mail.id === id)
-
-    // return Promise.resolve(mail)
     return mail
 }
 
 function _createMails() {
 
     var mails = utilsService.loadFromStorage('mails');
-
     if (mails && mails.length) return mails;
 
     mails = [{

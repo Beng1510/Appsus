@@ -33,7 +33,6 @@ export default {
     },
     methods: {
         emitFilter() {
-            console.log('this.filterObjoneone:', this.filterObj)
             this.$emit('filtered', JSON.parse(JSON.stringify(this.filterObj)))
         },
     },

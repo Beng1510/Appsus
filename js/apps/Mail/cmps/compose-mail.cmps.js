@@ -34,25 +34,16 @@ export const composeMail = {
     methods: {
         addMail() {        
             mailService.addMail(this.mail)     
-            // this.$emit('newmail', this.mail)
-           
-            console.log('hiiiii');
-            // this.mail = null;
         },
         cancelAdd(){
             this.$router.push('/mail')
-            // this.$emit('canceled')
-            // this.mail = null;
-            // this.$router.go(-1);
         }
     },  
     mounted() {
         this.$refs.nameInput.focus();
     },
     created() {
-        console.log('composing');
         this.mail = mailService.getNewMail()
         this.addingMail = true ;
-
     }
 }

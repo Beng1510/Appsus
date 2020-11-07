@@ -18,3 +18,10 @@
     align-items: flex-end;
     margin-top: 20px;
 }
+
+
+@media (max-width: 640px) {
+    .keep-add-filter {
+       flex-direction: column;
+    }
+}

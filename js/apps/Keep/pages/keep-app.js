@@ -49,21 +49,15 @@ export default {
             keepService.changeBgColor(newColor, id)
                 .then(res => {
                     this.notes = res;
-                    console.log('this.notes', this.notes);
                 });
         },
         setFilter(filterByTxt) {
-            console.log('filterByTxt:', filterByTxt)
-
             this.filterByTxt = filterByTxt;
         },
         updateNote(noteId, info, type) {
-            console.log('info', info);
-            console.log('type', type);
             keepService.updateNote(noteId, info, type)
         },
         updatePinNote(noteId, pinInfo) {
-            console.log(this.notes);
             keepService.pinNote(noteId, pinInfo)
         },
         strikeToDo(noteId, idx) {
@@ -82,14 +76,10 @@ export default {
         keepList,
         keepFilter,
 
-
     },
     created() {
-        // console.log('keep app created');
         keepService.getNotes()
             .then(notes => this.notes = notes)
-        // console.log(this.notes);
-
     }
 }
 

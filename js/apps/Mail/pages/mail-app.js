@@ -34,7 +34,7 @@ export const mailApp = {
             mails: mailService.query(),
             mail: null,
             filterObj: null,
-            inboxToShow:''
+            inboxToShow: ''
         }
     },
     created() {
@@ -44,69 +44,40 @@ export const mailApp = {
         mailList,
         mailFilter,
         mailNav
-       
+
     },
     methods: {
         selectmail(mailId) {
             this.mail = mailService.getMailById(mailId)
             this.mail.isRead = true;
-
-            console.log('mailId:', mailId)
             this.$router.push(`/mail/${mailId}`)
         },
         setFilter(filterObj) {
-            console.log('filterObj:', filterObj)
             this.filterObj = filterObj;
         },
         cansleAdd() {
             this.addingMail = !this.addingMail
         },
-        inboxMailsToShow(mailType){
-            
-            
-            this.inboxToShow = mailType ;
-            // console.log('this.inboxToShow:', this.inboxToShow)
+        inboxMailsToShow(mailType) {
+            this.inboxToShow = mailType;
         },
-
-
     },
     computed: {
         mailsToShow() {
-            // console.log('this.filterObj:', this.inboxToShow)
-            // console.log('this.filterObj:', this.filterObj)
-
-            // let inboxMailsFilter = this.mails ;
-            // console.log('inboxMailsFilter:', inboxMailsFilter)
-
-            // if(this.inboxToShow ==='inbox') {inboxMailsFilter = this.mails 
-            //      return inboxMailsFilter
-            //     };
-            // if(this.inboxToShow ==='mark'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isActiv)
-            //      return inboxMailsFilter
-            //     }
-              
-            // if(this.inboxToShow ==='sent'){  inboxMailsFilter = inboxMailsFilter.filter(mail => mail.isSent)
-            //      return inboxMailsFilter
-            //     }
-              
-
             if (!this.filterObj) return this.mails;
             const txt = this.filterObj.filterByTxt.toLowerCase();
             return this.mails.filter(mail => {
-                console.log('mail:', mail)
                 let currFilter = this.filterObj.filterByRead;
                 if (currFilter === 'all') {
                     currFilter = mail.isRead
-                    console.log('currFilter:', currFilter)
                 }
                 else if (currFilter === 'read') {
                     currFilter = true
                 } else currFilter = false;
                 return (mail.subject.toLowerCase().includes(txt) ||
-                    mail.body.toLowerCase().includes(txt) ) &&
-                    mail.isRead === currFilter 
+                    mail.body.toLowerCase().includes(txt)) &&
+                    mail.isRead === currFilter
             })
-
         },
     }
 }

@@ -1,12 +1,8 @@
-// import './long-text.js';
 import { bookService } from '../services/book-service.js'
-// import reviewAdd from './review-add.js'
 
 export default {
     
     template: `
-      
-      
         <section v-if="book" class="book-details flex">
           
                 <div class="details-main flex">
@@ -31,14 +27,14 @@ export default {
                     <p>{{publishedAt}}</p>
                     <h3> {{bookOnSale}}</h3>
                    
-<div class="book-btn-container">
-    <button class="prev-btn" @click="changeBook(-1)">PREV</button>
+                <div class="book-btn-container">
+                    <button class="prev-btn" @click="changeBook(-1)">PREV</button>
                     <button class="next-btn" @click="changeBook(+1)">NEXT</button>
-</div>
+                </div>
                 </div>  
             </div>
 
-          
+
         </section>
     `,
     data() {

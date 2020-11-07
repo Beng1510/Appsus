@@ -20,26 +20,20 @@ function getNotes() {
     var notes = utilsService.loadFromStorage(NOTES_DB)
     if (!notes || notes.length === 0) {
         notes = createDefaultNotes()
-        // console.log('notes',notes);
         utilsService.storeToStorage(NOTES_DB, notes)
     }
     gNotes = notes
-    console.log('gNotes after', gNotes);
     return Promise.resolve(gNotes);
 }
 
 
 function addNote(note) {
     const newNote = formatNotes(note);
-    console.log('newNote', newNote);
-
     gNotes.unshift(newNote);
-    console.log('gNotes after add', gNotes);
+
     utilsService.storeToStorage(NOTES_DB, gNotes)
     return Promise.resolve();
 }
-
-
 
 function removeNote(noteId) {
 
@@ -205,7 +199,6 @@ function pinNote(noteId, pinInfo) {
     .then(note => {
         note.isPinned = pinInfo
     })
-    console.log('note.isPinned', note.isPinned);
     utilsService.storeToStorage(NOTES_DB, gNotes)
 }
 
@@ -213,11 +206,8 @@ function pinNote(noteId, pinInfo) {
 function convertYouTube(url) {
 
     const videoId = getVideoId(url);
-    console.log('Video ID:', videoId)
-
     const iframeMarkup = 'https://www.youtube.com/embed/' + videoId;
     return iframeMarkup
-
 }
 
 function getVideoId(url) {
