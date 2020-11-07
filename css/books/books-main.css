@@ -1,0 +1,15 @@
+@import './cmps/book-list.css';
+@import './cmps/book-preview.css';
+@import './cmps/book-details.css';
+@import './cmps/book-filter.css';
+
+
+
+.book-main-title {
+    font-family: Kaushan;
+    font-size: 40px;
+    display: inline;
+    margin-bottom: 40px;
+    margin-top: 0;
+    padding: 15px;
+}

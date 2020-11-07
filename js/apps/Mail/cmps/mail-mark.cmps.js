@@ -1,23 +1,28 @@
 import { mailService } from '../service/mail-service.js'
 
 export const mailMark = {
+    props: ['mails'],
     name: 'mail-mark',
     template: `
      <section class="mail-mark">
          <div class="mark-list">
          
-            <!-- <ul>
-                <li v-for="mail in mails" :key="mail.id"  >
-                    <mail-preview :mail="mail" @click.native="emitMailClick(mail.id)" :class="{mailRead: mail.isRead ,mailUnRead: !mail.isRead }"  @delete="deleteMail"/>
+            <ul>
+                <li v-if="mail.isActiv" v-for="mail in mails" :key="mail.id"  >
+                    {{mail.subject}}
+                    {{mail.user}}
+                    {{mail.body}}
+                    {{mail.sentAt}}
+                   
                 </li>
-            </ul> -->
+            </ul>
         </div>
        
     </section>
 `,  
     data() {
         return {
-            mails:null ,
+            // mails:null ,
             mail: null,
         }
     },
@@ -27,7 +32,8 @@ export const mailMark = {
     },
    
     created(){
-        
+        console.log('marking');
+        console.log('this.mails',this.mails);
         this.mails = mailService.markMails()
         
         
