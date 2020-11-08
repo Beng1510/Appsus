@@ -5,6 +5,7 @@
     background-image: url('../js/asset/img/background2.jpeg');
     padding: 10px 20px;
     /* margin-top: 10px; */
+    max-width: 1200px;
 }
 
 .book-list ul {
