@@ -20,9 +20,9 @@ export default {
            
         
             <footer class="footer-mail flex" >
-                <div class="back-icon" >
+                <!-- <div class="back-icon" >
                     <span  class="fas fa-arrow-left" @click="changeMail(-1)" > </span>
-                </div> 
+                </div>  -->
                 <div class="inbox-icon" >
                     <span  class="fas fa-inbox"  @click="returnBack"> </span>
                 </div> 
@@ -30,9 +30,9 @@ export default {
                     <span  class="fas fa-trash-alt" @click.stop="emitDelete(mail.id)"> </span>
                 </div> 
               
-                <div class="next-icon" >
+                <!-- <div class="next-icon" >
                     <span  class="fas fa-arrow-right" @click="changeMail(-1)" ></span>
-                </div> 
+                </div>  -->
               </footer>
        
             
