@@ -13,3 +13,8 @@
     margin-top: 0;
     padding: 15px;
 }
+
+.book-app {
+    margin: 0 auto;
+    max-width: 1200px;
+}
