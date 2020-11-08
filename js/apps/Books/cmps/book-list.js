@@ -9,6 +9,7 @@ export default {
             <ul >
                 <li v-for="book in books" :key="book.id" >
                    <!-- <book-preview :book="book" /> -->
+                   <book-preview :book="book" />
                    <book-preview :book="book" @click.native="emitBook(book.id)" />
                    <!-- <button @click="emitBook(book)">?</button> -->
                 </li>

@@ -58,8 +58,8 @@ function changeBgColor(color, id) {
 
 
 function findNoteById(noteId) {
-    const note = gNotes.find(note => note.id === noteId);
-        return Promise.resolve(note)
+        return gNotes.find(note => note.id === noteId);
+  
 }
 
 

@@ -32,7 +32,6 @@ p.book-price {
     margin: 0 auto;
     opacity: 0.6;
     display: flex;
-    cursor: pointer;
 }
 .book-img:hover {
    
